@@ -140,8 +140,8 @@ The following issues are critical for the further  development of Scene3D. Pleas
 * [Material option to enable anisotropic texture filtering](https://github.com/defold/defold/issues/6155).
 * [Optimize file size of Buffer](https://github.com/defold/defold/issues/6272).
 * [More matrix types as shader constants](https://github.com/defold/defold/issues/3789).
-* [Render script should be able to get properties from any camera](https://github.com/defold/defold/issues/3717).
 * [Custom vertex format](https://github.com/defold/defold/issues/3403).
+* **IDE:** [Copied collision 3d box doesn't show properly in the editor](https://github.com/defold/defold/issues/5049).
 
 ## Contributing to Scene3D
 
