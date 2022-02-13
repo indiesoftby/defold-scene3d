@@ -1,0 +1,49 @@
+go.property("star_group", hash("star"))
+go.property("car_physics_id", hash("/offroader/physics"))
+go.property("car_visuals_body_id", hash("/offroader/visuals_body"))
+
+local render3d = require("scene3d.render.render3d")
+
+local INIT_STAR = hash("init_star")
+local TRIGGER_RESPONSE = hash("trigger_response")
+
+function init(self)
+    go.set_parent(".", self.car_physics_id)
+
+    self.stars_total = 0
+    self.stars_collected = 0
+    self.stars_collected_ids = {}
+end
+
+function final(self)
+end
+
+function update(self, dt)
+    render3d.debug_log("Stars " .. string.format("%d / %d", self.stars_collected, self.stars_total))
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == TRIGGER_RESPONSE then
+        if message.enter and message.other_group == self.star_group and not self.stars_collected_ids[message.other_id] then
+            local x = (self.stars_collected % 6) * 0.25
+            local y = math.floor(self.stars_collected / 6) * -0.25
+            local z = math.floor(self.stars_collected / 6) * 0.06
+
+            self.stars_collected = self.stars_collected + 1
+            self.stars_collected_ids[message.other_id] = true
+
+            -- For some reason, the instance of the collision object is shared between all game objects!
+            -- msg.post(sender, "disable")
+            ----------
+
+            go.set_parent(message.other_id, self.car_visuals_body_id, true)
+            go.set(msg.url(nil, message.other_id, "icon"), "frustum_mesh_use_world_position", true)
+            go.animate(message.other_id, "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0.2), go.EASING_OUTBACK, 0.5)
+            go.animate(message.other_id, "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(-0.65 + x, 0.55 + y, 2.1 + z), go.EASING_OUTBACK, 0.5)
+            go.cancel_animations(message.other_id, "euler.y")
+            go.animate(message.other_id, "euler", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(-11, 0, 0), go.EASING_OUTQUAD, 0.5)
+        end
+    elseif message_id == INIT_STAR then
+        self.stars_total = self.stars_total + 1
+    end
+end

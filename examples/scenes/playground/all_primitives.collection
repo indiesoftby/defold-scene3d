@@ -1,0 +1,242 @@
+name: "default"
+instances {
+  id: "primitive_cone"
+  prototype: "/scene3d/prefabs/primitives/primitive_cone.go"
+  position {
+    x: -4.5
+    y: 0.5
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_tube_octa"
+  prototype: "/scene3d/prefabs/primitives/primitive_tube_octa.go"
+  position {
+    x: -2.5
+    y: 0.5
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_cylinder_octa"
+  prototype: "/scene3d/prefabs/primitives/primitive_cylinder_octa.go"
+  position {
+    x: -5.5
+    y: 0.5
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_cube"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -7.5
+    y: 0.5
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_cylinder_hexa"
+  prototype: "/scene3d/prefabs/primitives/primitive_cylinder_hexa.go"
+  position {
+    x: -6.5
+    y: 0.5
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_cylinder"
+  prototype: "/scene3d/prefabs/primitives/primitive_cylinder.go"
+  position {
+    x: -4.5
+    y: 0.5
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_pyramid"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: -7.5
+    y: 0.5
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_pyramid_octa"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid_octa.go"
+  position {
+    x: -5.5
+    y: 0.5
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_pyramid_hexa"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid_hexa.go"
+  position {
+    x: -6.5
+    y: 0.5
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_tube"
+  prototype: "/scene3d/prefabs/primitives/primitive_tube.go"
+  position {
+    x: -1.5
+    y: 0.5
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_tube_hexa"
+  prototype: "/scene3d/prefabs/primitives/primitive_tube_hexa.go"
+  position {
+    x: -3.5
+    y: 0.5
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.9
+    y: 0.9
+    z: 0.9
+  }
+}
+instances {
+  id: "primitive_sphere"
+  prototype: "/scene3d/prefabs/primitives/primitive_sphere.go"
+  position {
+    x: -0.5
+    y: 0.5
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

@@ -1,0 +1,32 @@
+go.property("key_id", hash("key_0"))
+go.property("acquire_input_focus", true)
+
+function init(self)
+    msg.post("#", "late_acquire_input")
+end
+
+function final(self)
+end
+
+function update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("late_acquire_input") then
+        if self.acquire_input_focus then
+            msg.post(".", hash("acquire_input_focus"))
+        end
+    end
+end
+
+function on_input(self, action_id, action)
+    if action_id == self.key_id and action.pressed then
+        if self.debug_look then
+            go.delete(self.debug_look)
+            self.debug_look = nil
+        else
+            self.debug_look = factory.create("#debug_look")
+            msg.post(self.debug_look, "parent_init", { ui = msg.url(nil, nil, "debug_ui") })
+        end
+    end
+end

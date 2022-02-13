@@ -1,0 +1,42 @@
+name: "default"
+instances {
+  id: "buildings_block_1x1"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_1x1.go"
+  position {
+    x: 7.0
+    y: -0.8
+    z: 4.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_block_5x5"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_5x5.go"
+  position {
+    x: 1.0
+    y: -3.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.3484684
+    y: 0.23172145
+    z: 0.50290525
+    w: 0.7562812
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

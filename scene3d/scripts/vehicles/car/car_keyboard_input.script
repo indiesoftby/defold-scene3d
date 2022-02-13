@@ -1,0 +1,56 @@
+go.property("enabled", true)
+go.property("acquire_input_focus", true)
+go.property("car_script_id", hash("car_main"))
+go.property("key_forward", hash("key_w"))
+go.property("key_backward", hash("key_s"))
+go.property("key_left", hash("key_a"))
+go.property("key_right", hash("key_d"))
+
+function init(self)
+    self.car_script_url = msg.url(nil, nil, self.car_script_id)
+
+    if self.acquire_input_focus then
+        msg.post(".", hash("acquire_input_focus"))
+    end
+end
+
+function update(self, dt)
+    if not self.enabled then
+        return
+    end
+
+    local sz = 0
+    local sx = 0
+
+    if self.input_key_left then
+        sx = sx - 1
+    end
+    if self.input_key_right then
+        sx = sx + 1
+    end
+    if self.input_key_forward then
+        sz = sz + 1
+    end
+    if self.input_key_backward then
+        sz = sz - 1
+    end
+
+    go.set(self.car_script_url, "input_steering_wheel_value", sx)
+    go.set(self.car_script_url, "input_gas_pedal_value", sz)
+end
+
+function on_input(self, action_id, action)
+    if not self.enabled then
+        return
+    end
+
+    if action_id == self.key_forward then
+        self.input_key_forward = not action.released
+    elseif action_id == self.key_backward then
+        self.input_key_backward = not action.released
+    elseif action_id == self.key_left then
+        self.input_key_left = not action.released
+    elseif action_id == self.key_right then
+        self.input_key_right = not action.released
+    end
+end

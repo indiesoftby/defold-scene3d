@@ -1,0 +1,70 @@
+name: "default"
+instances {
+  id: "icon_star"
+  prototype: "/scene3d/prefabs/icons/icon_star.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "icon"
+    properties {
+      id: "collision_type"
+      value: "trigger"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "collision_group"
+      value: "star"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "collision_mask"
+      value: "star_collector"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "message_receiver"
+      value: "/star_collector"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "message_init"
+      value: "init_star"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "animation_property"
+      value: "euler.y"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "animation_to"
+      value: "36000.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "animation_easing"
+      value: "linear"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "animation_duration"
+      value: "100.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

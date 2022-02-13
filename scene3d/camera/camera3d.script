@@ -1,0 +1,71 @@
+go.property("enabled", true)
+go.property("clear_color", vmath.vector4(0.25, 0.25, 0.25, 1))
+go.property("projection", hash("perspective"))
+go.property("field_of_view", 42.5)
+go.property("near_clip", 0.1)
+go.property("far_clip", 100)
+go.property("viewport", vmath.vector4(0, 0, 1, 1))
+
+go.property("late_update_priority", 1)
+
+go.property("debug_mesh_id", hash("debug_mesh"))
+
+local render3d = require("scene3d.render.render3d")
+local lu_helper = require("scene3d.helpers.late_update")
+
+local EMPTY_HASH = hash("")
+
+local DISABLE = hash("disable")
+local PERSPECTIVE = hash("perspective")
+
+local function update_render(self)
+    if not self.enabled then
+        return
+    end
+
+    -- DEBUG
+    -- print("camera3d (" .. render3d.frame_num .. "): update render")
+
+    local R = render3d
+
+    R.view_position = go.get_position()
+    R.view_direction(vmath.rotate(go.get_rotation(), R.FORWARD))
+
+    R.clear_color = self.clear_color
+    R.fov = self.field_of_view
+    R.near = self.near_clip
+    R.far = self.far_clip
+
+    R.viewports[1].x = self.viewport.x
+    R.viewports[1].y = self.viewport.y
+    R.viewports[1].w = self.viewport.z
+    R.viewports[1].h = self.viewport.w
+end
+
+-- This update will happen after game objects have been moved by the physics engine
+local function late_update(self)
+    update_render(self)
+end
+
+function init(self)
+    assert(self.projection == PERSPECTIVE, "Only perspective projection is supported.")
+
+    self.late_update_id = lu_helper.subscribe(self.late_update_priority)
+
+    if self.debug_mesh_id ~= EMPTY_HASH then
+        msg.post(msg.url(nil, nil, self.debug_mesh_id), DISABLE)
+    end
+end
+
+function final(self)
+    lu_helper.unsubscribe(self.late_update_id)
+end
+
+function update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == lu_helper.LATE_UPDATE then
+        late_update(self)
+    end
+end

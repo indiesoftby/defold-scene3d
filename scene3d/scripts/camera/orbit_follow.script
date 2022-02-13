@@ -1,0 +1,74 @@
+go.property("enabled", true)
+go.property("follow_object_id", hash(""))
+go.property("camera_object_id", hash(""))
+go.property("yaw", 0)
+go.property("yaw_anim_value", 0.09)
+go.property("pitch", -6)
+go.property("distance", 8.15)
+go.property("height", 1.9)
+go.property("move_forward", 3)
+
+go.property("late_update_priority", 1)
+
+local lu_helper = require("scene3d.helpers.late_update")
+local math3d = require("scene3d.helpers.math3d")
+local render3d = require("scene3d.render.render3d")
+
+local EMPTY_HASH = hash("")
+local EULER = hash("euler")
+local POSITION = hash("position")
+local UPDATE_RENDER = hash("update_render")
+local FORCE_UPDATE = hash("force_update")
+
+local function update_camera(self)
+    if self.follow_object_id == EMPTY_HASH then
+        return
+    end
+
+    if self.camera_object_id == EMPTY_HASH then
+        self.warn_empty_camera_once = self.warn_empty_camera_once or (print("orbit_follow.script: set the `camera_object_id` value") or true)
+        return
+    end
+
+    -- DEBUG
+    -- print("orbit_follow (" .. render3d.frame_num .. "): update camera")
+
+    local obj_rotation = go.get_rotation(self.follow_object_id)
+    local obj_position = go.get_position(self.follow_object_id)
+
+    local yaw = (90 - math3d.euler_y(obj_rotation) + self.yaw) % 360
+    self.cur_yaw = math3d.lerp_angle(self.yaw_anim_value, self.cur_yaw or yaw, yaw)
+    self.cur_pitch = self.pitch
+
+    local d = self.distance + self.move_forward
+    local h = self.height
+    local pos = obj_position + vmath.rotate(obj_rotation, render3d.FORWARD) * self.move_forward
+    pos = pos + vmath.vector3(math.cos(math.rad(self.cur_yaw)) * d, h, math.sin(math.rad(self.cur_yaw)) * d)
+
+    local values = vmath.vector3(self.cur_pitch, 90 - self.cur_yaw, 0)
+    go.set(self.camera_object_id, EULER, values)
+    go.set(self.camera_object_id, POSITION, pos)
+end
+
+function init(self)
+    self.late_update_id = lu_helper.subscribe(self.late_update_priority)
+end
+
+function final(self)
+    lu_helper.unsubscribe(self.late_update_id)
+end
+
+function update(self, dt)
+    self.dt = dt
+end
+
+function on_message(self, message_id, message, sender)
+    -- This update will happen after game objects have been moved by the physics engine
+    if message_id == lu_helper.LATE_UPDATE then
+        if self.enabled then
+            update_camera(self)
+        end
+    elseif message_id == FORCE_UPDATE then
+        update_camera(self)
+    end
+end

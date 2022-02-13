@@ -1,0 +1,142 @@
+name: "default"
+instances {
+  id: "icon_letter_S"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_S.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: -0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_E"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_E.go"
+  position {
+    x: 1.5
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: -0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_C"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_C.go"
+  position {
+    x: 0.75
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: -0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_E1"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_E.go"
+  position {
+    x: 3.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: -0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_N"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_N.go"
+  position {
+    x: 2.25
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: -0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_3"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_3.go"
+  position {
+    x: 3.75
+    y: 0.0
+    z: -0.1
+  }
+  rotation {
+    x: -0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.25
+    y: 1.25
+    z: 1.25
+  }
+}
+instances {
+  id: "icon_letter_D"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_D.go"
+  position {
+    x: 4.7
+    y: 0.0
+    z: -0.1
+  }
+  rotation {
+    x: -0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.25
+    y: 1.25
+    z: 1.25
+  }
+}
+scale_along_z: 0

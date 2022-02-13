@@ -1,0 +1,330 @@
+name: "default"
+instances {
+  id: "icon_video"
+  prototype: "/scene3d/prefabs/icons/icon_video.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -14.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_cog"
+  prototype: "/scene3d/prefabs/icons/icon_cog.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: 0.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_location"
+  prototype: "/scene3d/prefabs/icons/icon_location.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -6.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_spanner"
+  prototype: "/scene3d/prefabs/icons/icon_spanner.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -11.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_tick"
+  prototype: "/scene3d/prefabs/icons/icon_tick.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -13.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_star"
+  prototype: "/scene3d/prefabs/icons/icon_star.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -12.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  component_properties {
+    id: "icon"
+    properties {
+      id: "collision_type"
+      value: "trigger"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "collision_group"
+      value: "star"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "collision_mask"
+      value: "star_collector"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "message_receiver"
+      value: "/star_collector"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "message_init"
+      value: "init_star"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_heart"
+  prototype: "/scene3d/prefabs/icons/icon_heart.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -3.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_flash"
+  prototype: "/scene3d/prefabs/icons/icon_flash.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -2.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_key"
+  prototype: "/scene3d/prefabs/icons/icon_key.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -5.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_puzzle"
+  prototype: "/scene3d/prefabs/icons/icon_puzzle.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -10.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_home"
+  prototype: "/scene3d/prefabs/icons/icon_home.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -4.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_flag"
+  prototype: "/scene3d/prefabs/icons/icon_flag.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -1.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_lock_closed"
+  prototype: "/scene3d/prefabs/icons/icon_lock_closed.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -7.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_lock_open"
+  prototype: "/scene3d/prefabs/icons/icon_lock_open.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -8.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_music"
+  prototype: "/scene3d/prefabs/icons/icon_music.go"
+  position {
+    x: 0.0
+    y: 0.125
+    z: -9.0
+  }
+  rotation {
+    x: -0.5609855
+    y: -0.43045932
+    z: -0.43045932
+    w: 0.5609855
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

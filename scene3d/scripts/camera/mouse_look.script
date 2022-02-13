@@ -1,0 +1,117 @@
+go.property("enabled", true)
+go.property("acquire_input_focus", true)
+go.property("follow_object_id", hash(""))
+go.property("camera_object_id", hash(""))
+go.property("yaw", 0)
+go.property("pitch", 0)
+go.property("pitch_min", -89)
+go.property("pitch_max", 89)
+go.property("look_speed", 0.1)
+
+go.property("late_update_priority", 1)
+
+local render3d = require("scene3d.render.render3d")
+local math3d = require("scene3d.helpers.math3d")
+local lu_helper = require("scene3d.helpers.late_update")
+local pointer = require("pointer_lock.pointer")
+
+local EMPTY_HASH = hash("")
+local EULER = hash("euler")
+local POSITION = hash("position")
+
+local function clamp_values(self)
+    if self.yaw < 0 then
+        self.yaw = self.yaw + 360
+    end
+    if self.yaw >= 360 then
+        self.yaw = self.yaw - 360
+    end
+
+    self.pitch = math3d.clamp(self.pitch, self.pitch_min, self.pitch_max)
+end
+
+local function update_camera(self)
+    if self.camera_object_id == EMPTY_HASH then
+        return
+    end
+
+    -- DEBUG
+    -- print("mouse_look (" .. render3d.frame_num .. "): update camera")
+
+    go.set(self.camera_object_id, EULER, vmath.vector3(self.pitch, -self.yaw, 0))
+
+    if self.follow_object_id ~= EMPTY_HASH then
+        go.set(self.camera_object_id, POSITION, go.get_position(self.follow_object_id) + go.get_position())
+    end
+end
+
+-- This update will happen after game objects have been moved by the physics engine
+local function late_update(self)
+    update_camera(self)
+end
+
+-- NOT IMPLEMENTED
+-- local function update_analog_look(self, dt)
+--     local s = scene_state.t
+-- 
+--     s.yaw = s.yaw + (s.analog_look.x * s.analog_look.x * math3d.sign(s.analog_look.x)) * 100 * dt
+--     s.pitch = s.pitch + (s.analog_look.y * s.analog_look.y * math3d.sign(s.analog_look.y)) * 50 * dt
+-- end
+
+function init(self)
+    if self.acquire_input_focus then
+        msg.post(".", hash("acquire_input_focus"))
+    end
+
+    self.late_update_id = lu_helper.subscribe(self.late_update_priority)
+end
+
+function final(self)
+    lu_helper.unsubscribe(self.late_update_id)
+end
+
+function update(self, dt)
+    if not self.enabled then
+        return
+    end
+
+    -- NOT IMPLEMENTED
+    -- update_analog_look(self, dt)
+
+    -- To avoid high values for action.dx/dy (for HTML5 only)
+    self.pointer_locked = pointer.locked
+end
+
+function on_message(self, message_id, message, sender)
+    if not self.enabled then
+        return
+    end
+
+    -- if message_id == hash("update_camera") then
+    --     update_camera(self)
+    -- end
+
+    if message_id == lu_helper.LATE_UPDATE then
+        late_update(self)
+    end
+end
+
+function on_input(self, action_id, action)
+    -- DEBUG
+    -- print("on_input", action_id, "pressed", action.pressed, "released", action.released, "dx-dy", action.dx, action.dy, "x-y", action.x, action.y)
+
+    if not self.enabled then
+        return
+    end
+
+    if action_id == nil then
+        if self.pointer_locked and pointer.locked and not pointer.cursor_visible then
+            self.yaw = self.yaw + (self.look_speed * action.dx)
+            self.pitch = self.pitch + (self.look_speed * action.dy)
+
+            clamp_values(self)
+
+            go.set(".", EULER, vmath.vector3(self.pitch, -self.yaw, 0))
+        end
+    end
+end

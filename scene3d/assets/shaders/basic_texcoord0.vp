@@ -1,0 +1,59 @@
+attribute highp vec3 position;
+attribute mediump vec3 normal;
+attribute mediump vec2 texcoord0;
+// attribute lowp vec3 color;
+
+uniform highp mat4 mtx_worldview;
+uniform highp mat4 mtx_world;
+// uniform highp mat4 mtx_view;
+uniform highp mat4 mtx_proj;
+uniform highp mat4 mtx_normal;
+
+varying highp vec3 var_world_position;
+varying mediump vec3 var_world_normal;
+varying highp vec3 var_position;
+varying mediump vec3 var_normal;
+varying mediump vec2 var_texcoord0;
+// varying lowp vec3 var_color;
+
+//
+// WebGL 1.0 / OpenGL ES 2.0 don't have "transpose" and "inverse" functions.
+//
+mat3 mat_transpose(mat3 m) {
+    return mat3(m[0][0], m[1][0], m[2][0],
+        m[0][1], m[1][1], m[2][1],
+        m[0][2], m[1][2], m[2][2]);
+}
+
+mat3 mat_inverse(mat3 m) {
+    float a00 = m[0][0], a01 = m[0][1], a02 = m[0][2];
+    float a10 = m[1][0], a11 = m[1][1], a12 = m[1][2];
+    float a20 = m[2][0], a21 = m[2][1], a22 = m[2][2];
+
+    float b01 = a22 * a11 - a12 * a21;
+    float b11 = -a22 * a10 + a12 * a20;
+    float b21 = a21 * a10 - a11 * a20;
+
+    float det = a00 * b01 + a01 * b11 + a02 * b21;
+
+    return mat3(b01, (-a22 * a01 + a02 * a21), (a12 * a01 - a02 * a11),
+        b11, (a22 * a00 - a02 * a20), (-a12 * a00 + a02 * a10),
+        b21, (-a21 * a00 + a01 * a20), (a11 * a00 - a01 * a10)) / det;
+}
+//
+//
+//
+
+void main()
+{
+    var_world_position = (mtx_world * vec4(position.xyz, 1.0)).xyz;
+    var_world_normal = normalize(mat_transpose(mat_inverse(mat3(mtx_world))) * normal.xyz);
+
+    vec4 p = mtx_worldview * vec4(position.xyz, 1.0);
+    var_position = p.xyz;
+    var_normal = normalize(mat3(mtx_normal) * normal.xyz);
+    var_texcoord0 = texcoord0;
+    // var_color = color;
+
+    gl_Position = mtx_proj * p;
+}

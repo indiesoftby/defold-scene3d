@@ -1,0 +1,92 @@
+go.property("wheel_radius", 0.5)
+go.property("suspension_distance", 0.2)
+go.property("spring_const", 30)
+go.property("damper_const", 1.5)
+
+go.property("raycast_group1", hash("default"))
+go.property("raycast_group2", hash(""))
+go.property("raycast_group3", hash(""))
+
+go.property("debug_draw", false)
+
+local render3d = require("scene3d.render.render3d")
+
+local CLOSEST = { all = false }
+local EMPTY_HASH = hash("")
+local APPLY_FORCE = hash("apply_force")
+local INIT = hash("init")
+local SUSPENSION_UPDATE = hash("suspension_update")
+
+function init(self)
+    self.prev_suspension_distance = 0
+    self.current_suspension_distance = 0
+    self.spring_velocity = 0
+    self.spring_force = 0
+    self.damper_force = 0
+
+    self.car_main_script = nil
+    self.car_chassis_url = nil
+
+    self.raycast_groups = {}
+    for i = 1, 3 do
+        local g = self["raycast_group" .. i]
+        if g and g ~= EMPTY_HASH then
+            table.insert(self.raycast_groups, g)
+        end
+    end
+
+    self.local_position = go.get_position()
+end
+
+function final(self)
+end
+
+function update(self, dt)
+    if not self.car_main_script then
+        return
+    end
+
+    local pos = go.get_world_position()
+    local to = vmath.rotate(go.get_world_rotation(), render3d.UP * -(self.suspension_distance + self.wheel_radius))
+    local up = vmath.rotate(go.get_world_rotation(), render3d.UP)
+    local wheel_pos = -(vmath.length(to) - self.wheel_radius) + self.local_position.y
+    local touching = false
+
+    local results = physics.raycast(pos, pos + to, self.raycast_groups, CLOSEST)
+    if results ~= nil then
+        for _, result in ipairs(results) do
+            touching = true
+            local hit_distance = vmath.length(pos - result.position)
+            -- if self.wheel_id == 4 then print(self.wheel_id, hit_distance) end
+            wheel_pos = -(hit_distance - self.wheel_radius) + self.local_position.y
+            self.prev_suspension_distance = self.current_suspension_distance
+            self.current_suspension_distance = self.suspension_distance - (hit_distance - self.wheel_radius)
+            self.spring_velocity = (self.current_suspension_distance - self.prev_suspension_distance) / dt
+            self.spring_force = self.spring_const * self.car_mass * self.current_suspension_distance
+            self.damper_force = self.damper_const * self.car_mass * self.spring_velocity
+
+            local url = self.car_chassis_url
+            msg.post(url, APPLY_FORCE, { force = up * (self.spring_force + self.damper_force), position = pos })
+        end
+    end
+
+    -- DEBUG
+    if self.debug_draw then
+        msg.post("@render:", "draw_line", { start_point = pos, end_point = pos + to, color = vmath.vector4(0, 0, 1, 1) } )
+    end
+
+    msg.post(self.car_main_script, SUSPENSION_UPDATE, {
+        wheel_id = self.wheel_id,
+        wheel_pos = wheel_pos,
+        touching = touching
+    })
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == INIT then
+        self.wheel_id = message.wheel_id
+        self.car_main_script = message.main_script or sender
+        self.car_mass = message.car_mass
+        self.car_chassis_url = message.chassis_url
+    end
+end

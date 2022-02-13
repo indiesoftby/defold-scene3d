@@ -1,0 +1,225 @@
+local render3d = require("scene3d.render.render3d")
+local lu_helper = require("scene3d.helpers.late_update")
+local pointer = require("pointer_lock.pointer")
+
+go.property("key_id", hash("key_0"))
+go.property("acquire_input_focus", true)
+go.property("look_speed", 0.1)
+
+local function num(v)
+    return string.format("%f", v)
+end
+
+local function copy_to_clipboard(self)
+    local s = self
+
+    local e = vmath.vector3(s.pitch, -s.yaw, 0)
+
+    local code = ""
+    code = code .. "camera position = vector3(" .. num(s.pos.x) .. ", " .. num(s.pos.y) .. ", " .. num(s.pos.z) .. ")\n"
+    code = code .. "camera yaw = " .. num(s.yaw) .. ", pitch = " .. num(s.pitch) .. "\n"
+    code = code .. "camera eulers = vector3(" .. num(e.x) .. ", " .. num(e.y) .. ", " .. num(e.z) .. ")\n"
+
+    if clipboard then
+        clipboard.copy(code)
+    end
+
+    print(code)
+end
+
+local function update_eulers(self)
+    local s = self
+
+    render3d.view_from_yaw_pitch(s.yaw, s.pitch)
+end
+
+local TMP = vmath.vector3(0)
+
+local function handle_movement(self, dt)
+    local s = self
+    local prev_pos = vmath.vector3(s.pos)
+
+    TMP.x = 0
+    TMP.y = 0
+    TMP.z = 0
+
+    if s.key_forward then
+        TMP.z = TMP.z + 1
+    end
+    if s.key_backward then
+        TMP.z = TMP.z - 1
+    end
+    if s.key_step_left then
+        TMP.x = TMP.x - 1
+    end
+    if s.key_step_right then
+        TMP.x = TMP.x + 1
+    end
+    if s.key_down then
+        TMP.y = TMP.y - 0.5
+    end
+    if s.key_up then
+        TMP.y = TMP.y + 0.5
+    end
+
+    if vmath.length(TMP) ~= 0 then
+        s.move_speed = vmath.lerp(0.005, s.move_speed, 12)
+    else
+        s.move_speed = 0
+    end
+
+    local rq = vmath.quat_rotation_y(math.rad(-(90 + s.yaw)))
+    local v = vmath.rotate(rq, render3d.FORWARD * TMP.z + render3d.RIGHT * TMP.x + render3d.UP * TMP.y)
+
+    s.pos = s.pos + v * s.move_speed * dt
+    -- go.set_position(s.pos)
+
+    -- print("debug look set view pos", render3d.frame_num)
+    -- render3d.view_position = s.pos
+
+    msg.post("#", "update_render")
+end
+
+-- This update will happen after game objects have been moved by the physics engine
+local function late_update(self)
+    handle_movement(self, self.dt)
+end
+
+local function yaw_from_direction(direction)
+    return math.deg(math.atan2(direction.z, direction.x))
+end
+
+local function pitch_from_direction(direction)
+    return math.deg(math.asin(direction.y))
+end
+
+function init(self)
+    self.late_update_id = lu_helper.subscribe(1000)
+
+    if self.acquire_input_focus then
+        msg.post(".", hash("acquire_input_focus"))
+    end
+
+    local s = self
+    s.near = render3d.near
+    s.far = render3d.far * 2
+    s.yaw = yaw_from_direction(render3d.view_front)
+    s.pitch = pitch_from_direction(render3d.view_front)
+    s.pos = vmath.vector3(render3d.view_position)
+    s.move_speed = 0
+    s.key_forward = false
+    s.key_backward = false
+    s.key_step_left = false
+    s.key_step_right = false
+    s.key_up = false
+    s.key_down = false
+
+    -- Scene3D logo capture settings:
+    -- s.pos = vmath.vector3(22.334032, 25.166538, 22.320831)
+    -- s.yaw = 4.962090
+    -- s.pitch = -81.375695
+    -------
+
+    pointer.acquire_lock = true
+end
+
+function final(self)
+    lu_helper.unsubscribe(self.late_update_id)
+end
+
+function update(self, dt)
+    self.dt = dt
+
+    -- It's used to avoid high values for action.dx/dy (for HTML5 only)
+    self.pointer_locked = pointer.locked
+
+    if self.take_screenshot and render3d.frame_num - self.take_screenshot >= 2 then
+        self.take_screenshot = nil
+        msg.post(self.parent_ui_url, "show")
+        msg.post("#debug_look_ui", "show")
+        msg.post("#debug_look_ui", "flash")
+
+        local image, w, h = screenshot.png()
+        local file = "screenshot_" .. sys.get_config("project.title") .. "_" .. os.date("!%Y-%m-%d_%T"):gsub(":", "-") .. ".png"
+        local f = io.open(file, "wb")
+        f:write(image)
+        f:flush()
+        f:close()
+
+        print("Captured into", file)
+    end 
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == lu_helper.LATE_UPDATE then
+        late_update(self)
+    elseif message_id == hash("update_render") then
+        render3d.far = self.far
+        render3d.near = self.near
+        render3d.view_position = self.pos
+        update_eulers(self)
+    elseif message_id == hash("parent_init") then
+        self.parent_url = sender
+        self.parent_ui_url = message.ui
+    end
+end
+
+function on_input(self, action_id, action)
+    local s = self
+
+    if action_id == nil then
+        if self.pointer_locked and pointer.locked and not pointer.cursor_visible then
+            s.yaw = s.yaw + (self.look_speed * action.dx)
+            s.pitch = s.pitch + (self.look_speed * action.dy)
+
+            if s.yaw < 0 then
+                s.yaw = s.yaw + 360
+            end
+            if s.yaw >= 360 then
+                s.yaw = s.yaw - 360
+            end
+
+            s.pitch = math.max(s.pitch, -89)
+            s.pitch = math.min(s.pitch, 89)
+        end
+    elseif action_id == hash("key_w") then
+        s.key_forward = not action.released
+        return true
+    elseif action_id == hash("key_s") then
+        s.key_backward = not action.released
+        return true
+    elseif action_id == hash("key_a") then
+        s.key_step_left = not action.released
+        return true
+    elseif action_id == hash("key_d") then
+        s.key_step_right = not action.released
+        return true
+    elseif action_id == hash("key_space") then
+        s.key_up = not action.released
+        return true
+    elseif action_id == hash("key_c") then
+        s.key_down = not action.released
+        return true
+    elseif action_id == hash("key_m") then
+        if action.pressed then
+            copy_to_clipboard(self)
+            msg.post("#debug_look_ui", "flash")
+        end
+        return true
+    elseif action_id == hash("key_enter") then
+        if action.pressed then
+            if screenshot and not html5 then
+                self.take_screenshot = render3d.frame_num
+                msg.post("#debug_look_ui", "hide")
+                msg.post(self.parent_ui_url, "hide")
+            end
+        end
+        return true
+    end
+
+    if action_id ~= hash("key_esc") and action_id ~= self.key_id then
+        return pointer.locked
+    else
+        return false
+    end
+end

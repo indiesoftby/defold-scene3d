@@ -1,0 +1,382 @@
+name: "default"
+instances {
+  id: "buildings_wall_door_5x3"
+  prototype: "/scene3d/prefabs/buildings/buildings_wall_door_5x3.go"
+  position {
+    x: 0.0
+    y: 0.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_wall_window_5x3_2"
+  prototype: "/scene3d/prefabs/buildings/buildings_wall_window_5x3.go"
+  position {
+    x: -2.5
+    y: 0.5
+    z: -2.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.70710677
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_wall_window_5x3_3"
+  prototype: "/scene3d/prefabs/buildings/buildings_wall_window_5x3.go"
+  position {
+    x: 0.0
+    y: 0.5
+    z: -5.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_wall_5x3_"
+  prototype: "/scene3d/prefabs/buildings/buildings_wall_5x3.go"
+  position {
+    x: 5.0
+    y: 0.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_wall_5x3_1"
+  prototype: "/scene3d/prefabs/buildings/buildings_wall_5x3.go"
+  position {
+    x: 5.0
+    y: 0.5
+    z: -5.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_stairs_1x1_0"
+  prototype: "/scene3d/prefabs/buildings/buildings_stairs_1x1.go"
+  position {
+    x: -1.0
+    y: 0.0
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_stairs_1x1_1"
+  prototype: "/scene3d/prefabs/buildings/buildings_stairs_1x1.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_stairs_1x1_2"
+  prototype: "/scene3d/prefabs/buildings/buildings_stairs_1x1.go"
+  position {
+    x: 1.0
+    y: 0.0
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_block_5x5_2"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_5x5.go"
+  position {
+    x: 5.0
+    y: -4.5
+    z: -2.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_block_5x5_1"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_5x5.go"
+  position {
+    x: 0.0
+    y: -4.5
+    z: -2.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_5x5"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_5x5.go"
+  position {
+    x: 0.0
+    y: 3.7
+    z: -2.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_5x"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_5x5.go"
+  position {
+    x: 5.0
+    y: 3.7
+    z: -2.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_ramp_1x2"
+  prototype: "/scene3d/prefabs/buildings/buildings_ramp_1x2.go"
+  position {
+    x: 8.5
+    y: -0.5
+    z: -1.25
+  }
+  rotation {
+    x: 0.0
+    y: 0.70710677
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_ramp_1x"
+  prototype: "/scene3d/prefabs/buildings/buildings_ramp_1x2.go"
+  position {
+    x: 8.5
+    y: -0.5
+    z: -3.75
+  }
+  rotation {
+    x: 0.0
+    y: 0.70710677
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_ramp_3x6"
+  prototype: "/scene3d/prefabs/buildings/buildings_ramp_3x6.go"
+  position {
+    x: 4.0
+    y: 0.0
+    z: 16.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_ramp_3x"
+  prototype: "/scene3d/prefabs/buildings/buildings_ramp_3x6.go"
+  position {
+    x: 1.0
+    y: 0.0
+    z: 16.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "star"
+  collection: "/examples/scenes/playground/star.collection"
+  position {
+    x: 0.0
+    y: 2.0
+    z: -2.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "star1"
+  collection: "/examples/scenes/playground/star.collection"
+  position {
+    x: 2.5
+    y: 2.0
+    z: -6.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "star2"
+  collection: "/examples/scenes/playground/star.collection"
+  position {
+    x: 2.5
+    y: 5.0
+    z: -2.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

@@ -1,0 +1,107 @@
+local render3d = require("scene3d.render.render3d")
+
+function init(self)
+    -- GUI predicates
+    self.gui_pred = render.predicate({"gui"})
+    self.text_pred = render.predicate({"text"})
+
+    -- Non-opaque sprites & particles predicates
+    self.tile_pred = render.predicate({"tile"})
+    self.particle_pred = render.predicate({"particle"})
+
+    -- 3D predicates
+    self.model_pred = render.predicate({"model"})
+
+    -- Other predicates
+    self.sky_pred = render.predicate({"sky"})
+end
+
+function update(self)
+    -- (TODO: Recheck) math.max is intended to get rid of the error:
+    -- "argument #1 contains one or more values which are not numbers: vmath.matrix4(inf, 0, 0, nan, 0, inf, 0, nan, 0, 0, -1, -0, 0, 0, 0, 1)"
+    local window_width = math.max(1, render.get_window_width())
+    local window_height = math.max(1, render.get_window_height())
+
+    local CONSTANTS = render.constant_buffer()
+
+    local color = render3d.light_ambient_color
+    local intensity = render3d.light_ambient_intensity
+    CONSTANTS.light_ambient = vmath.vector4(color.x, color.y, color.z, intensity)
+
+    local dir = render3d.light_directional_direction
+    local intensity = render3d.light_directional_intensity
+    CONSTANTS.light_directional = vmath.vector4(-dir.x, -dir.y, -dir.z, intensity)
+
+    CONSTANTS.fog = vmath.vector4(render3d.fog_range_from, render3d.fog_range_to, 0, render3d.fog_intensity)
+    CONSTANTS.fog_color = vmath.vector4(render3d.fog_color.x, render3d.fog_color.y, render3d.fog_color.z, 1.0)
+
+    render.set_depth_mask(true)
+    render.set_stencil_mask(0xff)
+    -- Perform a clear on a framebuffer’s contents to avoid fetching the previous frame’s data on tile-based
+    -- graphics architectures, which reduces memory bandwidth.
+    -- (https://docs.imgtec.com/Architecture_Guides/PowerVR_Architecture/topics/rules/c_GoldenRules_do_perform_clear.html)
+    render.clear({[render.BUFFER_COLOR_BIT] = render3d.clear_color, [render.BUFFER_DEPTH_BIT] = 1, [render.BUFFER_STENCIL_BIT] = 0})
+
+    -- Render all viewports
+    for _, view in ipairs(render3d.viewports) do
+        render.set_viewport(window_width * view.x, window_height * view.y, window_width * view.w, window_height * view.h)
+        render3d.update_window(window_width * view.w, window_height * view.h)
+
+        -- Opaque
+        local mat_view = render3d.camera_view(view.view_position and view or nil)
+        render.set_view(mat_view)
+        local mat_proj = render3d.camera_perspective()
+        render.set_projection(mat_proj)
+        local pv = mat_proj * mat_view
+        scene3d.frustum_set(pv)
+        render.set_depth_mask(true)
+        render.enable_state(render.STATE_DEPTH_TEST)
+        render.disable_state(render.STATE_STENCIL_TEST)
+        render.disable_state(render.STATE_BLEND)
+        render.enable_state(render.STATE_CULL_FACE)
+        render.set_blend_func(render.BLEND_ONE, render.BLEND_ONE_MINUS_SRC_ALPHA)
+        render.draw(self.model_pred, CONSTANTS)
+        -- The sky is rendered last as a workaround for the lack of front-to-back sorting.
+        -- https://github.com/defold/defold/issues/5168
+        render.set_blend_func(render.BLEND_ONE, render.BLEND_ONE_MINUS_SRC_ALPHA)
+        render.draw(self.sky_pred, CONSTANTS)
+
+        -- Non-opaque, i.e. alpha-blended sprites
+        render.enable_state(render.STATE_BLEND)
+        render.set_projection(mat_proj)
+        -- TODO: Render sprite-based shadows
+        -- render.draw(self.shadow_pred, CONSTANTS)
+        render.disable_state(render.STATE_CULL_FACE)
+        render.set_blend_func(render.BLEND_ONE, render.BLEND_ONE_MINUS_SRC_ALPHA)
+        render.draw(self.tile_pred)
+        render.set_depth_mask(false)
+        render.draw(self.particle_pred)
+        render.draw_debug3d()
+    end
+
+    -- Render GUI. It takes the whole screen at this moment.
+    render.set_viewport(0, 0, window_width, window_height)
+    render3d.update_window(window_width, window_height)
+
+    render.set_depth_mask(false)
+    render.disable_state(render.STATE_DEPTH_TEST)
+    render.enable_state(render.STATE_BLEND)
+    render.set_view(vmath.matrix4())
+    render.set_projection(vmath.matrix4_orthographic(0, window_width, 0, window_height, -1, 1))
+
+    render.enable_state(render.STATE_STENCIL_TEST)
+    render.draw(self.gui_pred)
+    render.draw(self.text_pred)
+    render.disable_state(render.STATE_STENCIL_TEST)
+
+    -- Debugging
+    render3d.debug_text_prev = render3d.debug_text
+    render3d.debug_text = ""
+    render3d.inc_frame()
+end
+
+function on_message(self, message_id, message)
+    if message_id == hash("clear_color") then
+        render3d.clear_color = message.color
+    end
+end

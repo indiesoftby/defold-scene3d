@@ -1,0 +1,7 @@
+local M = {}
+
+M.bounds_min = vmath.vector3(-0.105799995363, -0.405375003815, -0.125)
+M.bounds_max = vmath.vector3(0.105800002813, 0.405375003815, 0.125)
+M.size = vmath.vector3(0.211599998176, 0.810750007629, 0.25)
+
+return M

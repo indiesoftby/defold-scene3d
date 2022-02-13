@@ -1,0 +1,23 @@
+local gui_helper = require("scene3d.helpers.gui")
+local render3d = require("scene3d.render.render3d")
+
+function init(self)
+    gui.set_render_order(14)
+
+    self.help = gui.get_node("help")
+    self.help_bg = gui.get_node("help_bg")
+end
+
+function update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("flash") then
+        gui_helper.set_alpha(self.help_bg, 1)
+        gui_helper.anim_alpha(self.help_bg, 0.5, 0.33, 0)
+    elseif message_id == hash("hide") then
+        gui.set_enabled(self.help, false)
+    elseif message_id == hash("show") then
+        gui.set_enabled(self.help, true)
+    end
+end

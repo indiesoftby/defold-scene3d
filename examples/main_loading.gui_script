@@ -1,0 +1,18 @@
+local gui_helper = require("scene3d.helpers.gui")
+
+function init(self)
+    gui.set_render_order(15)
+    
+    gui_helper.init_node(self, "cover", 1)
+    gui_helper.init_node(self, "text", 1)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("started") then
+        gui_helper.anim_alpha(self.cover, 1, 0)
+        gui_helper.anim_alpha(self.text, 1, 0)
+    elseif message_id == hash("completed") then
+        gui_helper.anim_alpha(self.cover, 0, 0.3)
+        gui_helper.anim_alpha(self.text, 0, 0.3)
+    end
+end

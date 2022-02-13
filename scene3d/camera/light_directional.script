@@ -1,0 +1,54 @@
+go.property("enabled", true)
+go.property("ambient_color", vmath.vector3(1, 1, 1))
+go.property("ambient_light_intensity", 0.5)
+go.property("directional_light_intensity", 0.5)
+go.property("fog_intensity", 1)
+go.property("fog_color", vmath.vector3(0.839, 0.957, 0.98))
+go.property("fog_range_from", 50.0)
+go.property("fog_range_to", 100.0)
+go.property("debug_mesh_id", hash("debug_mesh"))
+
+local render3d = require("scene3d.render.render3d")
+local math3d = require("scene3d.helpers.math3d")
+
+local DISABLE = hash("disable")
+local EMPTY_HASH = hash("")
+
+function init(self)
+    if self.debug_mesh_id ~= EMPTY_HASH then
+        msg.post(msg.url(nil, nil, self.debug_mesh_id), DISABLE)
+    end
+
+    -- DEBUGGING
+    -- go.set_rotation(math3d.quat_look_rotation(-render3d.light_directional_direction))
+    -- local light_rotation = go.get_rotation()
+    -- print(render3d.light_directional_direction)
+    -- print(vmath.rotate(light_rotation, render3d.FORWARD))
+    -- print(go.get(".", "euler"))
+end
+
+function final(self)
+end
+
+function update(self, dt)
+    if not self.enabled then
+        return
+    end
+
+    local R = render3d
+
+    local light_rotation = go.get_rotation()
+    R.light_directional_direction = vmath.rotate(light_rotation, R.FORWARD)
+
+    R.light_ambient_color = self.ambient_color
+    R.light_ambient_intensity = self.ambient_light_intensity
+    R.light_directional_intensity = self.directional_light_intensity
+
+    R.fog_intensity = self.fog_intensity
+    R.fog_range_from = self.fog_range_from
+    R.fog_range_to = self.fog_range_to
+    R.fog_color = self.fog_color
+end
+
+function on_message(self, message_id, message, sender)
+end

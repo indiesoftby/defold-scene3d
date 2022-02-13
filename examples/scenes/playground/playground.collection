@@ -1,0 +1,652 @@
+name: "playground"
+instances {
+  id: "main_camera"
+  prototype: "/scene3d/camera/camera3d.go"
+  position {
+    x: -9.268653
+    y: 0.18
+    z: 15.179107
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "camera3d"
+    properties {
+      id: "late_update_priority"
+      value: "10.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "env_sky"
+  prototype: "/scene3d/prefabs/env/env_sky.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 200.0
+    y: 200.0
+    z: 200.0
+  }
+}
+instances {
+  id: "late_update"
+  prototype: "/scene3d/helpers/late_update.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "light_directional"
+  prototype: "/scene3d/camera/light_directional.go"
+  position {
+    x: 4.01
+    y: 2.42
+    z: 0.85
+  }
+  rotation {
+    x: -0.43348113
+    y: 0.42721757
+    z: 0.24543284
+    w: 0.75454754
+  }
+  component_properties {
+    id: "light_directional"
+    properties {
+      id: "ambient_light_intensity"
+      value: "0.9"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "directional_light_intensity"
+      value: "0.35"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "env_buildings_chunked_floor"
+  prototype: "/scene3d/prefabs/buildings/buildings_chunked_floor.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "chunked_floor"
+    properties {
+      id: "keep_chunks_at"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "keep_chunks_radius"
+      value: "3.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "inversely_skip_chunks"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "prop_soccer_ball"
+  prototype: "/scene3d/prefabs/props/prop_soccer_ball.go"
+  position {
+    x: 29.0
+    y: 5.0
+    z: -17.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_nickel"
+  prototype: "/examples/scenes/playground/buildings_floor_10x10_nickel.go"
+  position {
+    x: 27.0
+    y: 0.2
+    z: 17.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_nickel1"
+  prototype: "/examples/scenes/playground/buildings_floor_10x10_nickel.go"
+  position {
+    x: 27.0
+    y: 0.2
+    z: 27.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "debug_ui"
+  collection: "/scene3d/debug/photo_mode/debug_ui.collection"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "offroader"
+  collection: "/scene3d/prefabs/vehicles/offroader.collection"
+  position {
+    x: -27.13
+    y: 0.5
+    z: 29.3
+  }
+  rotation {
+    x: 0.0
+    y: -0.38268343
+    z: 0.0
+    w: 0.9238795
+  }
+  instance_properties {
+    id: "main"
+    properties {
+      id: "car_main"
+      properties {
+        id: "turn_speed1"
+        value: "0.0"
+        type: PROPERTY_TYPE_NUMBER
+      }
+      properties {
+        id: "debug_info"
+        value: "true"
+        type: PROPERTY_TYPE_BOOLEAN
+      }
+    }
+    properties {
+      id: "orbit_follow"
+      properties {
+        id: "enabled"
+        value: "true"
+        type: PROPERTY_TYPE_BOOLEAN
+      }
+      properties {
+        id: "camera_object_id"
+        value: "/main_camera"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+    properties {
+      id: "car_keyboard_input"
+      properties {
+        id: "enabled"
+        value: "true"
+        type: PROPERTY_TYPE_BOOLEAN
+      }
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "env_floor"
+  collection: "/examples/scenes/playground/env_floor.collection"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "course_garage"
+  collection: "/examples/scenes/playground/course_garage.collection"
+  position {
+    x: -14.0
+    y: 0.0
+    z: 9.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "player"
+  collection: "/scene3d/prefabs/characters/player.collection"
+  position {
+    x: -14.0
+    y: 5.0
+    z: 6.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  instance_properties {
+    id: "body"
+    properties {
+      id: "physics_movement"
+      properties {
+        id: "debug_mesh_id"
+        value: ""
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+    properties {
+      id: "keyboard_input"
+      properties {
+        id: "enabled"
+        value: "false"
+        type: PROPERTY_TYPE_BOOLEAN
+      }
+    }
+  }
+  instance_properties {
+    id: "look"
+    properties {
+      id: "mouse_look"
+      properties {
+        id: "enabled"
+        value: "false"
+        type: PROPERTY_TYPE_BOOLEAN
+      }
+      properties {
+        id: "camera_object_id"
+        value: "/main_camera"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "course_high_ramp"
+  collection: "/examples/scenes/playground/course_high_ramp.collection"
+  position {
+    x: -1.0
+    y: 0.0
+    z: -3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "course_suspension_test"
+  collection: "/examples/scenes/playground/course_suspension_test.collection"
+  position {
+    x: -27.0
+    y: 0.0
+    z: 10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "course_bridge_jump"
+  collection: "/examples/scenes/playground/course_bridge_jump.collection"
+  position {
+    x: -17.0
+    y: 0.0
+    z: -22.0
+  }
+  rotation {
+    x: 0.0
+    y: -0.70710677
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "course_rocket_league"
+  collection: "/examples/scenes/playground/course_rocket_league.collection"
+  position {
+    x: 29.0
+    y: 0.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 6.123234E-17
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+}
+collection_instances {
+  id: "course_driving_skill_test"
+  collection: "/examples/scenes/playground/course_driving_skill_test.collection"
+  position {
+    x: 8.0
+    y: 0.0
+    z: 20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "all_icons"
+  collection: "/examples/scenes/playground/all_icons.collection"
+  position {
+    x: 30.0
+    y: 0.2
+    z: 29.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "all_primitives"
+  collection: "/examples/scenes/playground/all_primitives.collection"
+  position {
+    x: 24.0
+    y: 0.0
+    z: 21.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.70710677
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "scene3d_logo"
+  collection: "/examples/scenes/playground/scene3d_logo.collection"
+  position {
+    x: 27.0
+    y: 1.0
+    z: 14.5
+  }
+  rotation {
+    x: 0.0
+    y: -0.70710677
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 3.0
+    y: 3.0
+    z: 3.0
+  }
+}
+scale_along_z: 1
+embedded_instances {
+  id: "main"
+  children: "late_update"
+  data: "components {\n"
+  "  id: \"playground_main\"\n"
+  "  component: \"/examples/scenes/playground/playground_main.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "star_collector"
+  data: "components {\n"
+  "  id: \"star_collector\"\n"
+  "  component: \"/examples/scenes/playground/scripts/star_collector.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"trigger\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
+  "mass: 0.0\\n"
+  "friction: 0.0\\n"
+  "restitution: 0.0\\n"
+  "group: \\\"star_collector\\\"\\n"
+  "mask: \\\"star\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.3\\n"
+  "      z: -0.1\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 1.25\\n"
+  "  data: 1.0\\n"
+  "  data: 2.1\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "bullet: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

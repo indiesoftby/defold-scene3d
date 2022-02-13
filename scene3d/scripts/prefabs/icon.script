@@ -1,0 +1,59 @@
+local animation = require("scene3d.scripts.animation")
+local collision = require("scene3d.scripts.collision")
+local frustum_mesh = require("scene3d.scripts.frustum_mesh")
+
+-- go.property("mesh_enabled", true)
+go.property("mesh_id", hash("mesh"))
+
+go.property("frustum_cull_enabled", true)
+go.property("frustum_mesh_max_dimension", 1)
+go.property("frustum_mesh_use_world_position", false)
+
+go.property("collision_type", hash("dynamic"))
+go.property("collision_group", hash(""))
+go.property("collision_mask", hash(""))
+
+go.property("message_receiver", msg.url())
+go.property("message_init", hash(""))
+
+go.property("animation_autoplay", true)
+go.property("animation_property", hash(""))
+go.property("animation_to", 360)
+go.property("animation_easing", hash("linear"))
+go.property("animation_duration", 1)
+go.property("animation_loop", true)
+go.property("animation_pingpong", false)
+
+local COLLISION_DYNAMIC = hash("collision_dynamic")
+local COLLISION_TRIGGER = hash("collision_trigger")
+local EMPTY_HASH = hash("")
+
+function init(self)
+    frustum_mesh.init(self, msg.url(nil, nil, self.mesh_id))
+    collision.init(self, { dynamic = COLLISION_DYNAMIC, trigger = COLLISION_TRIGGER })
+    animation.init(self)
+    -- material.init(self)
+
+    if self.message_init ~= EMPTY_HASH then
+        msg.post(self.message_receiver, self.message_init)
+    end
+end
+
+function final(self)
+    frustum_mesh.final(self)
+    collision.final(self)
+    animation.final(self)
+    -- material.final(self)
+end
+
+function update(self, dt)
+    frustum_mesh.update(self)
+    collision.update(self, dt)
+    animation.update(self, dt)
+    -- material.update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+    collision.on_message(self, message_id, message, sender)
+    animation.on_message(self, message_id, message, sender)
+end

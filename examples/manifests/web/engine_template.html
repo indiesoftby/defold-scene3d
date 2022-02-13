@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@aglitchman" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://indiesoftby.github.io/defold-scene3d/" />
+        <meta property="og:title" content="Scene3D Playground" />
+        <meta property="og:description" content="Web build of the example scene from Scene3D. Scene3D is a collection of assets to help you developing 3D games with the Defold game engine. Use included prefabs to quickly prototype structures, levels, and to test game mechanics. Try out ideas quickly!" />
+        <meta property="og:image" content="https://github.com/indiesoftby/defold-scene3d/raw/main/cover_opengraph.jpg" />
+        <style>
+            #loading {
+                color: #fff;
+                float: left;
+                font-weight: bold;
+                font-family: sans-serif;
+                font-size: 14px;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: 0px;
+                padding-top: 12px;
+            }
+            .link,
+            .button,
+            #loading {
+                margin-right: 12px;
+                margin-left: 12px;
+            }
+            .canvas-app-container {
+                background: #1f1f1f;
+                filter: none;
+            }
+            .canvas-app-canvas {
+                background-size: 60%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app-container" class="canvas-app-container" merge="keep">
+            <div id="canvas-container" class="canvas-app-canvas-container">
+                <canvas
+                    id="canvas"
+                    class="canvas-app-canvas"
+                    tabindex="1"
+                    width="{{display.width}}"
+                    height="{{display.height}}"
+                ></canvas>
+            </div>
+            <div class="buttons-background">
+                {{#html5.show_fullscreen_button}}
+                <div class="button" onclick="Module.toggleFullscreen();">Fullscreen</div>
+                <div id="loading">Loading... 0%</div>
+                {{/html5.show_fullscreen_button}}
+                {{#html5.show_made_with_defold}}
+                <div class="link">
+                    <a href="https://defold.com" target="_blank">Defold</a> +
+                    <a href="https://github.com/indiesoftby/defold-scene3d" target="_blank">Scene3D</a>
+                </div>
+                {{/html5.show_made_with_defold}}
+            </div>
+        </div>
+        <script id="engine-setup" type="text/javascript">
+            (function () {
+                var statusText;
+                var setStatus = function (status) {
+                    statusText = status;
+                    var el = document.getElementById("loading");
+                    if (el) el.innerText = status;
+                };
+
+                Progress.addListener(function (percentage) {
+                    if (isNaN(percentage)) return;
+                    var el = document.getElementById("loading");
+                    if (el && !statusText) {
+                        if (percentage == 100) {
+                            el.innerText = "";
+                        } else {
+                            el.innerText = "Loading... " + percentage.toFixed(0) + "%";
+                        }
+                    }
+                });
+
+                extra_params.unsupported_webgl_callback = function () {
+                    setStatus("ERROR: WebGL is not supported by your browser.");
+                };
+
+                extra_params.can_not_download_file_callback = function () {
+                    setStatus("ERROR: Can't download files.");
+                };
+            })();
+        </script>
+    </body>
+</html>

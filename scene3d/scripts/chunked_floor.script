@@ -1,0 +1,178 @@
+--
+-- TODO:
+-- * Put chunks in circle.
+--
+
+go.property("chunk_far_clip", 100)
+go.property("chunk_size", 10)
+go.property("chunk_scale", vmath.vector3(1.0, 1.0, 1.0))
+go.property("chunk_factory_id", hash("factory"))
+go.property("keep_chunks_at", vmath.vector3(0, 0, 0))
+go.property("keep_chunks_radius", 0)
+go.property("inversely_skip_chunks", false)
+go.property("follow_object", hash(""))
+go.property("use_world_position", false)
+go.property("frustum_cull_enabled", true)
+go.property("frustum_mesh_id", hash("mesh"))
+go.property("fast_chunk_id", true)
+go.property("debug_info", false)
+
+local render3d = require("scene3d.render.render3d")
+local math3d = require("scene3d.helpers.math3d")
+
+local EMPTY_HASH = hash("")
+local ENABLE = hash("enable")
+
+local function chunked(self, x)
+    return math.floor(x / self.chunk_size) * self.chunk_size
+end
+
+local function make_id(x, z)
+    return x .. "_" .. z
+end
+
+local function put_chunk(self, id, x, z)
+    local chunk = self.chunk_map[id]
+    local flag
+    if chunk then
+        flag = chunk.used ~= self.chunk_framenum
+        chunk.used = self.chunk_framenum
+    else
+        flag = true
+        local pos = vmath.vector3(x, 0, z)
+        local obj_id = factory.create(self.chunk_factory, pos, nil, nil, self.chunk_scale)
+        go.set_parent(obj_id, self.my_id)
+        chunk = {
+            obj_id = obj_id,
+            mesh_url = msg.url(nil, obj_id, self.frustum_mesh_id),
+            pos = pos,
+            used = self.chunk_framenum,
+            frustum_mesh_id = scene3d.frustum_mesh_acquire(),
+            visibility = true
+        }
+        self.chunk_map[id] = chunk
+    end
+
+    local changed, message_id = scene3d.frustum_mesh_vis_changed(chunk.frustum_mesh_id, self.chunk_size, false, chunk.pos)
+    if changed then
+        msg.post(chunk.mesh_url, message_id)
+        chunk.visibility = message_id == ENABLE
+    end
+
+    return flag, chunk.visibility
+end
+
+local function generate(self)
+    local time1
+    if self.debug_info then
+        time1 = socket.gettime()
+    end
+
+    local MAKE_ID = self.fast_chunk_id and scene3d.chunk_id_hash or make_id
+    local CHUNK_SIZE = self.chunk_size
+    local RADIUS = chunked(self, self.chunk_far_clip + CHUNK_SIZE) / CHUNK_SIZE
+
+    local x = render3d.view_position.x
+    local z = render3d.view_position.z
+
+    if self.follow_object ~= EMPTY_HASH then
+        if self.use_world_position then
+            local obj_pos = go.get_world_position(self.follow_object)
+            x = obj_pos.x
+            z = obj_pos.z
+        else
+            local obj_pos = go.get_position(self.follow_object)
+            x = obj_pos.x
+            z = obj_pos.z
+        end
+    end
+
+    local MY_X = chunked(self, x)
+    local MY_Z = chunked(self, z)
+
+    self.chunk_framenum = self.chunk_framenum + 1
+
+    local total = 0
+    local total_visible = 0
+
+    local skip_chunks = self.inversely_skip_chunks and {} or nil
+    if self.keep_chunks_radius > 0 then
+        local AT_X = chunked(self, self.keep_chunks_at.x)
+        local AT_Z = chunked(self, self.keep_chunks_at.z)
+
+        local AT_RADIUS = self.keep_chunks_radius
+        for ix = -AT_RADIUS, AT_RADIUS do
+            for iz = -AT_RADIUS, AT_RADIUS do
+                local x = ix * CHUNK_SIZE + AT_X
+                local z = iz * CHUNK_SIZE + AT_Z
+
+                if skip_chunks then
+                    skip_chunks[MAKE_ID(x, z)] = true
+                else
+                    local used, visible = put_chunk(self, MAKE_ID(x, z), x, z)
+                    total = total + (used and 1 or 0)
+                    total_visible = total_visible + (visible and 1 or 0)
+                end
+            end
+        end
+    end
+
+    for ix = -RADIUS, RADIUS do
+        for iz = -RADIUS, RADIUS do
+            local x = ix * CHUNK_SIZE + MY_X
+            local z = iz * CHUNK_SIZE + MY_Z
+            local id = MAKE_ID(x, z)
+
+            if skip_chunks and skip_chunks[id] then
+                -- skip and continue!
+            else
+                local used, visible = put_chunk(self, id, x, z)
+                total = total + (used and 1 or 0)
+                total_visible = total_visible + (visible and 1 or 0)
+            end
+        end
+    end
+
+    -- Delete unused chunks
+    local d = {}
+    local framenum = self.chunk_framenum
+    for id, v in pairs(self.chunk_map) do
+        if v.used ~= framenum then
+            table.insert(d, id)
+            go.delete(v.obj_id)
+            scene3d.frustum_mesh_release(v.frustum_mesh_id)
+        end
+    end
+    for _, id in ipairs(d) do
+        self.chunk_map[id] = nil
+    end
+
+    -- Debug
+    if self.debug_info then
+        local time2 = socket.gettime()
+        local time_used = time2 - time1
+        local str = "Floor chunks " .. tostring(total)
+        str = str .. ", visible " .. tostring(total_visible)
+        str = str .. ", used " .. string.format("%.1f ms", time_used * 1000)
+        render3d.debug_log(str)
+    end
+end
+
+function init(self)
+    self.chunk_map = {}
+    self.chunk_framenum = 1
+    self.chunk_factory = msg.url(nil, nil, self.chunk_factory_id)
+    self.my_id = go.get_id()
+
+    assert(math.floor(self.chunk_size) == self.chunk_size, "Chunk size should be integer")
+end
+
+function final(self)
+    for _, v in pairs(self.chunk_map) do
+        go.delete(v.obj_id)
+    end
+end
+
+function update(self, dt)
+    generate(self)
+end

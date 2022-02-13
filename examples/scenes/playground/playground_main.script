@@ -1,0 +1,60 @@
+local render3d = require("scene3d.render.render3d")
+local pointer = require("pointer_lock.pointer")
+
+go.property("acquire_input_focus", true)
+go.property("switch_character_key_id", hash("key_4"))
+
+go.property("car_keyboard_input_url", msg.url("/offroader/main#car_keyboard_input"))
+go.property("car_orbit_follow_url", msg.url("/offroader/main#orbit_follow"))
+go.property("player_key_input_url", msg.url("/player/body#keyboard_input"))
+go.property("player_mouse_look_url", msg.url("/player/look#mouse_look"))
+
+local function toggle_character(self)
+    local car_enabled = not go.get(self.car_orbit_follow_url, "enabled")
+    local player_enabled = not car_enabled
+
+    go.set(self.car_keyboard_input_url, "enabled", car_enabled)
+    go.set(self.car_orbit_follow_url, "enabled", car_enabled)
+
+    go.set(self.player_key_input_url, "enabled", player_enabled)
+    go.set(self.player_mouse_look_url, "enabled", player_enabled)
+end
+
+function init(self)
+    print("playground_main: init()")
+
+    if self.acquire_input_focus then
+        msg.post(".", hash("acquire_input_focus"))
+    end
+end
+
+function final(self)
+end
+
+function update(self, dt)
+    local car_enabled = go.get(self.car_orbit_follow_url, "enabled")
+    if car_enabled then
+        render3d.debug_log("[WASD] Drive")
+        render3d.debug_log("[4] Player")
+    else
+        render3d.debug_log("[WASD] Move")
+        render3d.debug_log("[Space] Jump")
+        render3d.debug_log("[4] Car")
+    end
+
+    render3d.debug_log("[5] Restart")
+    render3d.debug_log("[6] Next")
+
+    if pointer.locked then
+        render3d.debug_log("[Esc] Unlock mouse")
+    end
+end
+
+function on_message(self, message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+    if action_id == self.switch_character_key_id and action.pressed then
+        toggle_character(self)
+    end
+end

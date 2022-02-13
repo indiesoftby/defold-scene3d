@@ -1,0 +1,14 @@
+profiles {
+  name: "Debug UI"
+  qualifiers {
+    width: 1920
+    height: 1080
+  }
+}
+profiles {
+  name: "Mobile UI"
+  qualifiers {
+    width: 1920
+    height: 1080
+  }
+}

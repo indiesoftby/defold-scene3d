@@ -1,0 +1,138 @@
+go.property("collision_id", hash("collision"))
+go.property("direction_object_id", hash(""))
+
+go.property("move_speed", 5)
+go.property("jump_impulse", 200)
+
+go.property("ground_raycast_const", -1)
+go.property("ground_raycast_group1", hash("default"))
+go.property("ground_raycast_group2", hash(""))
+go.property("ground_raycast_group3", hash(""))
+
+go.property("on_ground", false)
+go.property("jumping", false)
+
+go.property("debug_info", false)
+go.property("debug_mesh_id", hash("debug_mesh"))
+
+local render3d = require("scene3d.render.render3d")
+local math3d = require("scene3d.helpers.math3d")
+
+local EMPTY_HASH = hash("")
+local CLOSEST = { all = false }
+
+local APPLY_FORCE = hash("apply_force")
+local DISABLE = hash("disable")
+local EULER_Y = hash("euler.y")
+local INPUT = hash("input")
+local LINEAR_VELOCITY = hash("linear_velocity")
+local MASS = hash("mass")
+
+local function jump(self)
+    if self.on_ground and not self.jumping then
+        self.on_ground = false
+        self.jumping = true
+
+        timer.delay(0.1, false, function (self)
+            self.jumping = false
+        end)
+
+        local mass = go.get(self.collision_url, MASS)
+        local impulse = vmath.normalize(self.ground_normal) * self.jump_impulse * mass
+
+        msg.post(self.collision_url, APPLY_FORCE, { force = impulse, position = go.get_world_position() })
+    end
+end
+
+local function movement(self, direction)
+    if not self.jumping then
+        local rq = vmath.quat_rotation_y(math.rad(go.get(self.direction_object_id, "euler.y")))
+        direction = vmath.rotate(rq, render3d.FORWARD * direction.z + render3d.RIGHT * direction.x)
+
+        local velocity = vmath.vector3(0)
+        local length = vmath.length(direction)
+
+        if length > 0 then
+            velocity = vmath.cross(vmath.cross(self.ground_normal, direction), self.ground_normal)
+            velocity = vmath.normalize(velocity) * length * self.move_speed
+        end
+
+        if self.debug_info then
+            render3d.debug_log("Velocity " .. string.format("%.3f %.3f %.3f", velocity.x, velocity.y, velocity.z))
+        end
+
+        local current = go.get(self.collision_url, LINEAR_VELOCITY)
+        current.x = velocity.x
+        if self.on_ground then
+            current.y = velocity.y
+        end
+        current.z = velocity.z
+        go.set(self.collision_url, LINEAR_VELOCITY, current)
+
+        physics.wakeup(self.collision_url)
+    end
+end
+
+local function ground_check(self)
+    local pos = go.get_position()
+    local to = vmath.rotate(go.get_rotation(), self.ground_check_ray)
+
+    local results = physics.raycast(pos, pos + to, self.ground_raycast_groups, CLOSEST)
+    if results ~= nil then
+        for _, result in ipairs(results) do
+            self.on_ground = true
+            self.ground_normal = result.normal
+        end
+    else
+        self.on_ground = false
+    end
+
+    if self.debug_info then
+        render3d.debug_log("On ground " .. (self.on_ground and "YES" or "NO"))
+        render3d.debug_log("Jumping " .. (self.jumping and "YES" or "NO"))
+    end
+end
+
+function init(self)
+    self.collision_url = msg.url(nil, nil, self.collision_id)
+
+    self.ground_normal = vmath.vector3(render3d.UP)
+    self.ground_check_ray = render3d.UP * self.ground_raycast_const
+    self.ground_raycast_groups = {}
+    for i = 1, 3 do
+        local g = self["ground_raycast_group" .. i]
+        if g and g ~= EMPTY_HASH then
+            table.insert(self.ground_raycast_groups, g)
+        end
+    end
+
+    if self.debug_mesh_id ~= EMPTY_HASH then
+        msg.post(self.debug_mesh_id, DISABLE)
+    end
+end
+
+function final(self)
+end
+
+function update(self, dt)
+    ground_check(self)
+
+    -- Not used...
+    -- Received no input last frame, but we still need to handle "movement" physics
+    -- if self.last_input and self.last_input < render3d.frame_num - 1 then
+    --     movement(self, vmath.vector3(0))
+    -- end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == INPUT then
+        -- Not used...
+        -- self.last_input = render3d.frame_num
+
+        movement(self, message.direction)
+
+        if message.jump then
+            jump(self)
+        end
+    end
+end

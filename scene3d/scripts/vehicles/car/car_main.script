@@ -1,0 +1,254 @@
+go.property("accel_speed", 0.20)
+go.property("turn_speed1", 0.02)
+go.property("turn_speed2", 0.20)
+-- 250: DRIFT
+-- 1000: RACE CAR
+go.property("traction_const", 500)
+go.property("acceleration_apply_point", vmath.vector3(0, -0.3, -2.1))
+
+go.property("debug_draw", false)
+go.property("debug_info", false)
+
+go.property("car_physics_id", hash("/offroader/physics"))
+go.property("car_physics_chassis_id", hash("collision"))
+go.property("car_physics_wheel1_id", hash("/offroader/physics_wheel_fl"))
+go.property("car_physics_wheel2_id", hash("/offroader/physics_wheel_fr"))
+go.property("car_physics_wheel3_id", hash("/offroader/physics_wheel_rl"))
+go.property("car_physics_wheel4_id", hash("/offroader/physics_wheel_rr"))
+go.property("car_visuals_id", hash("/offroader/visuals"))
+go.property("car_visuals_body_id", hash("/offroader/visuals_body"))
+go.property("car_visuals_body_mesh_id", hash("mesh"))
+go.property("car_visuals_wheel1_id", hash("/offroader/visuals_wheel_fl"))
+go.property("car_visuals_wheel2_id", hash("/offroader/visuals_wheel_fr"))
+go.property("car_visuals_wheel3_id", hash("/offroader/visuals_wheel_rl"))
+go.property("car_visuals_wheel4_id", hash("/offroader/visuals_wheel_rr"))
+go.property("car_visuals_wheel_mesh_id", hash("mesh"))
+
+go.property("input_gas_pedal_value", 0)
+go.property("input_steering_wheel_value", 0)
+
+go.property("frustum_cull_enabled", true)
+go.property("frustum_mesh_max_dimension", 4.7)
+
+local math3d = require("scene3d.helpers.math3d")
+local render3d = require("scene3d.render.render3d")
+local frustum_mesh = require("scene3d.scripts.frustum_mesh")
+
+local APPLY_FORCE = hash("apply_force")
+local INIT = hash("init")
+local SUSPENSION_UPDATE = hash("suspension_update")
+
+local POSITION_Y = hash("position.y")
+local EULER_X = hash("euler.x")
+local EULER_Y = hash("euler.y")
+
+local LINEAR_VELOCITY = hash("linear_velocity")
+local ANGULAR_VELOCITY = hash("angular_velocity")
+local LINEAR_DAMPING = hash("linear_damping")
+local ANGULAR_DAMPING = hash("angular_damping")
+local MASS = hash("mass")
+
+local WHEEL_FL = 1
+local WHEEL_FR = 2
+local WHEEL_RL = 3
+local WHEEL_RR = 4
+
+local function any_true(arr)
+    for _, v in ipairs(arr) do
+        if v then
+            return true
+        end
+    end
+    return false
+end
+
+--- Rotate a collision object be applying opposing and offset forces
+-- @param collisionobject_url
+-- @param force In the format of vmath.vector3(0, force, 0)
+local function apply_torque(collisionobject_url, force)
+    local rotation = go.get_rotation()
+    local world_position = go.get_world_position()
+    local offset = 0.50
+    msg.post(collisionobject_url, APPLY_FORCE, { force = vmath.rotate(rotation, force), position = world_position + vmath.rotate(rotation, vmath.vector3(-offset, 0, offset)) })
+    msg.post(collisionobject_url, APPLY_FORCE, { force = vmath.rotate(rotation, -force), position = world_position + vmath.rotate(rotation, vmath.vector3(offset, 0, -offset)) })
+end
+
+function init(self)
+    self.physics_url = msg.url(nil, self.car_physics_id, nil)
+    self.chassis_url = msg.url(nil, self.car_physics_id, self.car_physics_chassis_id)
+    self.visuals_url = msg.url(nil, self.car_visuals_id, nil)
+
+    local meshes = {
+        msg.url(nil, self.car_visuals_body_id, self.car_visuals_body_mesh_id)
+    }
+
+    self.car_data = {
+        car_mass = go.get(self.chassis_url, "mass"),
+        car_position = vmath.vector3(0),
+        car_rotation = vmath.vector4(),
+        car_euler = vmath.vector3(),
+        car_previous_position = vmath.vector3(0),
+        car_visual_position = vmath.vector3(0),
+        car_velocity = vmath.vector3(0),
+        car_direction = vmath.vector3(0),
+        car_speed = 0,
+    }
+
+    self.wheel_touching = {}
+    self.wheel_visual_pitch = {}
+    self.wheel_visual_rotation_speed = {}
+    self.wheel_visual_url = {}
+
+    for wheel_id = 1, 4 do
+        self.wheel_visual_url[wheel_id] = msg.url(nil, self["car_visuals_wheel" .. wheel_id .. "_id"], nil)
+        table.insert(meshes, msg.url(nil, self["car_visuals_wheel" .. wheel_id .. "_id"], self.car_visuals_wheel_mesh_id))
+
+        msg.post(self["car_physics_wheel" .. wheel_id .. "_id"], INIT, {
+            wheel_id = wheel_id,
+            chassis_url = self.chassis_url,
+            car_mass = self.car_data.car_mass
+        })
+    end
+
+    frustum_mesh.init(self, meshes)
+end
+
+function final(self)
+    frustum_mesh.final(self)
+end
+
+function update(self, dt)
+    local c = self.car_data
+
+    --
+    -- VISUAL POSITION, ETC.
+    --
+    local prev_position = c.car_position
+    local car_position = go.get_position(self.physics_url)
+    c.car_position = car_position
+    c.car_visual_position = car_position -- vmath.lerp(dt * 30, c.car_visual_position, car_position)
+    if vmath.length(car_position - prev_position) < 0.02 then
+        prev_position = c.car_previous_position
+    else
+        c.car_previous_position = prev_position
+    end
+    c.car_direction = vmath.normalize(car_position - prev_position)
+
+    local car_rotation = go.get_rotation(self.physics_url)
+    c.car_rotation = car_rotation
+    c.car_euler = go.get(self.physics_url, "euler")
+
+    go.set_rotation(c.car_rotation, self.visuals_url)
+    go.set_position(c.car_visual_position, self.visuals_url)
+
+    --
+    -- CONTROLS
+    --
+    local sz = math3d.clamp(self.input_gas_pedal_value, -1, 1)
+    local sx = math3d.clamp(self.input_steering_wheel_value, -1, 1)
+
+    --
+    -- CAR PHYSICS
+    --
+    c.car_velocity = go.get(self.chassis_url, LINEAR_VELOCITY)
+
+    local cur_speed = vmath.length(c.car_velocity)
+    local local_velocity = vmath.rotate(math3d.quat_inv(c.car_rotation), c.car_velocity)
+    c.car_speed = -local_velocity.z
+
+    local accel_speed = self.accel_speed * c.car_mass
+    local turn_speed1 = self.turn_speed1 * c.car_mass
+    local turn_speed2 = self.turn_speed2 * c.car_mass
+
+    local back_n_down = vmath.rotate(c.car_rotation, render3d.FORWARD) * self.acceleration_apply_point.z + vmath.rotate(c.car_rotation, render3d.UP) * self.acceleration_apply_point.y
+    local debug_front = vmath.rotate(c.car_rotation, render3d.FORWARD) * 1.50
+
+    --
+    -- ACCELERATION
+    --
+    local desired_accel = vmath.rotate(c.car_rotation, render3d.FORWARD) * accel_speed * sz / dt
+    local debug_accel_direction = vmath.rotate(c.car_rotation, render3d.FORWARD) * 3 * sz
+    if self.wheel_touching[WHEEL_RL] or self.wheel_touching[WHEEL_RR] then
+        msg.post(self.chassis_url, APPLY_FORCE, { force = desired_accel, position = c.car_position + back_n_down })
+    end
+
+    --
+    -- TURNING
+    --
+    local turn_speed_on_car_speed = vmath.lerp(math3d.inverse_lerp(0.1, 10, cur_speed), turn_speed1, turn_speed2)
+    local desired_turn = render3d.RIGHT * turn_speed_on_car_speed * sx * math3d.sign(local_velocity.z) / dt
+    local debug_turn_dir = vmath.rotate(c.car_rotation, render3d.RIGHT) * 2 * sx
+    if self.wheel_touching[1] or self.wheel_touching[2] then
+        apply_torque(self.chassis_url, desired_turn)
+    end
+
+    local wheel_yaw = self.wheel_yaw or 0
+    local max_wheel_yaw = vmath.lerp(math3d.inverse_lerp(0.1, 50, cur_speed), 30, 4)
+    wheel_yaw = vmath.lerp(0.2, wheel_yaw, -max_wheel_yaw * sx)
+    go.set(self.wheel_visual_url[WHEEL_FL], EULER_Y, wheel_yaw)
+    go.set(self.wheel_visual_url[WHEEL_FR], EULER_Y, wheel_yaw)
+    self.wheel_yaw = wheel_yaw
+
+    -- https://www.youtube.com/watch?v=LG1CtlFRmpU&t=171s
+    local traction_const = self.traction_const
+    if any_true(self.wheel_touching) then
+        if math.abs(local_velocity.x) ~= 0 then
+            local traction_force = vmath.rotate(c.car_rotation, render3d.RIGHT) * -local_velocity.x * traction_const
+            msg.post(self.chassis_url, APPLY_FORCE, { force = traction_force, position = c.car_position })
+        end
+
+        go.set(self.chassis_url, LINEAR_DAMPING, 0.4)
+        go.set(self.chassis_url, ANGULAR_DAMPING, 0.95)
+    else
+        go.set(self.chassis_url, LINEAR_DAMPING, 0.1)
+        go.set(self.chassis_url, ANGULAR_DAMPING, 0.1)
+    end
+
+    --
+    -- WHEELS
+    --
+    for i, speed in pairs(self.wheel_visual_rotation_speed) do
+        self.wheel_visual_rotation_speed[i] = vmath.lerp(0.2, speed, 0)
+    end
+
+    for i, touching in pairs(self.wheel_touching) do
+        if touching then
+            self.wheel_visual_rotation_speed[i] = c.car_speed
+        end
+    end
+
+    for i, speed in pairs(self.wheel_visual_rotation_speed) do
+        local w = -math.deg(speed / 0.25 * dt)
+        if i == 1 then
+            -- print(w)
+        end
+        self.wheel_visual_pitch[i] = ((self.wheel_visual_pitch[i] or 0) + w) % 360
+        go.set(self.wheel_visual_url[i], EULER_X, self.wheel_visual_pitch[i])
+    end
+
+    --
+    -- DEBUG
+    --
+    if self.debug_draw then
+        msg.post("@render:", "draw_line", { start_point = c.car_position, end_point = c.car_position + debug_accel_direction, color = vmath.vector4(1, 0, 0, 1) } )
+        msg.post("@render:", "draw_line", { start_point = c.car_position + debug_front, end_point = c.car_position + debug_front + debug_turn_dir, color = vmath.vector4(0, 1, 0, 1) } )
+    end
+
+    if self.debug_info then
+        render3d.debug_log("Car speed " .. string.format("%.0f KMH", math.abs(c.car_speed) * 3.6))
+    end
+
+    --
+    -- FRUSTUM CULL
+    --
+    frustum_mesh.update(self, c.car_position)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == SUSPENSION_UPDATE then
+        local visual_url = self.wheel_visual_url[message.wheel_id]
+        local pos = go.get(visual_url, POSITION_Y)
+        go.set(visual_url, POSITION_Y, vmath.lerp(0.65, pos, message.wheel_pos))
+        self.wheel_touching[message.wheel_id] = message.touching
+    end
+end

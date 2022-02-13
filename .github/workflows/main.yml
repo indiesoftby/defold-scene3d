@@ -1,0 +1,41 @@
+name: Build example for HTML5
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Install Java ♨️
+        uses: actions/setup-java@v2
+        with:
+          distribution: "adopt"
+          java-version: "11"
+
+      - name: Build 🔧
+        env:
+          DEFOLD_BOB_SHA1: ${{ secrets.DEFOLD_BOB_SHA1 }}
+        run: |
+          lsb_release -a
+
+          mkdir -p build/bundle
+
+          BOB_SHA1=${DEFOLD_BOB_SHA1:-$(curl -s 'https://d.defold.com/stable/info.json' | jq -r .sha1)}
+          wget --progress=dot:mega -O build/bob.jar "https://d.defold.com/archive/${BOB_SHA1}/bob/bob.jar"
+          java -jar build/bob.jar --version
+
+          java -jar build/bob.jar --email a@b.com --auth 123 --texture-compression true --bundle-output build/bundle/js-web --platform js-web --archive --variant release resolve build bundle
+          (cd build/bundle && cp -r js-web/* public)
+
+      - name: Deploy to Pages 🚀
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/bundle/public

@@ -1,0 +1,982 @@
+name: "default"
+instances {
+  id: "buildings_floor_10x10_"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_1"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 10.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_2"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -10.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_3"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_4"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 10.0
+    y: 0.0
+    z: 10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_5"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -10.0
+    y: 0.0
+    z: 10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_6"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_7"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 10.0
+    y: 0.0
+    z: -30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_8"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -10.0
+    y: 0.0
+    z: -30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_9"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_10"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 10.0
+    y: 0.0
+    z: -20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_11"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -10.0
+    y: 0.0
+    z: -20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_12"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_13"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 10.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_14"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -10.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_15"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 20.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_16"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 20.0
+    y: 0.0
+    z: 10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_17"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 20.0
+    y: 0.0
+    z: -30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_18"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 20.0
+    y: 0.0
+    z: -20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_19"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 20.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_20"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -20.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_21"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -20.0
+    y: 0.0
+    z: 10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_22"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -20.0
+    y: 0.0
+    z: -30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_23"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -20.0
+    y: 0.0
+    z: -20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_24"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -20.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_25"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_26"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 10.0
+    y: 0.0
+    z: 20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_27"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -10.0
+    y: 0.0
+    z: 20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_28"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 20.0
+    y: 0.0
+    z: 20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_29"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -20.0
+    y: 0.0
+    z: 20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_30"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -30.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_31"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -30.0
+    y: 0.0
+    z: 10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_32"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -30.0
+    y: 0.0
+    z: -30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_33"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -30.0
+    y: 0.0
+    z: -20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_34"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -30.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_35"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -30.0
+    y: 0.0
+    z: 20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_36"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 30.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_37"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 30.0
+    y: 0.0
+    z: 10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_38"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 30.0
+    y: 0.0
+    z: -30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_39"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 30.0
+    y: 0.0
+    z: -20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_40"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 30.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_41"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 30.0
+    y: 0.0
+    z: 20.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_42"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_43"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 10.0
+    y: 0.0
+    z: 30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_44"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -10.0
+    y: 0.0
+    z: 30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_45"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 20.0
+    y: 0.0
+    z: 30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_46"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -20.0
+    y: 0.0
+    z: 30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_47"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: -30.0
+    y: 0.0
+    z: 30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10_48"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 30.0
+    y: 0.0
+    z: 30.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

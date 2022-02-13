@@ -1,0 +1,69 @@
+go.property("enabled", true)
+go.property("acquire_input_focus", true)
+go.property("input_handler_id", hash(""))
+go.property("key_forward", hash("key_w"))
+go.property("key_backward", hash("key_s"))
+go.property("key_left", hash("key_a"))
+go.property("key_right", hash("key_d"))
+go.property("key_jump", hash("key_space"))
+
+local INPUT = hash("input")
+
+function init(self)
+    self.input_handler_url = msg.url(nil, nil, self.input_handler_id)
+
+    if self.acquire_input_focus then
+        msg.post(".", hash("acquire_input_focus"))
+    end
+
+    if not self.enabled then
+        return
+    end
+end
+
+function update(self, dt)
+    if not self.enabled then
+        return
+    end
+
+    local sz = 0
+    local sx = 0
+
+    if self.input_key_left then
+        sx = sx - 1
+    end
+    if self.input_key_right then
+        sx = sx + 1
+    end
+    if self.input_key_forward then
+        sz = sz + 1
+    end
+    if self.input_key_backward then
+        sz = sz - 1
+    end
+
+    local direction = vmath.vector3(sx, 0, sz)
+    if vmath.length(direction) > 1 then
+        direction = vmath.normalize(direction)
+    end
+
+    msg.post(self.input_handler_url, INPUT, { direction = direction, jump = self.input_key_jump })
+end
+
+function on_input(self, action_id, action)
+    if not self.enabled then
+        return
+    end
+
+    if action_id == self.key_forward then
+        self.input_key_forward = not action.released
+    elseif action_id == self.key_backward then
+        self.input_key_backward = not action.released
+    elseif action_id == self.key_left then
+        self.input_key_left = not action.released
+    elseif action_id == self.key_right then
+        self.input_key_right = not action.released
+    elseif action_id == self.key_jump then
+        self.input_key_jump = not action.released
+    end
+end

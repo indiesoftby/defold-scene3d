@@ -1,0 +1,78 @@
+local gui_helper = require("scene3d.helpers.gui")
+local render3d = require("scene3d.render.render3d")
+
+local COLOR_GREEN = vmath.vector4(0, 1, 0.6, 1)
+local COLOR_ORANGE = vmath.vector4(1, 0.85, 0.18, 1)
+local COLOR_RED = vmath.vector4(0.95, 0.18, 0.18, 1)
+
+local function fps_set_text(self, fps)
+    local color = COLOR_GREEN
+    if fps and fps < 25 then
+        color = COLOR_RED
+    elseif fps and fps < 50 then
+        color = COLOR_ORANGE
+    end
+
+    local text = fps and string.format("%d", fps) or ""
+
+    gui.set_text(self.debug_fps_text, text)
+    gui.set_color(self.debug_fps_text, color)
+
+    gui.set_enabled(self.debug_fps_bg, render3d.show_fps and true or false)
+    gui.set_enabled(self.debug_fps_text, render3d.show_fps and true or false)
+end
+
+local function fps_init(self)
+    self.frame_time = socket.gettime()
+    self.frame_count = render3d.frame_num
+    self.frame_accum = 0
+
+    fps_set_text(self, fps)
+end
+
+local function fps_update(self)
+    local t = socket.gettime()
+    local frame_dt = t - self.frame_time
+    self.frame_time = t
+
+    self.frame_accum = self.frame_accum + frame_dt
+    if self.frame_accum >= 0.5 then
+        local df = render3d.frame_num - self.frame_count
+        local fps = math.min(999, math.floor(df / self.frame_accum))
+        self.frame_count = render3d.frame_num
+        self.frame_accum = 0
+
+        fps_set_text(self, fps)
+    end
+end
+
+function init(self)
+    gui.set_render_order(14)
+
+    gui_helper.init_node(self, "debug_box")
+    gui_helper.init_node(self, "debug_fps_bg")
+    gui_helper.init_node(self, "debug_fps_text")
+    gui_helper.init_node(self, "debug_text")
+
+    fps_init(self)
+end
+
+function update(self, dt)
+    fps_update(self)
+
+    local text = render3d.debug_text_prev
+    if text and #text > 0 then
+        gui.set_text(self.debug_text, text)
+        gui_helper.set_alpha(self.debug_text, 1)
+    else
+        gui_helper.set_alpha(self.debug_text, 0)
+    end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("hide") then
+        gui.set_enabled(self.debug_box, false)
+    elseif message_id == hash("show") then
+        gui.set_enabled(self.debug_box, true)
+    end
+end

@@ -1,0 +1,302 @@
+name: "default"
+instances {
+  id: "buildings_block_100x100_4"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_1x1.go"
+  position {
+    x: -2.77
+    y: -4.99
+    z: 2.9
+  }
+  rotation {
+    x: 0.38268343
+    y: 0.0
+    z: 0.0
+    w: 0.9238795
+  }
+  scale3 {
+    x: 5.0
+    y: 5.0
+    z: 5.0
+  }
+}
+instances {
+  id: "buildings_block_100x100_5"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_1x1.go"
+  position {
+    x: 3.0
+    y: -4.99
+    z: -1.95
+  }
+  rotation {
+    x: 0.38268343
+    y: 0.0
+    z: 0.0
+    w: 0.9238795
+  }
+  scale3 {
+    x: 5.0
+    y: 5.0
+    z: 5.0
+  }
+}
+instances {
+  id: "buildings_block_100x100_6"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_1x1.go"
+  position {
+    x: 3.0
+    y: -4.99
+    z: -5.05
+  }
+  rotation {
+    x: 0.38268343
+    y: 0.0
+    z: 0.0
+    w: 0.9238795
+  }
+  scale3 {
+    x: 5.0
+    y: 5.0
+    z: 5.0
+  }
+}
+instances {
+  id: "buildings_block_100x100_7"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_1x1.go"
+  position {
+    x: 3.0
+    y: -4.99
+    z: -8.31
+  }
+  rotation {
+    x: 0.38268343
+    y: 0.0
+    z: 0.0
+    w: 0.9238795
+  }
+  scale3 {
+    x: 5.0
+    y: 5.0
+    z: 5.0
+  }
+}
+instances {
+  id: "buildings_block_100x100_8"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_1x1.go"
+  position {
+    x: -2.77
+    y: -4.99
+    z: -0.75
+  }
+  rotation {
+    x: 0.38268343
+    y: 0.0
+    z: 0.0
+    w: 0.9238795
+  }
+  scale3 {
+    x: 5.0
+    y: 5.0
+    z: 5.0
+  }
+}
+instances {
+  id: "buildings_block_100x100_9"
+  prototype: "/scene3d/prefabs/buildings/buildings_block_1x1.go"
+  position {
+    x: -2.77
+    y: -4.99
+    z: -4.25
+  }
+  rotation {
+    x: 0.38268343
+    y: 0.0
+    z: 0.0
+    w: 0.9238795
+  }
+  scale3 {
+    x: 5.0
+    y: 5.0
+    z: 5.0
+  }
+}
+instances {
+  id: "prop_cone"
+  prototype: "/scene3d/prefabs/props/prop_road_cone.go"
+  position {
+    x: -7.0
+    y: 0.0
+    z: -3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "prop_cone2"
+  prototype: "/scene3d/prefabs/props/prop_road_cone.go"
+  position {
+    x: -7.0
+    y: 0.0
+    z: -8.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "prop_cone_corner1"
+  prototype: "/scene3d/prefabs/props/prop_road_cone.go"
+  position {
+    x: -7.0
+    y: 0.0
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "prop_cone_corner3"
+  prototype: "/scene3d/prefabs/props/prop_road_cone.go"
+  position {
+    x: -7.0
+    y: 0.0
+    z: 7.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "prop_cone1"
+  prototype: "/scene3d/prefabs/props/prop_road_cone.go"
+  position {
+    x: 7.0
+    y: 0.0
+    z: -3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "prop_cone3"
+  prototype: "/scene3d/prefabs/props/prop_road_cone.go"
+  position {
+    x: 7.0
+    y: 0.0
+    z: -8.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "prop_cone_corner"
+  prototype: "/scene3d/prefabs/props/prop_road_cone.go"
+  position {
+    x: 7.0
+    y: 0.0
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "prop_cone_corner2"
+  prototype: "/scene3d/prefabs/props/prop_road_cone.go"
+  position {
+    x: 7.0
+    y: 0.0
+    z: 7.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "star"
+  collection: "/examples/scenes/playground/star.collection"
+  position {
+    x: 0.0
+    y: 1.0
+    z: -11.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
