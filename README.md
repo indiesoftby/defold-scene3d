@@ -9,8 +9,8 @@ The built-in example scene is available [✨**to play online**✨](https://indie
 - Special keys: `5` to reload current scene, `6` to load next scene, `0` to toggle photo mode (move the mouse to look, `WASD` to fly, `SPACE` to go up, `C` to go down, `M` to copy camera settings).
 - In the debug build: `1` to toggle physics debug, `2` to toggle profiler.
 
-Follow further developments and discuss Scene3D at:
-- 💬 ***(TODO) FORUM TOPIC.***
+Follow further developments:
+- 💬 [The topic on the Defold forum](https://forum.defold.com/t/scene3d-collection-of-assets-for-3d-gamedev/70352).
 
 ## Key features
 
