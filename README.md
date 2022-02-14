@@ -141,6 +141,7 @@ The following issues are critical for the further  development of Scene3D. Pleas
 * [Optimize file size of Buffer](https://github.com/defold/defold/issues/6272).
 * [More matrix types as shader constants](https://github.com/defold/defold/issues/3789).
 * [Custom vertex format](https://github.com/defold/defold/issues/3403).
+* [Frustum and Occlusion culling](https://github.com/defold/defold/issues/3406) + [Add bounding box representation for gameobjects](https://github.com/defold/defold/issues/6292).
 * **IDE:** [Copied collision 3d box doesn't show properly in the editor](https://github.com/defold/defold/issues/5049).
 
 ## Contributing to Scene3D
