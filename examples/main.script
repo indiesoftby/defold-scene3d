@@ -78,5 +78,17 @@ function on_input(self, action_id, action)
         end
         print("Loading next scene", next_id)
         main.load_scene(self, next_id)
+    elseif action_id == hash("key_f11") and action.pressed then
+        defos.toggle_fullscreen()
+    elseif action_id == hash("key_ralt") or action_id == hash("key_lalt") then
+        if action.released then
+            self.alt_is_held = false
+        else
+            self.alt_is_held = true
+        end        
+    elseif self.alt_is_held and action_id == hash("key_enter") and action.pressed then
+        defos.toggle_fullscreen()
+    elseif self.alt_is_held and action_id == hash("key_f4") and action.pressed then
+        msg.post("@system:", "exit", {code = 0})
     end
 end
