@@ -168,7 +168,8 @@ Artsiom Trubchyk ([@aglitchman](https://github.com/aglitchman)) is the current S
 
 ### Contributors
 
-1. Be the first!
+1. Brian Kramer ([@subsoap](https://github.com/subsoap))
+2. Be the next!
 
 ### License
 
