@@ -85,7 +85,7 @@ function on_input(self, action_id, action)
             self.alt_is_held = false
         else
             self.alt_is_held = true
-        end        
+        end
     elseif self.alt_is_held and action_id == hash("key_enter") and action.pressed then
         defos.toggle_fullscreen()
     elseif self.alt_is_held and action_id == hash("key_f4") and action.pressed then
