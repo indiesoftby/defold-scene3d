@@ -1,5 +1,5 @@
 name: "default"
-scale_along_z: 0
+scale_along_z: 1
 embedded_instances {
   id: "body"
   children: "look"

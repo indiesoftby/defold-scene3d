@@ -139,4 +139,4 @@ instances {
     z: 1.25
   }
 }
-scale_along_z: 0
+scale_along_z: 1

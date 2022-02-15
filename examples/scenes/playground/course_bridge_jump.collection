@@ -159,4 +159,4 @@ collection_instances {
     z: 1.0
   }
 }
-scale_along_z: 0
+scale_along_z: 1
