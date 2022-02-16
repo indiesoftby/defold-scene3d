@@ -84,18 +84,18 @@ function M.sign(x)
     return x < 0 and -1 or 1
 end
 
---- Clamps the given value between the given minimum float and maximum float values.
--- @param value The floating point value to restrict inside the range defined by the min and max values.
+--- Clamps the given x between the given minimum float and maximum float values.
+-- @param x The floating point value to restrict inside the range defined by the min and max values.
 -- @param min The minimum floating point value to compare against.
 -- @param max The maximum floating point value to compare against.
 -- @return The float result between the min and max values.
-function M.clamp(value, min, max)
-    if value < min then
-        value = min
-    elseif value > max then
-        value = max
+function M.clamp(x, min, max)
+    if x < min then
+        x = min
+    elseif x > max then
+        x = max
     end
-    return value
+    return x
 end
 
 --- Loops the value t, so that it is never larger than length and never smaller than 0.
@@ -103,17 +103,18 @@ function M.repeat_(t, length)
     return M.clamp(t - math.floor(t / length) * length, 0.0, length)
 end
 
---- Clamps value between 0 and 1 and returns value.
-function M.clamp01(value)
-    if value < 0 then
+--- Clamps x between 0 and 1 and returns value.
+function M.clamp01(x)
+    if x < 0 then
         return 0
-    elseif value > 1 then
+    elseif x > 1 then
         return 1
     else
-        return value
+        return x
     end
 end
 
+--- Same as `vmath.lerp` but `max_step` limits the increment of value.
 function M.limited_lerp(t, a, b, max_step)
     if scene3d.is_vector3(a) then
         return vmath.vector3(
@@ -136,7 +137,7 @@ function M.limited_lerp(t, a, b, max_step)
     end
 end
 
---- Same as "vmath.lerp" but makes sure the values interpolate correctly when they wrap around 360 degrees.
+--- Same as `vmath.lerp` but makes sure the values interpolate correctly when they wrap around 360 degrees.
 -- @param t The value is clamped to the range [0, 1].
 -- @param a Degrees.
 -- @param b Degrees.
@@ -152,11 +153,11 @@ end
 --- Calculates the lerp parameter between of two values.
 -- @param a Start value.
 -- @param b End value.
--- @param value Value between start and end.
+-- @param t Value between start and end.
 -- @return A percentage of value between start and end.
-function M.inverse_lerp(a, b, value)
+function M.inverse_lerp(t, a, b)
     if a ~= b then
-        return M.clamp01((value - a) / (b - a))
+        return M.clamp01((t - a) / (b - a))
     else
         return 0.0
     end

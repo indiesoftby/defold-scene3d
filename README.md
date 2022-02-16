@@ -18,6 +18,7 @@ Follow further developments:
 * [x] Character controller.
 * [x] Controls: keyboard, mouse look with a pointer lock.
 * [x] Frustum culling (only for 3D meshes).
+* [x] Helper 3D math functions ([docs](#math3dlua)).
 
 ### Included Assets (i.e. Prefabs)
 
@@ -120,6 +121,29 @@ At this moment, Defold supports only Bilinear (Linear Mipmap Nearest) or Triline
 [scene3d]
 anisotropic_filtering = 8
 ```
+
+### `math3d.lua`
+
+The table briefly describes the included helper math functions. The source code of [`math3d.lua`](scene3d/helpers/math3d.lua) has more detailed explanation.
+
+| Lua Function | Description | Corresponding Unity API |
+| ------------ | ----------- | ----------------------- |
+| **Quaternions** |
+| `math3d.euler_x(q)` | Returns the Euler angle representation of a rotation, in degrees - X. | `Quaternion.eulerAngles.x` |
+| `math3d.euler_y(q)` | Returns the Euler angle representation of a rotation, in degrees - Y. | `Quaternion.eulerAngles.y` |
+| `math3d.euler_z(q)` | Returns the Euler angle representation of a rotation, in degrees - Z. | `Quaternion.eulerAngles.z` |
+| `math3d.quat_inv(q)` | Returns the inverse of rotation. | `Quaternion.Inverse` |
+| `math3d.quat_look_rotation(forward, upwards)` | Creates a rotation with the specified forward and upwards directions. | `Quaternion.LookRotation` |
+| **Math** |
+| `math3d.clamp(x, min, max)` | Clamps the given x between the given minimum float and maximum float values. | `Mathf.Clamp` |
+| `math3d.clamp01(x)` | Clamps x between 0 and 1 and returns value. | `Mathf.Clamp` |
+| `math3d.inverse_lerp(t, a, b)` | Calculates the lerp parameter between of two values. | `Mathf.InverseLerp` |
+| `math3d.lerp_angle(t, a, b)` | Same as `vmath.lerp` but makes sure the values interpolate correctly when they wrap around 360 degrees. | `Mathf.LerpAngle` |
+| `math3d.limited_lerp(t, a, b, max_step)` | Same as `vmath.lerp` but `max_step` limits the increment of value. | - |
+| `math3d.ping_pong(t, length)` | Pingpongs the value t, so that it is never larger than length and never smaller than 0. | `Mathf.PingPong` |
+| `math3d.repeat_(t, length)` | Loops the value t, so that it is never larger than length and never smaller than 0. | `Mathf.Repeat` |
+| `math3d.sign(x)` | Returns the sign of x. | `Mathf.Sign` |
+| `math3d.smooth_step(x, min, max)` | Interpolates between min and max with smoothing at the limits. | `Mathf.SmoothStep` |
 
 ## Known Issues
 

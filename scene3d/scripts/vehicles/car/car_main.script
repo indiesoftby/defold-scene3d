@@ -175,7 +175,7 @@ function update(self, dt)
     --
     -- TURNING
     --
-    local turn_speed_on_car_speed = vmath.lerp(math3d.inverse_lerp(0.1, 10, cur_speed), turn_speed1, turn_speed2)
+    local turn_speed_on_car_speed = vmath.lerp(math3d.inverse_lerp(cur_speed, 0.1, 10), turn_speed1, turn_speed2)
     local desired_turn = render3d.RIGHT * turn_speed_on_car_speed * sx * math3d.sign(local_velocity.z) / dt
     local debug_turn_dir = vmath.rotate(c.car_rotation, render3d.RIGHT) * 2 * sx
     if self.wheel_touching[1] or self.wheel_touching[2] then
@@ -183,7 +183,7 @@ function update(self, dt)
     end
 
     local wheel_yaw = self.wheel_yaw or 0
-    local max_wheel_yaw = vmath.lerp(math3d.inverse_lerp(0.1, 50, cur_speed), 30, 4)
+    local max_wheel_yaw = vmath.lerp(math3d.inverse_lerp(cur_speed, 0.1, 50), 30, 4)
     wheel_yaw = vmath.lerp(0.2, wheel_yaw, -max_wheel_yaw * sx)
     go.set(self.wheel_visual_url[WHEEL_FL], EULER_Y, wheel_yaw)
     go.set(self.wheel_visual_url[WHEEL_FR], EULER_Y, wheel_yaw)
