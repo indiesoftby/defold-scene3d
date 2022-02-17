@@ -1,6 +1,6 @@
-go.property("accel_speed", 0.20)
-go.property("turn_speed1", 0.02)
-go.property("turn_speed2", 0.20)
+go.property("acceleration_const", 12)
+go.property("turn_speed1", 1)
+go.property("turn_speed2", 10)
 -- 250: DRIFT
 -- 1000: RACE CAR
 go.property("traction_const", 500)
@@ -156,7 +156,7 @@ function update(self, dt)
     local local_velocity = vmath.rotate(math3d.quat_inv(c.car_rotation), c.car_velocity)
     c.car_speed = -local_velocity.z
 
-    local accel_speed = self.accel_speed * c.car_mass
+    local acceleration_const = self.acceleration_const * c.car_mass
     local turn_speed1 = self.turn_speed1 * c.car_mass
     local turn_speed2 = self.turn_speed2 * c.car_mass
 
@@ -166,7 +166,7 @@ function update(self, dt)
     --
     -- ACCELERATION
     --
-    local desired_accel = vmath.rotate(c.car_rotation, render3d.FORWARD) * accel_speed * sz / dt
+    local desired_accel = vmath.rotate(c.car_rotation, render3d.FORWARD) * acceleration_const * sz
     local debug_accel_direction = vmath.rotate(c.car_rotation, render3d.FORWARD) * 3 * sz
     if self.wheel_touching[WHEEL_RL] or self.wheel_touching[WHEEL_RR] then
         msg.post(self.chassis_url, APPLY_FORCE, { force = desired_accel, position = c.car_position + back_n_down })
@@ -176,7 +176,7 @@ function update(self, dt)
     -- TURNING
     --
     local turn_speed_on_car_speed = vmath.lerp(math3d.inverse_lerp(cur_speed, 0.1, 10), turn_speed1, turn_speed2)
-    local desired_turn = render3d.RIGHT * turn_speed_on_car_speed * sx * math3d.sign(local_velocity.z) / dt
+    local desired_turn = render3d.RIGHT * turn_speed_on_car_speed * sx * math3d.sign(local_velocity.z)
     local debug_turn_dir = vmath.rotate(c.car_rotation, render3d.RIGHT) * 2 * sx
     if self.wheel_touching[1] or self.wheel_touching[2] then
         apply_torque(self.chassis_url, desired_turn)
