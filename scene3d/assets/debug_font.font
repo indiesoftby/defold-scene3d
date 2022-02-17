@@ -1,5 +1,5 @@
 font: "/scene3d/assets/fonts/NunitoSans-ExtraBold.ttf"
-material: "/builtins/fonts/font.material"
+material: "/scene3d/materials/font.material"
 size: 50
 antialias: 1
 alpha: 1.0
