@@ -15,6 +15,9 @@ go.property("use_world_position", false)
 go.property("frustum_cull_enabled", true)
 go.property("frustum_mesh_id", hash("mesh"))
 go.property("fast_chunk_id", true)
+go.property("message_receiver", msg.url())
+go.property("message_create", hash(""))
+go.property("message_delete", hash(""))
 go.property("debug_info", false)
 
 local render3d = require("scene3d.render.render3d")
@@ -51,12 +54,20 @@ local function put_chunk(self, id, x, z)
             visibility = true
         }
         self.chunk_map[id] = chunk
+
+        if self.message_create ~= EMPTY_HASH then
+            msg.post(self.message_receiver, self.message_create, chunk)
+        end
     end
 
-    local changed, message_id = scene3d.frustum_mesh_vis_changed(chunk.frustum_mesh_id, self.chunk_size, false, chunk.pos)
-    if changed then
-        msg.post(chunk.mesh_url, message_id)
-        chunk.visibility = message_id == ENABLE
+    if self.frustum_cull_enabled then
+        local changed, message_id = scene3d.frustum_mesh_vis_changed(chunk.frustum_mesh_id, self.chunk_size, false, chunk.pos)
+        if changed then
+            msg.post(chunk.mesh_url, message_id)
+            chunk.visibility = message_id == ENABLE
+        end
+    else
+        chunk.visibility = true
     end
 
     return flag, chunk.visibility
@@ -136,11 +147,16 @@ local function generate(self)
     -- Delete unused chunks
     local d = {}
     local framenum = self.chunk_framenum
-    for id, v in pairs(self.chunk_map) do
-        if v.used ~= framenum then
+    local send_delete_msg = self.message_delete ~= EMPTY_HASH
+    for id, chunk in pairs(self.chunk_map) do
+        if chunk.used ~= framenum then
             table.insert(d, id)
-            go.delete(v.obj_id)
-            scene3d.frustum_mesh_release(v.frustum_mesh_id)
+            go.delete(chunk.obj_id)
+            scene3d.frustum_mesh_release(chunk.frustum_mesh_id)
+
+            if send_delete_msg then
+                msg.post(self.message_receiver, self.message_delete, chunk)
+            end
         end
     end
     for _, id in ipairs(d) do
@@ -152,7 +168,9 @@ local function generate(self)
         local time2 = socket.gettime()
         local time_used = time2 - time1
         local str = "Floor chunks " .. tostring(total)
-        str = str .. ", visible " .. tostring(total_visible)
+        if self.frustum_cull_enabled then
+            str = str .. ", visible " .. tostring(total_visible)
+        end
         str = str .. ", used " .. string.format("%.1f ms", time_used * 1000)
         render3d.debug_log(str)
     end
