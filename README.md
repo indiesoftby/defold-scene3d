@@ -158,15 +158,22 @@ The table briefly describes the included helper math functions. The source code 
 
 ### Vote For The Issues
 
-The following issues are critical for the further  development of Scene3D. Please put 👍 on them!
+The following issues are critical for the further development of Scene3D. Please put 👍👍👍 on them!
 
 * [Control sort order of rendered primitives](https://github.com/defold/defold/issues/3625) + [Allow sorting front-to-back](https://github.com/defold/defold/issues/5168).
 * [Material option to enable anisotropic texture filtering](https://github.com/defold/defold/issues/6155).
-* [Optimize file size of Buffer](https://github.com/defold/defold/issues/6272).
+* [Optimize file size of Buffer](https://github.com/defold/defold/issues/6272) + [Add option for indexed vertices for buffers to be used with the mesh component](https://github.com/defold/defold/issues/5477).
 * [More matrix types as shader constants](https://github.com/defold/defold/issues/3789).
-* [Custom vertex format](https://github.com/defold/defold/issues/3403).
+* [Custom vertex format](https://github.com/defold/defold/issues/3403)
 * [Frustum and Occlusion culling](https://github.com/defold/defold/issues/3406) + [Add bounding box representation for gameobjects](https://github.com/defold/defold/issues/6292).
-* **IDE:** [Copied collision 3d box doesn't show properly in the editor](https://github.com/defold/defold/issues/5049).
+
+#### Editor Issues
+
+* [Copied collision 3d box doesn't show properly in the editor](https://github.com/defold/defold/issues/5049).
+* [Editor rounds values when moving objects](https://github.com/defold/defold/issues/6414).
+* [Render axis Z and horizonal grid in perspective camera mode](https://github.com/defold/defold/issues/6420).
+* [Incremental adjustment of properties values](https://github.com/defold/defold/issues/6417).
+* [Material constants are not easy to edit](https://github.com/defold/defold/issues/6413).
 
 ## Contributing to Scene3D
 
