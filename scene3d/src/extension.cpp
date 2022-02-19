@@ -7,6 +7,7 @@
 #include <cstring>
 
 #include "frustum_cull.h"
+#include "noise.h"
 
 static int IsVector3(lua_State* L)
 {
@@ -291,6 +292,98 @@ static int ChunkIdHash(lua_State* L)
     return 1;
 }
 
+static int Simplex_Seed(lua_State* L)
+{
+    int seed = luaL_checkinteger(L, 1);
+    Simplex::Seed(seed);
+
+    return 0;
+}
+
+static int Simplex_Noise2(lua_State* L)
+{
+    float x = luaL_checknumber(L, 1);
+    float y = luaL_checknumber(L, 2);
+
+    int octaves       = 1;
+    float persistence = 0.5f;
+    float lacunarity  = 2.0f;
+
+    if (lua_isnumber(L, 3))
+        octaves = lua_tointeger(L, 3);
+    if (lua_isnumber(L, 4))
+        persistence = lua_tonumber(L, 4);
+    if (lua_isnumber(L, 5))
+        lacunarity = lua_tonumber(L, 5);
+
+    if (octaves <= 0)
+    {
+        return luaL_error(L, "Expected octaves value > 0");
+    }
+
+    const float result = Simplex::FractalNoise2(x, y, octaves, persistence, lacunarity);
+    lua_pushnumber(L, result);
+
+    return 1;
+}
+
+static int Simplex_Noise3(lua_State* L)
+{
+    float x = luaL_checknumber(L, 1);
+    float y = luaL_checknumber(L, 2);
+    float z = luaL_checknumber(L, 3);
+
+    int octaves       = 1;
+    float persistence = 0.5f;
+    float lacunarity  = 2.0f;
+
+    if (lua_isnumber(L, 4))
+        octaves = lua_tointeger(L, 4);
+    if (lua_isnumber(L, 5))
+        persistence = lua_tonumber(L, 5);
+    if (lua_isnumber(L, 6))
+        lacunarity = lua_tonumber(L, 6);
+
+    if (octaves <= 0)
+    {
+        return luaL_error(L, "Expected octaves value > 0");
+    }
+
+    const float result = Simplex::FractalNoise3(x, y, z, octaves, persistence, lacunarity);
+    lua_pushnumber(L, result);
+
+    return 1;
+}
+
+static int Simplex_Noise4(lua_State* L)
+{
+    float x = luaL_checknumber(L, 1);
+    float y = luaL_checknumber(L, 2);
+    float z = luaL_checknumber(L, 3);
+    float w = luaL_checknumber(L, 4);
+
+    int octaves       = 1;
+    float persistence = 0.5f;
+    float lacunarity  = 2.0f;
+
+    if (lua_isnumber(L, 5))
+        octaves = lua_tointeger(L, 5);
+    if (lua_isnumber(L, 6))
+        persistence = lua_tonumber(L, 6);
+    if (lua_isnumber(L, 7))
+        lacunarity = lua_tonumber(L, 7);
+
+    if (octaves <= 0)
+    {
+        return luaL_error(L, "Expected octaves value > 0");
+    }
+
+    const float result = Simplex::FractalNoise4(x, y, z, w, octaves, persistence, lacunarity);
+    lua_pushnumber(L, result);
+
+    return 1;
+}
+
 // Functions exposed to Lua
 static const luaL_reg Module_methods[] = {
     { "is_vector3", IsVector3 },
@@ -308,6 +401,11 @@ static const luaL_reg Module_methods[] = {
     { "frustum_mesh_vis_changed", Frustum_Mesh_Visibility_Changed },
     //
     { "chunk_id_hash", ChunkIdHash },
+    //
+    { "simplex_seed", Simplex_Seed },
+    { "simplex_noise2", Simplex_Noise2 },
+    { "simplex_noise3", Simplex_Noise3 },
+    { "simplex_noise4", Simplex_Noise4 },
     /* Sentinel: */
     { NULL, NULL }
 };

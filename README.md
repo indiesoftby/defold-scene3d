@@ -144,6 +144,8 @@ The table briefly describes the included helper math functions. The source code 
 | `math3d.repeat_(t, length)` | Loops the value t, so that it is never larger than length and never smaller than 0. | `Mathf.Repeat` |
 | `math3d.sign(x)` | Returns the sign of x. | `Mathf.Sign` |
 | `math3d.smooth_step(x, min, max)` | Interpolates between min and max with smoothing at the limits. | `Mathf.SmoothStep` |
+| **Noise** |
+| `scene3d.simplex_noise2(x, y)` | Generates 2D Perlin noise. | `Mathf.PerlinNoise` |
 
 ## Known Issues
 
