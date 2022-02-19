@@ -145,7 +145,7 @@ The table briefly describes the included helper math functions. The source code 
 | `math3d.sign(x)` | Returns the sign of x. | `Mathf.Sign` |
 | `math3d.smooth_step(x, min, max)` | Interpolates between min and max with smoothing at the limits. | `Mathf.SmoothStep` |
 | **Noise** |
-| `scene3d.simplex_noise2(x, y)` | Generates 2D Perlin noise. | `Mathf.PerlinNoise` |
+| `scene3d.simplex_noise2(x, y)` | Generates 2D Perlin noise. Output range is [0, 1]. | `Mathf.PerlinNoise` |
 
 ## Known Issues
 

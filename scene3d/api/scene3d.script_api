@@ -92,7 +92,7 @@
 
   - name: simplex_noise2
     type: function
-    desc: Return simplex noise value for specified 2D coordinate.
+    desc: Return simplex noise value for specified 2D coordinate. Output range is [0, 1].
     parameters:
     - name: x
       type: number
@@ -116,7 +116,7 @@
 
   - name: simplex_noise3
     type: function
-    desc: Return simplex noise value for specified 3D coordinate.
+    desc: Return simplex noise value for specified 3D coordinate. Output range is [0, 1].
     parameters:
     - name: x
       type: number
@@ -142,7 +142,7 @@
 
   - name: simplex_noise4
     type: function
-    desc: Return simplex noise value for specified 4D coordinate.
+    desc: Return simplex noise value for specified 4D coordinate. Output range is [0, 1].
     parameters:
     - name: x
       type: number
