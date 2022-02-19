@@ -1,0 +1,169 @@
+- name: scene3d
+  type: table
+  desc: C++ helper functions
+  members:
+
+  - name: is_vector3
+    type: function
+    parameters:
+    - name: v
+      type: vector3
+    returns:
+    - name: result
+      type: boolean
+
+  - name: is_vector4
+    type: function
+    parameters:
+    - name: v
+      type: vector4
+    return:
+    - name: result
+      type: boolean
+
+  - name: is_quat
+    type: function
+    parameters:
+    - name: q
+      type: quat
+    return:
+    - name: result
+      type: boolean
+
+  - name: get_position_to
+    type: function
+    desc: Gets the position of a game object instance.
+    parameters:
+    - name: id
+      type: string|hash|url
+    - name: v
+      type: vector3
+
+  - name: get_world_position_to
+    type: function
+    desc: Gets the game object instance world position.
+    parameters:
+    - name: id
+      type: string|hash|url
+    - name: v
+      type: vector3
+
+  - name: get_rotation_to
+    type: function
+    desc: Gets the rotation of the game object instance.
+    parameters:
+    - name: id
+      type: string|hash|url
+    - name: q
+      type: quat
+
+  - name: get_world_rotation_to
+    type: function
+    desc: Gets the world rotation of the game object instance.
+    parameters:
+    - name: id
+      type: string|hash|url
+    - name: q
+      type: quat
+
+  - name: get_scale_to
+    type: function
+    desc: Gets the scale of a game object instance.
+    parameters:
+    - name: id
+      type: string|hash|url
+    - name: v
+      type: vector3
+
+  - name: get_world_scale_to
+    type: function
+    desc: Gets the game object instance world scale.
+    parameters:
+    - name: id
+      type: string|hash|url
+    - name: v
+      type: vector3
+
+  - name: simplex_seed
+    type: function
+    parameters:
+    - name: x
+      type: integer
+
+  - name: simplex_noise2
+    type: function
+    desc: Return simplex noise value for specified 2D coordinate.
+    parameters:
+    - name: x
+      type: number
+    - name: y
+      type: number
+    - name: octaves
+      type: integer
+      desc: Specifies the number of passes, defaults to 1 (simple noise).
+      optional: true
+    - name: persistence
+      type: number
+      desc: Specifies the amplitude of each successive octave relative to the one below it. Defaults to 0.5 (each higher octave's amplitude is halved). Note the amplitude of the first pass is always 1.0.
+      optional: true
+    - name: lacunarity
+      type: number
+      desc: Specifies the frequency of each successive octave relative to the one below it, similar to persistence. Defaults to 2.0.
+      optional: true
+    return:
+    - name: value
+      type: number
+
+  - name: simplex_noise3
+    type: function
+    desc: Return simplex noise value for specified 3D coordinate.
+    parameters:
+    - name: x
+      type: number
+    - name: y
+      type: number
+    - name: z
+      type: number
+    - name: octaves
+      type: integer
+      desc: Specifies the number of passes, defaults to 1 (simple noise).
+      optional: true
+    - name: persistence
+      type: number
+      desc: Specifies the amplitude of each successive octave relative to the one below it. Defaults to 0.5 (each higher octave's amplitude is halved). Note the amplitude of the first pass is always 1.0.
+      optional: true
+    - name: lacunarity
+      type: number
+      desc: Specifies the frequency of each successive octave relative to the one below it, similar to persistence. Defaults to 2.0.
+      optional: true
+    return:
+    - name: value
+      type: number
+
+  - name: simplex_noise4
+    type: function
+    desc: Return simplex noise value for specified 4D coordinate.
+    parameters:
+    - name: x
+      type: number
+    - name: y
+      type: number
+    - name: z
+      type: number
+    - name: w
+      type: number
+    - name: octaves
+      type: integer
+      desc: Specifies the number of passes, defaults to 1 (simple noise).
+      optional: true
+    - name: persistence
+      type: number
+      desc: Specifies the amplitude of each successive octave relative to the one below it. Defaults to 0.5 (each higher octave's amplitude is halved). Note the amplitude of the first pass is always 1.0.
+      optional: true
+    - name: lacunarity
+      type: number
+      desc: Specifies the frequency of each successive octave relative to the one below it, similar to persistence. Defaults to 2.0.
+      optional: true
+    return:
+    - name: value
+      type: number
