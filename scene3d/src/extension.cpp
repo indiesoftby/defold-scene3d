@@ -21,10 +21,14 @@ static int IsVector4(lua_State* L)
     return 1;
 }
 
+static int IsQuat(lua_State* L)
+{
+    lua_pushboolean(L, dmScript::IsQuat(L, 1));
+    return 1;
+}
+
 static int GetRotationTo(lua_State* L)
 {
-    DM_LUA_STACK_CHECK(L, 0);
-
     dmGameObject::HInstance instance = dmScript::CheckGOInstance(L, 1);
     const dmVMath::Quat& rotation    = dmGameObject::GetRotation(instance);
 
@@ -36,8 +40,6 @@ static int GetRotationTo(lua_State* L)
 
 static int GetWorldRotationTo(lua_State* L)
 {
-    DM_LUA_STACK_CHECK(L, 0);
-
     dmGameObject::HInstance instance = dmScript::CheckGOInstance(L, 1);
     const dmVMath::Quat& rotation    = dmGameObject::GetWorldRotation(instance);
 
@@ -49,8 +51,6 @@ static int GetWorldRotationTo(lua_State* L)
 
 static int GetPositionTo(lua_State* L)
 {
-    DM_LUA_STACK_CHECK(L, 0);
-
     dmGameObject::HInstance instance = dmScript::CheckGOInstance(L, 1);
     const dmVMath::Point3& position  = dmGameObject::GetPosition(instance);
 
@@ -64,8 +64,6 @@ static int GetPositionTo(lua_State* L)
 
 static int GetWorldPositionTo(lua_State* L)
 {
-    DM_LUA_STACK_CHECK(L, 0);
-
     dmGameObject::HInstance instance = dmScript::CheckGOInstance(L, 1);
     const dmVMath::Point3& position  = dmGameObject::GetWorldPosition(instance);
 
@@ -73,6 +71,32 @@ static int GetWorldPositionTo(lua_State* L)
     out->setX(position.getX());
     out->setY(position.getY());
     out->setZ(position.getZ());
+
+    return 0;
+}
+
+static int GetScaleTo(lua_State* L)
+{
+    dmGameObject::HInstance instance = dmScript::CheckGOInstance(L, 1);
+    const dmVMath::Vector3& scale    = dmGameObject::GetScale(instance);
+
+    dmVMath::Vector3* out = dmScript::CheckVector3(L, 2);
+    out->setX(scale.getX());
+    out->setY(scale.getY());
+    out->setZ(scale.getZ());
+
+    return 0;
+}
+
+static int GetWorldScaleTo(lua_State* L)
+{
+    dmGameObject::HInstance instance = dmScript::CheckGOInstance(L, 1);
+    const dmVMath::Vector3& scale    = dmGameObject::GetWorldScale(instance);
+
+    dmVMath::Vector3* out = dmScript::CheckVector3(L, 2);
+    out->setX(scale.getX());
+    out->setY(scale.getY());
+    out->setZ(scale.getZ());
 
     return 0;
 }
@@ -286,7 +310,7 @@ static int ChunkIdHash(lua_State* L)
 
     const uint32_t x32 = (uint16_t)x;
     const uint32_t y32 = (uint16_t)y;
-    const uint32_t id = (x32 << 16) | y32;
+    const uint32_t id  = (x32 << 16) | y32;
 
     lua_pushinteger(L, id);
     return 1;
@@ -388,11 +412,14 @@ static int Simplex_Noise4(lua_State* L)
 static const luaL_reg Module_methods[] = {
     { "is_vector3", IsVector3 },
     { "is_vector4", IsVector4 },
+    { "is_quat", IsQuat },
     //
-    { "get_rotation_to", GetRotationTo },
-    { "get_world_rotation_to", GetWorldRotationTo },
     { "get_position_to", GetPositionTo },
     { "get_world_position_to", GetWorldPositionTo },
+    { "get_rotation_to", GetRotationTo },
+    { "get_world_rotation_to", GetWorldRotationTo },
+    { "get_scale_to", GetScaleTo },
+    { "get_world_scale_to", GetWorldScaleTo },
     //
     { "quat_look_rotation", Quat_LookRotation },
     { "frustum_set", Frustum_Set },
