@@ -1,18 +1,22 @@
 local animation = require("scene3d.scripts.animation")
+local blob_shadow = require("scene3d.scripts.blob_shadow")
 local collision = require("scene3d.scripts.collision")
 local frustum_mesh = require("scene3d.scripts.frustum_mesh")
 
 -- go.property("mesh_enabled", true)
 go.property("mesh_id", hash("mesh"))
 
+-- frustum_mesh.lua
 go.property("frustum_cull_enabled", true)
 go.property("frustum_mesh_max_dimension", 1)
 go.property("frustum_mesh_use_world_position", false)
 
+-- collision.lua
 go.property("collision_type", hash("dynamic"))
 go.property("collision_group", hash(""))
 go.property("collision_mask", hash(""))
 
+-- animation.lua
 go.property("animation_autoplay", true)
 go.property("animation_property", hash(""))
 go.property("animation_to", 360)
@@ -20,6 +24,24 @@ go.property("animation_easing", hash("linear"))
 go.property("animation_duration", 1)
 go.property("animation_loop", true)
 go.property("animation_pingpong", false)
+
+-- blob_shadow.lua
+go.property("blob_shadow_type", hash(""))
+go.property("blob_shadow_tint", vmath.vector4(0, 0, 0, 0.5))
+-- go.property("blob_shadow_blend_mode", hash("alpha"))
+go.property("blob_shadow_scale", vmath.vector3(1, 1, 1))
+go.property("blob_shadow_apply_object_scale", true)
+go.property("blob_shadow_apply_object_euler_y", true)
+go.property("blob_shadow_use_light_direction", false)
+go.property("blob_shadow_direction", vmath.vector3(0, -1, 0))
+go.property("blob_shadow_offset", vmath.vector3(0, -0.4, 0))
+go.property("blob_shadow_max_distance", 5)
+go.property("blob_shadow_distance_scale", 0.5)
+go.property("blob_shadow_distance_alpha", 0)
+go.property("blob_shadow_raycast_group1", hash("default"))
+go.property("blob_shadow_raycast_group2", hash(""))
+go.property("blob_shadow_raycast_group3", hash(""))
+-- go.property("blob_shadow_late_update", false)
 
 local COLLISION_DYNAMIC = hash("collision_dynamic")
 local COLLISION_STATIC = hash("collision_static")
@@ -31,6 +53,7 @@ function init(self)
         static = COLLISION_STATIC
     })
     animation.init(self)
+    blob_shadow.init(self)
     -- material.init(self)
 end
 
@@ -38,6 +61,7 @@ function final(self)
     frustum_mesh.final(self)
     collision.final(self)
     animation.final(self)
+    blob_shadow.final(self)
     -- material.final(self)
 end
 
@@ -45,10 +69,12 @@ function update(self, dt)
     frustum_mesh.update(self)
     collision.update(self, dt)
     animation.update(self, dt)
+    blob_shadow.update(self, dt)
     -- material.update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
     collision.on_message(self, message_id, message, sender)
     animation.on_message(self, message_id, message, sender)
+    blob_shadow.on_message(self, message_id, message, sender)
 end

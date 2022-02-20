@@ -223,6 +223,26 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "blob_shadows"
+  prototype: "/scene3d/fx/blob_shadows.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "debug_ui"
   collection: "/scene3d/debug/photo_mode/debug_ui.collection"
@@ -246,6 +266,7 @@ collection_instances {
 scale_along_z: 1
 embedded_instances {
   id: "main"
+  children: "blob_shadows"
   children: "late_update"
   data: "components {\n"
   "  id: \"basic_3d_main\"\n"

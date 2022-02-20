@@ -17,6 +17,11 @@ components {
     value: "1.0"
     type: PROPERTY_TYPE_NUMBER
   }
+  properties {
+    id: "blob_shadow_scale"
+    value: "1.2, 1.2, 1.2"
+    type: PROPERTY_TYPE_VECTOR3
+  }
 }
 embedded_components {
   id: "collision_dynamic"

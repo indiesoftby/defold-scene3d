@@ -1,14 +1,4 @@
---[[ Copy-paste the properties:
-
-go.property("animation_autoplay", true)
-go.property("animation_property", hash(""))
-go.property("animation_to", 360)
-go.property("animation_easing", hash("linear"))
-go.property("animation_duration", 1)
-go.property("animation_loop", true)
-go.property("animation_pingpong", false)
-
---]]
+-- Check the animation.script file for the required gameobject properties.
 
 local M = {
     ANIMATION_PLAY = hash("animation_play"),

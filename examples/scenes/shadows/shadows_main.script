@@ -1,0 +1,34 @@
+local render3d = require("scene3d.render.render3d")
+
+go.property("acquire_input_focus", true)
+
+function init(self)
+    print("shadows_main: init()")
+
+    if self.acquire_input_focus then
+        msg.post(".", hash("acquire_input_focus"))
+    end
+end
+
+function final(self)
+end
+
+function update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+    local flag_id = msg.url("/icon_flag")
+
+    if action_id == hash("key_a") and not action.released then
+        go.set_position(go.get_position(flag_id) - vmath.vector3(0.02, 0, 0), flag_id)
+    elseif action_id == hash("key_d") and not action.released then
+        go.set_position(go.get_position(flag_id) + vmath.vector3(0.02, 0, 0), flag_id)
+    elseif action_id == hash("key_w") and not action.released then
+        go.set_position(go.get_position(flag_id) + vmath.vector3(0, 0.02, 0), flag_id)
+    elseif action_id == hash("key_s") and not action.released then
+        go.set_position(go.get_position(flag_id) - vmath.vector3(0, 0.02, 0), flag_id)
+    end
+end

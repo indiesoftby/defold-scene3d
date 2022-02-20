@@ -60,6 +60,11 @@ instances {
       value: "100.0"
       type: PROPERTY_TYPE_NUMBER
     }
+    properties {
+      id: "blob_shadow_type"
+      value: "circle"
+      type: PROPERTY_TYPE_HASH
+    }
   }
   scale3 {
     x: 1.0

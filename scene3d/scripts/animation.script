@@ -1,0 +1,25 @@
+local animation = require("scene3d.scripts.animation")
+
+go.property("animation_autoplay", true)
+go.property("animation_property", hash(""))
+go.property("animation_to", 360)
+go.property("animation_easing", hash("linear"))
+go.property("animation_duration", 1)
+go.property("animation_loop", true)
+go.property("animation_pingpong", false)
+
+function init(self)
+    animation.init(self)
+end
+
+function final(self)
+    animation.final(self)
+end
+
+function update(self, dt)
+    animation.update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+    animation.on_message(self, message_id, message, sender)
+end

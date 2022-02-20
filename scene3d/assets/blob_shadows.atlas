@@ -1,0 +1,11 @@
+images {
+  image: "/scene3d/assets/blob_shadows/blob_circle.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/scene3d/assets/blob_shadows/blob_rectangle.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+margin: 0
+extrude_borders: 8
+inner_padding: 0

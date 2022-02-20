@@ -152,6 +152,14 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "prop"
+    properties {
+      id: "blob_shadow_type"
+      value: "circle"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
   scale3 {
     x: 2.0
     y: 2.0
@@ -185,6 +193,26 @@ instances {
     x: 27.0
     y: 0.2
     z: 27.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "blob_shadows"
+  prototype: "/scene3d/fx/blob_shadows.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -533,6 +561,7 @@ collection_instances {
 scale_along_z: 1
 embedded_instances {
   id: "main"
+  children: "blob_shadows"
   children: "late_update"
   data: "components {\n"
   "  id: \"playground_main\"\n"

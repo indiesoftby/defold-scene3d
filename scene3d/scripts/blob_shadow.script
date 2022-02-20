@@ -1,0 +1,34 @@
+local blob_shadow = require("scene3d.scripts.blob_shadow")
+
+go.property("blob_shadow_type", hash(""))
+go.property("blob_shadow_tint", vmath.vector4(0, 0, 0, 0.5))
+-- go.property("blob_shadow_blend_mode", hash("alpha"))
+go.property("blob_shadow_scale", vmath.vector3(1, 1, 1))
+go.property("blob_shadow_apply_object_scale", true)
+go.property("blob_shadow_apply_object_euler_y", true)
+go.property("blob_shadow_use_light_direction", false)
+go.property("blob_shadow_direction", vmath.vector3(0, -1, 0))
+go.property("blob_shadow_offset", vmath.vector3(0, 0, 0))
+go.property("blob_shadow_max_distance", 5)
+go.property("blob_shadow_distance_scale", 1.5)
+go.property("blob_shadow_distance_alpha", 0)
+go.property("blob_shadow_raycast_group1", hash("default"))
+go.property("blob_shadow_raycast_group2", hash(""))
+go.property("blob_shadow_raycast_group3", hash(""))
+go.property("blob_shadow_late_update", false)
+
+function init(self)
+    blob_shadow.init(self)
+end
+
+function final(self)
+    blob_shadow.final(self)
+end
+
+function update(self, dt)
+    blob_shadow.update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+    blob_shadow.on_message(self, message_id, message, sender)
+end
