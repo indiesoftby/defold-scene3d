@@ -2,6 +2,9 @@
 main_collection = /examples/main.collectionc
 render = /scene3d/render/render3d.renderc
 
+[library]
+include_dirs = scene3d
+
 [script]
 shared_state = 1
 
