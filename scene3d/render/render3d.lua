@@ -52,7 +52,7 @@ function M.reset()
         { x = 0, y = 0, w = 1, h = 1 }
     }
 
-    M.view_position = vmath.vector3(0, 0, 700)
+    M.view_position = vmath.vector3(0, 0, 0)
     M.view_front = vmath.vector3(0, 0, -1)
     M.view_world_up = vmath.vector3(0, 1, 0)
 
