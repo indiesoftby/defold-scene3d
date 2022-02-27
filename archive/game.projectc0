@@ -167,6 +167,7 @@ http_thread_count = 4
 http_cache_enabled = 1
 
 [library]
+include_dirs = scene3d
 
 [script]
 shared_state = 1
