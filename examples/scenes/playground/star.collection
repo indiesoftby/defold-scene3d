@@ -61,9 +61,19 @@ instances {
       type: PROPERTY_TYPE_NUMBER
     }
     properties {
-      id: "blob_shadow_type"
-      value: "circle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_max_distance"
+      value: "10.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "blob_shadow_distance_scale"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {

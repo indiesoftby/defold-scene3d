@@ -8,8 +8,6 @@ local M = {
     BLOB_SHADOW_UPDATE = hash("blob_shadow_update")
 }
 
-local BLOB_SHADOWS_OBJ_ID = hash("/blob_shadows")
-
 local CLOSEST = { all = false }
 
 local EMPTY_HASH = hash("")
@@ -134,17 +132,18 @@ end
 --
 
 function M.init(self, options)
-    local blob_type = self.blob_shadow_type
-    if blob_type == EMPTY_HASH then
+    local factory_url = self.blob_shadow_factory_url
+    if factory_url == nil or factory_url == msg.url() then
         return
     end
 
     self.blob_shadow = options or {}
     local s = self.blob_shadow
+    s.factory_url = factory_url
 
     init_options(self)
 
-    local result, id = pcall(factory.create, msg.url(nil, BLOB_SHADOWS_OBJ_ID, blob_type), V3_ZERO, Q_IDENT, nil, V3_ONE)
+    local result, id = pcall(factory.create, s.factory_url, V3_ZERO, Q_IDENT, nil, V3_ONE)
     if not result then
         print("Meaningful error message + help what to do")
         print(id)

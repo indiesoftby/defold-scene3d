@@ -177,9 +177,9 @@ instances {
       type: PROPERTY_TYPE_NUMBER
     }
     properties {
-      id: "blob_shadow_type"
-      value: "rectangle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
     }
     properties {
       id: "blob_shadow_scale"
@@ -215,9 +215,9 @@ instances {
   component_properties {
     id: "icon"
     properties {
-      id: "blob_shadow_type"
-      value: "circle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
     }
   }
   scale3 {
@@ -243,9 +243,9 @@ instances {
   component_properties {
     id: "icon"
     properties {
-      id: "blob_shadow_type"
-      value: "circle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
     }
   }
   scale3 {
@@ -291,9 +291,9 @@ instances {
       type: PROPERTY_TYPE_NUMBER
     }
     properties {
-      id: "blob_shadow_type"
-      value: "rectangle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
     }
     properties {
       id: "blob_shadow_scale"
@@ -354,9 +354,9 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "blob_shadow_type"
-      value: "circle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
     }
     properties {
       id: "blob_shadow_distance_scale"
@@ -417,9 +417,9 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "blob_shadow_type"
-      value: "circle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
     }
     properties {
       id: "blob_shadow_distance_scale"
@@ -470,9 +470,9 @@ instances {
   component_properties {
     id: "prop"
     properties {
-      id: "blob_shadow_type"
-      value: "circle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
     }
   }
   scale3 {

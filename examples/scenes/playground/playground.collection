@@ -155,9 +155,9 @@ instances {
   component_properties {
     id: "prop"
     properties {
-      id: "blob_shadow_type"
-      value: "circle"
-      type: PROPERTY_TYPE_HASH
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
     }
   }
   scale3 {

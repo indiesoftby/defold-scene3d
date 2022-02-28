@@ -26,7 +26,7 @@ go.property("animation_loop", true)
 go.property("animation_pingpong", false)
 
 -- blob_shadow.lua
-go.property("blob_shadow_type", hash(""))
+go.property("blob_shadow_factory_url", msg.url(""))
 go.property("blob_shadow_tint", vmath.vector4(0, 0, 0, 0.5))
 -- go.property("blob_shadow_blend_mode", hash("alpha"))
 go.property("blob_shadow_scale", vmath.vector3(1, 1, 1))
