@@ -207,8 +207,8 @@ instances {
   }
 }
 instances {
-  id: "icon_letter_Z"
-  prototype: "/scene3d/prefabs/icons/letters/icon_letter_Z.go"
+  id: "icon_letter_A"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_A.go"
   position {
     x: -1.0
     y: 2.0
@@ -544,7 +544,7 @@ embedded_instances {
   children: "fireball"
   children: "icon_flag"
   children: "icon_key"
-  children: "icon_letter_Z"
+  children: "icon_letter_A"
   children: "primitive_cube"
   children: "primitive_sphere1"
   children: "primitive_sphere2"
