@@ -73,8 +73,8 @@ function M.resize_window()
 
     local displays = defos.get_displays()
     local current_display_id = defos.get_current_display_id()
-    local screen_width = 1920 -- displays[current_display_id].bounds.width
-    local screen_height = 1080 -- displays[current_display_id].bounds.height
+    local screen_width = displays[current_display_id].bounds.width
+    local screen_height = displays[current_display_id].bounds.height
 
     local project_width = tonumber(sys.get_config("display.width", 1920))
     local project_height = tonumber(sys.get_config("display.height", 1080))
@@ -83,11 +83,9 @@ function M.resize_window()
     local x, y, w, h = defos.get_view_size()
     w = project_width
     h = project_height
-    print("w x h -> ", w, h, screen_width, screen_height)
     while screen_height * 0.95 <= h or screen_width * 0.95 <= w do
         w = w * 0.75
         h = h * 0.75
-        print("w x h -> ", w, h, screen_width, screen_height)
     end
     defos.set_view_size(x, y, w, h)
 
