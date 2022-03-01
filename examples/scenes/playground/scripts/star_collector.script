@@ -3,6 +3,7 @@ go.property("car_physics_id", hash("/offroader/physics"))
 go.property("car_visuals_body_id", hash("/offroader/visuals_body"))
 
 local render3d = require("scene3d.render.render3d")
+local blob_shadow = require("scene3d.scripts.blob_shadow")
 
 local INIT_STAR = hash("init_star")
 local TRIGGER_RESPONSE = hash("trigger_response")
@@ -35,6 +36,8 @@ function on_message(self, message_id, message, sender)
             -- For some reason, the instance of the collision object is shared between all game objects!
             -- msg.post(sender, "disable")
             ----------
+
+            msg.post(message.other_id, blob_shadow.BLOB_SHADOW_DELETE)
 
             go.set_parent(message.other_id, self.car_visuals_body_id, true)
             go.set(msg.url(nil, message.other_id, "icon"), "frustum_mesh_use_world_position", true)

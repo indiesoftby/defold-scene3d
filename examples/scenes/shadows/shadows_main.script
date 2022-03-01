@@ -14,6 +14,7 @@ function final(self)
 end
 
 function update(self, dt)
+    render3d.debug_log("[WASD] Move flag")
 end
 
 function on_message(self, message_id, message, sender)

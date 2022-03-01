@@ -51,7 +51,7 @@ instances {
   id: "light_directional"
   prototype: "/scene3d/camera/light_directional.go"
   position {
-    x: 4.01
+    x: 3.01
     y: 2.42
     z: 0.85
   }
@@ -87,26 +87,6 @@ instances {
     x: 0.0
     y: 0.0
     z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "buildings_block_100x100"
-  prototype: "/scene3d/prefabs/buildings/buildings_block_1x1.go"
-  position {
-    x: 4.5
-    y: 0.0
-    z: 2.0
   }
   rotation {
     x: 0.0
@@ -481,6 +461,26 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "buildings_wall_5x3"
+  prototype: "/scene3d/prefabs/buildings/buildings_wall_5x3.go"
+  position {
+    x: 4.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.70710677
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "debug_ui"
   collection: "/scene3d/debug/photo_mode/debug_ui.collection"
@@ -541,6 +541,7 @@ embedded_instances {
 }
 embedded_instances {
   id: "objects"
+  children: "fireball"
   children: "icon_flag"
   children: "icon_key"
   children: "icon_letter_Z"
@@ -564,5 +565,230 @@ embedded_instances {
     x: 1.0
     y: 1.0
     z: 1.0
+  }
+}
+embedded_instances {
+  id: "fireball"
+  data: "components {\n"
+  "  id: \"animation_z\"\n"
+  "  component: \"/scene3d/scripts/animation.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_property\"\n"
+  "    value: \"position.z\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_to\"\n"
+  "    value: \"-2.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_easing\"\n"
+  "    value: \"inoutsine\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_duration\"\n"
+  "    value: \"5.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_pingpong\"\n"
+  "    value: \"true\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"blob_shadow_y\"\n"
+  "  component: \"/scene3d/scripts/blob_shadow.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_factory_url\"\n"
+  "    value: \"#custom_circle\"\n"
+  "    type: PROPERTY_TYPE_URL\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_tint\"\n"
+  "    value: \"1.0, 0.66, 0.0, 0.5\"\n"
+  "    type: PROPERTY_TYPE_VECTOR4\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_scale\"\n"
+  "    value: \"2.0, 2.0, 2.0\"\n"
+  "    type: PROPERTY_TYPE_VECTOR3\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_max_distance\"\n"
+  "    value: \"3.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_distance_scale\"\n"
+  "    value: \"0.5\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"blob_shadow_x\"\n"
+  "  component: \"/scene3d/scripts/blob_shadow.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_factory_url\"\n"
+  "    value: \"#custom_circle\"\n"
+  "    type: PROPERTY_TYPE_URL\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_tint\"\n"
+  "    value: \"1.0, 0.66, 0.0, 0.5\"\n"
+  "    type: PROPERTY_TYPE_VECTOR4\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_scale\"\n"
+  "    value: \"2.0, 2.0, 2.0\"\n"
+  "    type: PROPERTY_TYPE_VECTOR3\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_direction\"\n"
+  "    value: \"1.0, 0.0, 0.0\"\n"
+  "    type: PROPERTY_TYPE_VECTOR3\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_max_distance\"\n"
+  "    value: \"3.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"blob_shadow_distance_scale\"\n"
+  "    value: \"0.5\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"animation_y\"\n"
+  "  component: \"/scene3d/scripts/animation.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_property\"\n"
+  "    value: \"position.y\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_to\"\n"
+  "    value: \"2.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_easing\"\n"
+  "    value: \"inoutsine\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_duration\"\n"
+  "    value: \"2.5\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"animation_pingpong\"\n"
+  "    value: \"true\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"mesh\"\n"
+  "  type: \"mesh\"\n"
+  "  data: \"material: \\\"/scene3d/materials/primitive_atomic_tangerine.material\\\"\\n"
+  "vertices: \\\"/scene3d/assets/meshes/primitive_sphere.buffer\\\"\\n"
+  "textures: \\\"/scene3d/assets/textures/grid_10x10.png\\\"\\n"
+  "primitive_type: PRIMITIVE_TRIANGLES\\n"
+  "position_stream: \\\"position\\\"\\n"
+  "normal_stream: \\\"normal\\\"\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"custom_circle\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/examples/scenes/shadows/blob_circle_blend_add.go\\\"\\n"
+  "load_dynamically: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 3.5
+    y: 0.5
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
   }
 }

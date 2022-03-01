@@ -5,7 +5,8 @@ local math3d = require("scene3d.helpers.math3d")
 local lu_helper = require("scene3d.helpers.late_update")
 
 local M = {
-    BLOB_SHADOW_UPDATE = hash("blob_shadow_update")
+    BLOB_SHADOW_UPDATE = hash("blob_shadow_update"),
+    BLOB_SHADOW_DELETE = hash("blob_shadow_delete")
 }
 
 local CLOSEST = { all = false }
@@ -145,8 +146,9 @@ function M.init(self, options)
 
     local result, id = pcall(factory.create, s.factory_url, V3_ZERO, Q_IDENT, nil, V3_ONE)
     if not result then
-        print("Meaningful error message + help what to do")
-        print(id)
+        local err = id
+        print("⚠⚠⚠ The factory " .. tostring(s.factory_url) .. " isn't found. Do not forget to add `blob_shadows.go` to your scene if you use the included blob shadows.")
+        print(err)
         self.blob_shadow = nil
         return
     end
@@ -173,6 +175,8 @@ function M.final(self)
     if s.late_update_id then
         lu_helper.unsubscribe(s.late_update_id)
     end
+
+    self.blob_shadow = nil
 end
 
 function M.update(self, dt)
@@ -195,6 +199,8 @@ function M.on_message(self, message_id, message, sender)
     if message_id == M.BLOB_SHADOW_UPDATE then
         init_options(self)
         update_base_scale(self)
+    elseif message_id == M.BLOB_SHADOW_DELETE then
+        M.final(self)
     elseif s.late_update_id and message_id == lu_helper.LATE_UPDATE then
         update_shadow(self)
     end

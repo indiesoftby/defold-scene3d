@@ -66,13 +66,23 @@ instances {
       type: PROPERTY_TYPE_URL
     }
     properties {
+      id: "blob_shadow_tint"
+      value: "1.0, 0.9, 0.66, 0.75"
+      type: PROPERTY_TYPE_VECTOR4
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "2.0, 2.0, 1.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
       id: "blob_shadow_max_distance"
-      value: "10.0"
+      value: "3.0"
       type: PROPERTY_TYPE_NUMBER
     }
     properties {
       id: "blob_shadow_distance_scale"
-      value: "2.0"
+      value: "0.5"
       type: PROPERTY_TYPE_NUMBER
     }
   }
