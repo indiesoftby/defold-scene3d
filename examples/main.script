@@ -19,6 +19,9 @@ function init(self)
     main.setup_error_handling()
     window.set_listener(main.window_callback)
 
+    -- Resize game window on desktop platforms
+    main.resize_window()
+
     -- Set Pointer Lock's virtual cursor invisible by default
     pointer.cursor_visible = false
 
