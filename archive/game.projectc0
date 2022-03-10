@@ -5,6 +5,7 @@ write_log = 0
 compress_archive = 1
 publisher = unnamed
 developer = Indiesoft LLC
+title_as_file_name = scene3d_examples
 
 [display]
 width = 1920
@@ -83,9 +84,6 @@ use_accelerometer = 1
 [sprite]
 max_count = 10000
 subpixels = 1
-
-[spine]
-max_count = 128
 
 [model]
 max_count = 10000
