@@ -124,4 +124,16 @@ function M.debug_log(t)
     M.debug_text = M.debug_text .. tostring(t) .. "   "
 end
 
+local ENGINE_VERSION = {}
+for num in sys.get_engine_info().version:gmatch("%d+") do 
+    table.insert(ENGINE_VERSION, tonumber(num))
+end
+
+-- Returns true if `major.minor.patch` >= the engine version
+function M.engine_version(major, minor, patch)
+    return ENGINE_VERSION[1] > major or 
+        (ENGINE_VERSION[1] == major and ENGINE_VERSION[2] > minor) or 
+        (ENGINE_VERSION[1] == major and ENGINE_VERSION[2] == minor and ENGINE_VERSION[3] >= patch)
+end
+
 return M
