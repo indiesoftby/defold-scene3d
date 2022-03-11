@@ -44,6 +44,13 @@ function update(self, dt)
         self.unpause_proxy = false
         msg.post(self.loaded_proxy, "enable")
     end
+
+    render3d.debug_log("[5] Restart")
+    render3d.debug_log("[6] Next")
+
+    if pointer.locked then
+        render3d.debug_log("[Esc] Unlock mouse")
+    end
 end
 
 function on_message(self, message_id, message, sender)

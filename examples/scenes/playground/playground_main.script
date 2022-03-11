@@ -41,13 +41,6 @@ function update(self, dt)
         render3d.debug_log("[Space] Jump")
         render3d.debug_log("[4] Car")
     end
-
-    render3d.debug_log("[5] Restart")
-    render3d.debug_log("[6] Next")
-
-    if pointer.locked then
-        render3d.debug_log("[Esc] Unlock mouse")
-    end
 end
 
 function on_message(self, message_id, message, sender)
