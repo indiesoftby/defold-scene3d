@@ -16,6 +16,11 @@ instances {
   component_properties {
     id: "camera3d"
     properties {
+      id: "late_update"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
       id: "late_update_priority"
       value: "10.0"
       type: PROPERTY_TYPE_NUMBER

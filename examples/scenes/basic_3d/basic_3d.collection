@@ -16,6 +16,11 @@ instances {
   component_properties {
     id: "camera3d"
     properties {
+      id: "late_update"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
       id: "late_update_priority"
       value: "10.0"
       type: PROPERTY_TYPE_NUMBER
@@ -45,26 +50,6 @@ instances {
     x: 200.0
     y: 200.0
     z: 200.0
-  }
-}
-instances {
-  id: "late_update"
-  prototype: "/scene3d/helpers/late_update.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
@@ -226,6 +211,26 @@ instances {
 instances {
   id: "blob_shadows"
   prototype: "/scene3d/fx/blob_shadows.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "late_update"
+  prototype: "/scene3d/helpers/late_update.go"
   position {
     x: 0.0
     y: 0.0

@@ -6,6 +6,7 @@ go.property("near_clip", 0.1)
 go.property("far_clip", 100)
 go.property("viewport", vmath.vector4(0, 0, 1, 1))
 
+go.property("late_update", false)
 go.property("late_update_priority", 1)
 
 go.property("debug_mesh_id", hash("debug_mesh"))
@@ -50,7 +51,9 @@ end
 function init(self)
     assert(self.projection == PERSPECTIVE, "Only perspective projection is supported.")
 
-    self.late_update_id = lu_helper.subscribe(self.late_update_priority)
+    if self.late_update then
+        self.late_update_id = lu_helper.subscribe(self.late_update_priority)
+    end
 
     if self.debug_mesh_id ~= EMPTY_HASH then
         msg.post(msg.url(nil, nil, self.debug_mesh_id), DISABLE)
@@ -58,10 +61,15 @@ function init(self)
 end
 
 function final(self)
-    lu_helper.unsubscribe(self.late_update_id)
+    if self.late_update_id then
+        lu_helper.unsubscribe(self.late_update_id)
+    end
 end
 
 function update(self, dt)
+    if not self.late_update_id then
+        update_render(self)
+    end
 end
 
 function on_message(self, message_id, message, sender)
