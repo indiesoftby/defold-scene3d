@@ -114,7 +114,31 @@ function M.clamp01(x)
     end
 end
 
+-- Linearly interpolate between two values.
+-- Use the optional argument `dt` to perform an accurate framerate-independent linear interpolation with delta-time,
+-- where `t` is the lerp coefficient per second. So t = 0.5 halves the difference every second.
+-- By @ross.grams, https://forum.defold.com/t/lua-utility-functions/70526/14
+-- @param t The interpolation value between the two floats. The value is clamped to the range [0, 1].
+-- @param a The start value.
+-- @param b The end value.
+-- @param[opt] dt Delta-time.
+-- @return An interpolated value.
+function M.lerp(t, a, b, dt)
+    t = M.clamp01(t)
+    if dt then
+        local diff = a - b
+        return diff * (1 - t) ^ dt + b
+    else
+        return vmath.lerp(t, a, b)
+    end
+end
+
 --- Same as `vmath.lerp` but `max_step` limits the increment of value.
+-- @param t The interpolation value between the two floats. The value is clamped to the range [0, 1].
+-- @param a The start value.
+-- @param b The end value.
+-- @param max_step The maximum increment of the value.
+-- @return An interpolated value.
 function M.limited_lerp(t, a, b, max_step)
     if scene3d.is_vector3(a) then
         return vmath.vector3(
@@ -171,7 +195,7 @@ end
 
 --- Interpolates between min and max with smoothing at the limits.
 function M.smooth_step(x, min, max)
-    if type(x) == "userdata" then
+    if scene3d.is_vector3(x) then
         return vmath.vector3(M.smooth_step(x.x, min, max), M.smooth_step(x.y, min, max), M.smooth_step(x.z, min, max))
     end
     x = M.clamp(x, min, max)

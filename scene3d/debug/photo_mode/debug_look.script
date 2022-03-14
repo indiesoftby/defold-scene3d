@@ -1,4 +1,5 @@
 local render3d = require("scene3d.render.render3d")
+local math3d = require("scene3d.helpers.math3d")
 local lu_helper = require("scene3d.helpers.late_update")
 local pointer = require("pointer_lock.pointer")
 
@@ -63,7 +64,7 @@ local function handle_movement(self, dt)
     end
 
     if vmath.length(TMP) ~= 0 then
-        s.move_speed = vmath.lerp(0.005, s.move_speed, 12)
+        s.move_speed = math3d.lerp(0.3, s.move_speed, 20, dt)
     else
         s.move_speed = 0
     end
