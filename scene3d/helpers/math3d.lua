@@ -114,10 +114,10 @@ function M.clamp01(x)
     end
 end
 
--- Linearly interpolate between two values.
+--- Linearly interpolate between two values.
 -- Use the optional argument `dt` to perform an accurate framerate-independent linear interpolation with delta-time,
 -- where `t` is the lerp coefficient per second. So t = 0.5 halves the difference every second.
--- By @ross.grams, https://forum.defold.com/t/lua-utility-functions/70526/14
+-- Based on the @ross.grams code, https://forum.defold.com/t/lua-utility-functions/70526/14
 -- @param t The interpolation value between the two floats. The value is clamped to the range [0, 1].
 -- @param a The start value.
 -- @param b The end value.
@@ -162,16 +162,29 @@ function M.limited_lerp(t, a, b, max_step)
 end
 
 --- Same as `vmath.lerp` but makes sure the values interpolate correctly when they wrap around 360 degrees.
--- @param t The value is clamped to the range [0, 1].
--- @param a Degrees.
--- @param b Degrees.
+-- Use the optional argument `dt` to perform an accurate framerate-independent linear interpolation with delta-time,
+-- where `t` is the lerp coefficient per second. So t = 0.5 halves the difference every second.
+-- Based on the @ross.grams code, https://forum.defold.com/t/lua-utility-functions/70526/14
+-- @param t The interpolation value between the two angles. The value is clamped to the range [0, 1].
+-- @param a Degrees, the start value.
+-- @param b Degrees, the end value.
+-- @param[opt] dt Delta-time.
 -- @return An interpolated value.
-function M.lerp_angle(t, a, b)
-    local delta = M.repeat_((b - a), 360)
-    if delta > 180 then
-        delta = delta - 360
+function M.lerp_angle(t, a, b, dt)
+    t = M.clamp01(t)
+    if dt then
+        local diff = M.repeat_((a - b), 360)
+        if diff > 180 then
+            diff = diff - 360
+        end
+        return diff * (1 - t) ^ dt + b
+    else
+        local diff = M.repeat_((b - a), 360)
+        if diff > 180 then
+            diff = diff - 360
+        end
+        return a + diff * t
     end
-    return a + delta * M.clamp01(t)
 end
 
 --- Calculates the lerp parameter between of two values.
