@@ -6,6 +6,7 @@ go.property("turn_speed2", 10)
 go.property("traction_const", 500)
 go.property("acceleration_apply_point", vmath.vector3(0, -0.3, -2.1))
 
+go.property("async_init", false)
 go.property("debug_draw", false)
 go.property("debug_info", false)
 
@@ -73,7 +74,7 @@ local function apply_torque(collisionobject_url, force)
     msg.post(collisionobject_url, APPLY_FORCE, { force = vmath.rotate(rotation, -force), position = world_position + vmath.rotate(rotation, vmath.vector3(offset, 0, -offset)) })
 end
 
-function init(self)
+local function init_car(self)
     self.physics_url = msg.url(nil, self.car_physics_id, nil)
     self.chassis_url = msg.url(nil, self.car_physics_id, self.car_physics_chassis_id)
     self.visuals_url = msg.url(nil, self.car_visuals_id, nil)
@@ -113,11 +114,26 @@ function init(self)
     frustum_mesh.init(self, meshes)
 end
 
+function init(self)
+    if self.async_init then
+        msg.post("#", INIT)
+    else
+        init_car(self)
+    end
+end
+
 function final(self)
+    if not self.car_data then
+        return
+    end
+
     frustum_mesh.final(self)
 end
 
 function update(self, dt)
+    if not self.car_data then
+        return
+    end
     local c = self.car_data
 
     --
@@ -250,5 +266,7 @@ function on_message(self, message_id, message, sender)
         local pos = go.get(visual_url, POSITION_Y)
         go.set(visual_url, POSITION_Y, vmath.lerp(0.65, pos, message.wheel_pos))
         self.wheel_touching[message.wheel_id] = message.touching
+    elseif message_id == INIT then
+        init_car(self)
     end
 end
