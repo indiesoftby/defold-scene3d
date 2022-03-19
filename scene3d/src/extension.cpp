@@ -316,6 +316,45 @@ static int ChunkIdHash(lua_State* L)
     return 1;
 }
 
+static dmScript::LuaCallbackInfo *g_PreRenderCallback = 0;
+
+static void ClearPreRenderCallback()
+{
+    if (!dmScript::IsCallbackValid(g_PreRenderCallback)) {
+        return;
+    }
+
+    dmScript::DestroyCallback(g_PreRenderCallback);
+    g_PreRenderCallback = 0x0;
+}
+
+static int SetPreRenderCallback(lua_State* L)
+{
+    ClearPreRenderCallback();
+
+    g_PreRenderCallback = dmScript::CreateCallback(L, 1);
+    return 0;
+}
+
+static void CallPreRenderCallback()
+{
+    if (!dmScript::IsCallbackValid(g_PreRenderCallback)) {
+        return;
+    }
+
+    lua_State *L = dmScript::GetCallbackLuaContext(g_PreRenderCallback);
+    if (!dmScript::SetupCallback(g_PreRenderCallback)) {
+        dmScript::DestroyCallback(g_PreRenderCallback);
+        g_PreRenderCallback = 0x0;
+        return;
+    }
+
+    // lua_pushnumber(L, 0);
+    dmScript::PCall(L, 1, 0);
+
+    dmScript::TeardownCallback(g_PreRenderCallback);
+}
+
 static int Simplex_Seed(lua_State* L)
 {
     int seed = luaL_checkinteger(L, 1);
@@ -428,6 +467,7 @@ static const luaL_reg Module_methods[] = {
     { "frustum_mesh_vis_changed", Frustum_Mesh_Visibility_Changed },
     //
     { "chunk_id_hash", ChunkIdHash },
+    { "set_prerender_callback", SetPreRenderCallback },
     //
     { "simplex_seed", Simplex_Seed },
     { "simplex_noise2", Simplex_Noise2 },
@@ -457,9 +497,43 @@ static dmExtension::Result InitializeExt(dmExtension::Params* params)
     return dmExtension::RESULT_OK;
 }
 
+static dmExtension::Result OnPreRender(dmExtension::Params* params)
+{
+    CallPreRenderCallback();
+
+    return dmExtension::RESULT_OK;
+}
+
+static dmExtension::Result OnPostRender(dmExtension::Params* params)
+{
+    // CallPostRenderCallback();
+
+    return dmExtension::RESULT_OK;
+}
+
+static dmExtension::Result AppInitializeExt(dmExtension::AppParams* params)
+{
+    dmExtension::RegisterCallback(dmExtension::CALLBACK_PRE_RENDER, OnPreRender);
+    dmExtension::RegisterCallback(dmExtension::CALLBACK_POST_RENDER, OnPostRender);
+
+    return dmExtension::RESULT_OK;
+}
+
 static dmExtension::Result FinalizeExt(dmExtension::Params* params)
 {
     return dmExtension::RESULT_OK;
 }
 
-DM_DECLARE_EXTENSION(scene3d, "scene3d", 0, 0, InitializeExt, 0, 0, FinalizeExt)
+static dmExtension::Result AppFinalizeExt(dmExtension::AppParams* params)
+{
+    ClearPreRenderCallback();
+
+    return dmExtension::RESULT_OK;
+}
+
+static dmExtension::Result OnUpdateExt(dmExtension::Params* params)
+{
+    return dmExtension::RESULT_OK;
+}
+
+DM_DECLARE_EXTENSION(scene3d, "scene3d", AppInitializeExt, AppFinalizeExt, InitializeExt, OnUpdateExt, 0, FinalizeExt)

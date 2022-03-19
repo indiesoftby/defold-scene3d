@@ -32,6 +32,8 @@ function final(self)
 end
 
 function update(self, dt)
+    print(render3d.frame_num .. " - playground_main.script: update")
+
     local car_enabled = go.get(self.car_orbit_follow_url, "enabled")
     if car_enabled then
         render3d.debug_log("[WASD] Drive")

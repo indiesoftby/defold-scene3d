@@ -74,6 +74,7 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == lu_helper.LATE_UPDATE then
+        print(render3d.frame_num .. " - camera3d.script: late update")
         late_update(self)
     end
 end

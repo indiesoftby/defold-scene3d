@@ -1,3 +1,5 @@
+local render3d = require("scene3d.render.render3d")
+
 local M = {}
 
 M.LATE_UPDATE = hash("late_update")
@@ -37,6 +39,8 @@ function M._init(self)
 end
 
 function M._late_update_all(self)
+    print(render3d.frame_num .. " - late_update: update all")
+
     for _, s in ipairs(self.call_list) do
         -- print(s.priority, s.id)
         msg.post(s.receiver, M.LATE_UPDATE)
