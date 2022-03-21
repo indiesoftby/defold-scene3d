@@ -261,8 +261,6 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    print(render3d.frame_num .. " - car_main.script - " .. tostring(message_id))
-
     if message_id == SUSPENSION_UPDATE then
         local visual_url = self.wheel_visual_url[message.wheel_id]
         local pos = go.get(visual_url, POSITION_Y)

@@ -12,7 +12,6 @@ go.property("late_update_priority", 1)
 
 local render3d = require("scene3d.render.render3d")
 local math3d = require("scene3d.helpers.math3d")
-local lu_helper = require("scene3d.helpers.late_update")
 local pointer = require("pointer_lock.pointer")
 
 local EMPTY_HASH = hash("")
@@ -47,6 +46,10 @@ end
 
 -- This update will happen after game objects have been moved by the physics engine
 local function late_update(self)
+    if not self.enabled then
+        return
+    end
+
     update_camera(self)
 end
 
@@ -63,11 +66,11 @@ function init(self)
         msg.post(".", hash("acquire_input_focus"))
     end
 
-    self.late_update_id = lu_helper.subscribe(self.late_update_priority)
+    self.late_update_id = scene3d.prerender_register(late_update, self.late_update_priority)
 end
 
 function final(self)
-    lu_helper.unsubscribe(self.late_update_id)
+    scene3d.prerender_unregister(self.late_update_id)
 end
 
 function update(self, dt)
@@ -90,10 +93,6 @@ function on_message(self, message_id, message, sender)
     -- if message_id == hash("update_camera") then
     --     update_camera(self)
     -- end
-
-    if message_id == lu_helper.LATE_UPDATE then
-        late_update(self)
-    end
 end
 
 function on_input(self, action_id, action)

@@ -30,11 +30,6 @@ function init(self)
 
     print("Loading the first scene", self.scene1)
     main.load_scene(self, self.scene1)
-
-    scene3d.set_prerender_callback(function(self)
-        print(render3d.frame_num .. " - prerender callback")
-        msg.post("#", "test")
-    end)
 end
 
 function final(self)
@@ -42,8 +37,6 @@ function final(self)
 end
 
 function update(self, dt)
-    print(render3d.frame_num .. " - main.script: update")
-
     if self.pause_proxy then
         self.pause_proxy = false
         msg.post(self.loaded_proxy, "disable")
@@ -61,8 +54,6 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    print(render3d.frame_num .. " - main.script: on_message(self, " .. message_id .. ")")
-
     flow.on_message(message_id, message, sender)
 
     if message_id == hash("load_scene") then

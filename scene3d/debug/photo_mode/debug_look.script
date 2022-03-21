@@ -1,6 +1,5 @@
 local render3d = require("scene3d.render.render3d")
 local math3d = require("scene3d.helpers.math3d")
-local lu_helper = require("scene3d.helpers.late_update")
 local pointer = require("pointer_lock.pointer")
 
 go.property("key_id", hash("key_0"))
@@ -78,7 +77,10 @@ local function handle_movement(self, dt)
     -- print("debug look set view pos", render3d.frame_num)
     -- render3d.view_position = s.pos
 
-    msg.post("#", "update_render")
+    render3d.far = self.far
+    render3d.near = self.near
+    render3d.view_position = self.pos
+    update_eulers(self)
 end
 
 -- This update will happen after game objects have been moved by the physics engine
@@ -95,7 +97,7 @@ local function pitch_from_direction(direction)
 end
 
 function init(self)
-    self.late_update_id = lu_helper.subscribe(1000)
+    self.late_update_id = scene3d.prerender_register(late_update, 1000)
 
     if self.acquire_input_focus then
         msg.post(".", hash("acquire_input_focus"))
@@ -125,7 +127,7 @@ function init(self)
 end
 
 function final(self)
-    lu_helper.unsubscribe(self.late_update_id)
+    scene3d.prerender_unregister(self.late_update_id)
 end
 
 function update(self, dt)
@@ -152,14 +154,7 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    if message_id == lu_helper.LATE_UPDATE then
-        late_update(self)
-    elseif message_id == hash("update_render") then
-        render3d.far = self.far
-        render3d.near = self.near
-        render3d.view_position = self.pos
-        update_eulers(self)
-    elseif message_id == hash("parent_init") then
+    if message_id == hash("parent_init") then
         self.parent_url = sender
         self.parent_ui_url = message.ui
     end

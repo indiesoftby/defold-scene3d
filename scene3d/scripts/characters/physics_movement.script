@@ -125,8 +125,6 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    print(render3d.frame_num .. " - physics_movement.script - " .. tostring(message_id))
-
     if message_id == INPUT then
         -- Not used...
         -- self.last_input = render3d.frame_num
