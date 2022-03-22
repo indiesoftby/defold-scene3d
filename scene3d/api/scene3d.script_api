@@ -86,7 +86,7 @@
 
   - name: prerender_register
     type: function
-    desc: Add prerender callback to be called after all `update` functions have been called.
+    desc: Register the callback. It is called after all `update` functions have been called.
     parameters:
     - name: callback
       type: function
@@ -99,7 +99,7 @@
 
   - name: prerender_unregister
     type: function
-    desc: Remove prerender callback from subscription.
+    desc: Unregister the callback.
     parameters:
     - name: callback_id
       type: integer
