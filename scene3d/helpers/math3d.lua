@@ -103,6 +103,15 @@ function M.repeat_(t, length)
     return M.clamp(t - math.floor(t / length) * length, 0.0, length)
 end
 
+--- Calculates the shortest difference between two given angles (in degrees).
+function M.delta_angle(a, b)
+    local diff = M.repeat_((b - a), 360)
+    if diff > 180 then
+        diff = diff - 360
+    end
+    return diff
+end
+
 --- Clamps x between 0 and 1 and returns value.
 function M.clamp01(x)
     if x < 0 then
@@ -173,16 +182,10 @@ end
 function M.lerp_angle(t, a, b, dt)
     t = M.clamp01(t)
     if dt then
-        local diff = M.repeat_((a - b), 360)
-        if diff > 180 then
-            diff = diff - 360
-        end
+        local diff = M.delta_angle(b, a)
         return diff * (1 - t) ^ dt + b
     else
-        local diff = M.repeat_((b - a), 360)
-        if diff > 180 then
-            diff = diff - 360
-        end
+        local diff = M.delta_angle(a, b)
         return a + diff * t
     end
 end
