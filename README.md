@@ -144,7 +144,7 @@ The table briefly describes the included helper math functions. The source code 
 | `math3d.clamp01(x)` | Clamps x between 0 and 1 and returns value. | `Mathf.Clamp` |
 | `math3d.inverse_lerp(t, a, b)` | Calculates the lerp parameter between of two values. | `Mathf.InverseLerp` |
 | `math3d.lerp(t, a, b, [dt])` | Linearly interpolates between `a` and `b` by `t`. The parameter `t` is clamped to the range `[0, 1]`. | `Mathf.Lerp` |
-| `math3d.lerp_angle(t, a, b)` | Same as `vmath.lerp` but makes sure the values interpolate correctly when they wrap around 360 degrees. | `Mathf.LerpAngle` |
+| `math3d.lerp_angle(t, a, b, [dt])` | Same as `vmath.lerp` but makes sure the values interpolate correctly when they wrap around 360 degrees. | `Mathf.LerpAngle` |
 | `math3d.limited_lerp(t, a, b, max_step)` | Same as `vmath.lerp` but `max_step` limits the increment of value. | - |
 | `math3d.ping_pong(t, length)` | Pingpongs the value t, so that it is never larger than length and never smaller than 0. | `Mathf.PingPong` |
 | `math3d.repeat_(t, length)` | Loops the value t, so that it is never larger than length and never smaller than 0. | `Mathf.Repeat` |
@@ -172,8 +172,9 @@ The following issues are critical for the further development of Scene3D. Please
 * [Material option to enable anisotropic texture filtering](https://github.com/defold/defold/issues/6155).
 * [Optimize file size of Buffer](https://github.com/defold/defold/issues/6272) + [Add option for indexed vertices for buffers to be used with the mesh component](https://github.com/defold/defold/issues/5477).
 * [More matrix types as shader constants](https://github.com/defold/defold/issues/3789).
-* [Custom vertex format](https://github.com/defold/defold/issues/3403)
+* [Custom vertex format](https://github.com/defold/defold/issues/3403).
 * [Frustum and Occlusion culling](https://github.com/defold/defold/issues/3406) + [Add bounding box representation for gameobjects](https://github.com/defold/defold/issues/6292).
+* [Create buffer resources at runtime](https://github.com/defold/defold/issues/5648).
 
 #### Editor Issues
 

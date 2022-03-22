@@ -84,6 +84,29 @@
     - name: v
       type: vector3
 
+  - name: prerender_register
+    type: function
+    desc: Register the callback. It is called after all `update` functions have been called.
+    parameters:
+    - name: callback
+      type: function
+    - name: priority
+      optional: true
+      type: integer
+    return:
+    - name: id
+      type: integer
+
+  - name: prerender_unregister
+    type: function
+    desc: Unregister the callback.
+    parameters:
+    - name: callback_id
+      type: integer
+    return:
+    - name: success
+      type: boolean
+
   - name: simplex_seed
     type: function
     parameters:

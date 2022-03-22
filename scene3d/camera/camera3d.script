@@ -12,7 +12,6 @@ go.property("late_update_priority", 1)
 go.property("debug_mesh_id", hash("debug_mesh"))
 
 local render3d = require("scene3d.render.render3d")
-local lu_helper = require("scene3d.helpers.late_update")
 
 local EMPTY_HASH = hash("")
 
@@ -52,7 +51,7 @@ function init(self)
     assert(self.projection == PERSPECTIVE, "Only perspective projection is supported.")
 
     if self.late_update then
-        self.late_update_id = lu_helper.subscribe(self.late_update_priority)
+        self.late_update_id = scene3d.prerender_register(late_update, self.late_update_priority)
     end
 
     if self.debug_mesh_id ~= EMPTY_HASH then
@@ -62,7 +61,7 @@ end
 
 function final(self)
     if self.late_update_id then
-        lu_helper.unsubscribe(self.late_update_id)
+        scene3d.prerender_unregister(self.late_update_id)
     end
 end
 
@@ -73,7 +72,4 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    if message_id == lu_helper.LATE_UPDATE then
-        late_update(self)
-    end
 end

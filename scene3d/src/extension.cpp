@@ -202,7 +202,7 @@ static int Quat_LookRotation(lua_State* L)
 static const dmhash_t MSG_ENABLE  = dmHashString64("enable");
 static const dmhash_t MSG_DISABLE = dmHashString64("disable");
 
-static struct Frustum_Mesh
+struct Frustum_Mesh
 {
     bool m_Active;
     bool m_Visible;
@@ -314,6 +314,122 @@ static int ChunkIdHash(lua_State* L)
 
     lua_pushinteger(L, id);
     return 1;
+}
+
+struct PreRenderCallback
+{
+    std::vector<PreRenderCallback>::size_type m_Id;
+    dmScript::LuaCallbackInfo* m_Callback;
+    int m_Priority;
+};
+
+static bool g_PreRenderCallbacksLock;
+// TODO: replace vectors with dmSDK's arrays.
+static std::vector<PreRenderCallback> g_PreRenderCallbacks;
+static std::vector<PreRenderCallback>::size_type g_PreRenderCallbacksNextId = 1;
+
+bool CompareByPriority(PreRenderCallback a, PreRenderCallback b)
+{
+    return a.m_Priority < b.m_Priority;
+}
+
+static int PreRender_AddCallback(lua_State* L)
+{
+    if (g_PreRenderCallbacksLock)
+    {
+        return luaL_error(L, "Can't add callback during its invocation.");
+    }
+    dmScript::LuaCallbackInfo* cb = dmScript::CreateCallback(L, 1);
+    const int priority            = lua_isnumber(L, 2) ? luaL_checkint(L, 2) : 1;
+
+    PreRenderCallback callback = PreRenderCallback();
+    callback.m_Id              = g_PreRenderCallbacksNextId;
+    callback.m_Callback        = cb;
+    callback.m_Priority        = priority;
+
+    g_PreRenderCallbacks.push_back(callback);
+    g_PreRenderCallbacksNextId++;
+
+    lua_pushnumber(L, callback.m_Id);
+    return 1;
+}
+
+static int PreRender_RemoveCallback(lua_State* L)
+{
+    if (g_PreRenderCallbacksLock)
+    {
+        return luaL_error(L, "Can't remove callback during its invocation.");
+    }
+
+    const int callback_id = luaL_checkint(L, 1);
+
+    std::vector<PreRenderCallback>::size_type size = g_PreRenderCallbacks.size();
+    for (std::vector<PreRenderCallback>::size_type idx = 0; idx < size; ++idx)
+    {
+        PreRenderCallback& callback = g_PreRenderCallbacks[idx];
+        if (callback.m_Id == callback_id)
+        {
+            if (dmScript::IsCallbackValid(callback.m_Callback))
+            {
+                dmScript::DestroyCallback(callback.m_Callback);
+            }
+            g_PreRenderCallbacks.erase(g_PreRenderCallbacks.begin() + idx);
+
+            lua_pushboolean(L, true);
+            return 1;
+        }
+    }
+
+    lua_pushboolean(L, false);
+    return 1;
+}
+
+static void PreRender_ClearCallbacks()
+{
+    std::vector<PreRenderCallback>::size_type size = g_PreRenderCallbacks.size();
+    for (std::vector<PreRenderCallback>::size_type idx = 0; idx < size; ++idx)
+    {
+        PreRenderCallback& callback = g_PreRenderCallbacks[idx];
+        if (dmScript::IsCallbackValid(callback.m_Callback))
+        {
+            dmScript::DestroyCallback(callback.m_Callback);
+        }
+    }
+
+    g_PreRenderCallbacks.clear();
+}
+
+static void PreRender_InvokeCallbacks()
+{
+    g_PreRenderCallbacksLock = true;
+
+    std::sort(g_PreRenderCallbacks.begin(), g_PreRenderCallbacks.end(), CompareByPriority);
+
+    std::vector<PreRenderCallback>::size_type size = g_PreRenderCallbacks.size();
+    for (std::vector<PreRenderCallback>::size_type idx = 0; idx < size;)
+    {
+        PreRenderCallback& callback = g_PreRenderCallbacks[idx];
+        if (!dmScript::IsCallbackValid(callback.m_Callback))
+        {
+            g_PreRenderCallbacks.erase(g_PreRenderCallbacks.begin() + idx);
+            continue;
+        }
+
+        lua_State* L = dmScript::GetCallbackLuaContext(callback.m_Callback);
+        if (!dmScript::SetupCallback(callback.m_Callback))
+        {
+            dmScript::DestroyCallback(callback.m_Callback);
+            g_PreRenderCallbacks.erase(g_PreRenderCallbacks.begin() + idx);
+            continue;
+        }
+
+        dmScript::PCall(L, 1, 0);
+        dmScript::TeardownCallback(callback.m_Callback);
+
+        ++idx;
+    }
+
+    g_PreRenderCallbacksLock = false;
 }
 
 static int Simplex_Seed(lua_State* L)
@@ -429,6 +545,9 @@ static const luaL_reg Module_methods[] = {
     //
     { "chunk_id_hash", ChunkIdHash },
     //
+    { "prerender_register", PreRender_AddCallback },
+    { "prerender_unregister", PreRender_RemoveCallback },
+    //
     { "simplex_seed", Simplex_Seed },
     { "simplex_noise2", Simplex_Noise2 },
     { "simplex_noise3", Simplex_Noise3 },
@@ -457,9 +576,42 @@ static dmExtension::Result InitializeExt(dmExtension::Params* params)
     return dmExtension::RESULT_OK;
 }
 
+static dmExtension::Result OnPreRender(dmExtension::Params* params)
+{
+    PreRender_InvokeCallbacks();
+
+    return dmExtension::RESULT_OK;
+}
+
+static dmExtension::Result OnPostRender(dmExtension::Params* params)
+{
+    // Nothing here yet.
+    return dmExtension::RESULT_OK;
+}
+
+static dmExtension::Result AppInitializeExt(dmExtension::AppParams* params)
+{
+    dmExtension::RegisterCallback(dmExtension::CALLBACK_PRE_RENDER, OnPreRender);
+    dmExtension::RegisterCallback(dmExtension::CALLBACK_POST_RENDER, OnPostRender);
+
+    return dmExtension::RESULT_OK;
+}
+
 static dmExtension::Result FinalizeExt(dmExtension::Params* params)
 {
     return dmExtension::RESULT_OK;
 }
 
-DM_DECLARE_EXTENSION(scene3d, "scene3d", 0, 0, InitializeExt, 0, 0, FinalizeExt)
+static dmExtension::Result AppFinalizeExt(dmExtension::AppParams* params)
+{
+    PreRender_ClearCallbacks();
+
+    return dmExtension::RESULT_OK;
+}
+
+static dmExtension::Result OnUpdateExt(dmExtension::Params* params)
+{
+    return dmExtension::RESULT_OK;
+}
+
+DM_DECLARE_EXTENSION(scene3d, "scene3d", AppInitializeExt, AppFinalizeExt, InitializeExt, OnUpdateExt, 0, FinalizeExt)

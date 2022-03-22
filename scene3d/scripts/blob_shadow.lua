@@ -2,7 +2,6 @@
 
 local render3d = require("scene3d.render.render3d")
 local math3d = require("scene3d.helpers.math3d")
-local lu_helper = require("scene3d.helpers.late_update")
 
 local M = {
     BLOB_SHADOW_UPDATE = hash("blob_shadow_update"),
@@ -128,6 +127,10 @@ local function update_shadow(self)
     end
 end
 
+local function late_update(self)
+    update_shadow(self)
+end
+
 --
 -- Public
 --
@@ -160,7 +163,7 @@ function M.init(self, options)
     update_base_scale(self)
 
     if self.blob_shadow_late_update then
-        s.late_update_id = lu_helper.subscribe()
+        s.late_update_id = scene3d.prerender_register(late_update)
     end
 end
 
@@ -173,7 +176,7 @@ function M.final(self)
     go.delete(s.blob_obj_url)
 
     if s.late_update_id then
-        lu_helper.unsubscribe(s.late_update_id)
+        scene3d.prerender_unregister(s.late_update_id)
     end
 
     self.blob_shadow = nil
@@ -201,8 +204,6 @@ function M.on_message(self, message_id, message, sender)
         update_base_scale(self)
     elseif message_id == M.BLOB_SHADOW_DELETE then
         M.final(self)
-    elseif s.late_update_id and message_id == lu_helper.LATE_UPDATE then
-        update_shadow(self)
     end
 end
 
