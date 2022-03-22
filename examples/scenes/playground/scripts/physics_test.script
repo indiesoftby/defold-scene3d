@@ -1,0 +1,28 @@
+go.property("car_physics_id", hash("/offroader/physics"))
+
+local render3d = require("scene3d.render.render3d")
+
+function init(self)
+    go.set_parent(".", self.car_physics_id)
+end
+
+function final(self)
+end
+
+-- function update(self, dt)
+--     -- Add update code here
+--     -- Learn more: https://defold.com/manuals/script/
+--     -- Remove this function if not needed
+-- end
+-- 
+-- function fixed_update(self, dt)
+--     -- Add update code here
+--     -- Learn more: https://defold.com/manuals/script/
+--     -- Remove this function if not needed
+-- end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("collision_response") then
+        print(render3d.frame_num .. ": physics response")
+    end
+end

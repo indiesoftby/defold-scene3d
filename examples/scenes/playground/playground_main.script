@@ -34,12 +34,12 @@ end
 function update(self, dt)
     local car_enabled = go.get(self.car_orbit_follow_url, "enabled")
     if car_enabled then
-        render3d.debug_log("[WASD] Drive")
-        render3d.debug_log("[4] Player")
+        -- render3d.debug_log("[WASD] Drive")
+        -- render3d.debug_log("[4] Player")
     else
-        render3d.debug_log("[WASD] Move")
-        render3d.debug_log("[Space] Jump")
-        render3d.debug_log("[4] Car")
+        -- render3d.debug_log("[WASD] Move")
+        -- render3d.debug_log("[Space] Jump")
+        -- render3d.debug_log("[4] Car")
     end
 end
 

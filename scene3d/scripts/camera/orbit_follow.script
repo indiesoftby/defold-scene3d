@@ -33,21 +33,22 @@ local function update_camera(self)
         return
     end
 
-    -- DEBUG
-    -- print("orbit_follow (" .. render3d.frame_num .. "): update camera")
-
     local obj_rotation = go.get_rotation(self.follow_object_id)
     local obj_position = go.get_position(self.follow_object_id)
 
     local yaw = (90 - math3d.euler_y(obj_rotation) + self.yaw) % 360
     -- self.cur_yaw = math3d.lerp_angle(self.yaw_anim_value, self.cur_yaw or yaw, yaw)
     self.cur_yaw, self.cur_yaw_velocity = math3d.smooth_damp_angle(self.cur_yaw or yaw, yaw, self.cur_yaw_velocity or 0, 0.2, nil, self.dt)
+    -- self.cur_yaw = yaw
     self.cur_pitch = self.pitch
+
+    -- DEBUG
+    print(render3d.frame_num .. string.format(": orbit_follow.script - update camera, yaw %.02f, cur_yaw %.02f, diff %.02f", yaw, self.cur_yaw, math3d.delta_angle(yaw, self.cur_yaw)))
 
     -- if self.dt > 0.0169 then
     --     print(render3d.frame_num .. " dt " .. self.dt)
     -- end
-    -- render3d.debug_log("dt " .. string.format("%.04f", self.dt))
+    render3d.debug_log(string.format("dt %.05f, yaw %.02f, cur_yaw %.02f", self.dt, yaw, self.cur_yaw))
     -- print(yaw, self.cur_yaw)
 
     local d = self.distance + self.move_forward
