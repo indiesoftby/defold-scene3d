@@ -142,6 +142,7 @@ The table briefly describes the included helper math functions. The source code 
 | **Math** |
 | `math3d.clamp(x, min, max)` | Clamps the given x between the given minimum float and maximum float values. | `Mathf.Clamp` |
 | `math3d.clamp01(x)` | Clamps x between 0 and 1 and returns value. | `Mathf.Clamp` |
+| `math3d.delta_angle(a, b)` | Calculates the shortest difference between two given angles (in degrees). | `Mathf.DeltaAngle` |
 | `math3d.inverse_lerp(t, a, b)` | Calculates the lerp parameter between of two values. | `Mathf.InverseLerp` |
 | `math3d.lerp(t, a, b, [dt])` | Linearly interpolates between `a` and `b` by `t`. The parameter `t` is clamped to the range `[0, 1]`. | `Mathf.Lerp` |
 | `math3d.lerp_angle(t, a, b, [dt])` | Same as `vmath.lerp` but makes sure the values interpolate correctly when they wrap around 360 degrees. | `Mathf.LerpAngle` |
