@@ -6,7 +6,7 @@ local main = require("examples.main")
 go.property("scene1", hash("playground"))
 go.property("scene2", hash("basic_3d"))
 go.property("scene3", hash("shadows"))
-go.property("scene4", hash(""))
+go.property("scene4", hash("orbit_follow_test"))
 go.property("scene5", hash(""))
 
 go.property("acquire_input_focus", true)

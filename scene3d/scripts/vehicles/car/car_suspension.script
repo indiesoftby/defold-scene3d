@@ -11,37 +11,15 @@ go.property("debug_draw", false)
 
 local render3d = require("scene3d.render.render3d")
 
+local HAS_FIXED_UPDATE = render3d.engine_version(1, 3, 1)
+
 local CLOSEST = { all = false }
 local EMPTY_HASH = hash("")
 local APPLY_FORCE = hash("apply_force")
 local INIT = hash("init")
 local SUSPENSION_UPDATE = hash("suspension_update")
 
-function init(self)
-    self.prev_suspension_distance = 0
-    self.current_suspension_distance = 0
-    self.spring_velocity = 0
-    self.spring_force = 0
-    self.damper_force = 0
-
-    self.car_main_script = nil
-    self.car_chassis_url = nil
-
-    self.raycast_groups = {}
-    for i = 1, 3 do
-        local g = self["raycast_group" .. i]
-        if g and g ~= EMPTY_HASH then
-            table.insert(self.raycast_groups, g)
-        end
-    end
-
-    self.local_position = go.get_position()
-end
-
-function final(self)
-end
-
-function update(self, dt)
+local function update_suspension(self, dt)
     if not self.car_main_script then
         return
     end
@@ -80,6 +58,41 @@ function update(self, dt)
         wheel_pos = wheel_pos,
         touching = touching
     })
+end
+
+function init(self)
+    self.prev_suspension_distance = 0
+    self.current_suspension_distance = 0
+    self.spring_velocity = 0
+    self.spring_force = 0
+    self.damper_force = 0
+
+    self.car_main_script = nil
+    self.car_chassis_url = nil
+
+    self.raycast_groups = {}
+    for i = 1, 3 do
+        local g = self["raycast_group" .. i]
+        if g and g ~= EMPTY_HASH then
+            table.insert(self.raycast_groups, g)
+        end
+    end
+
+    self.local_position = go.get_position()
+end
+
+function final(self)
+end
+
+-- function fixed_update(self, dt)
+--     -- update_suspension(self, dt)
+-- end
+
+function update(self, dt)
+    -- To support Defold <1.3.1 
+    -- if not HAS_FIXED_UPDATE then
+        update_suspension(self, dt)
+    -- end
 end
 
 function on_message(self, message_id, message, sender)

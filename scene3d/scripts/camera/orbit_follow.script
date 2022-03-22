@@ -20,6 +20,10 @@ local UPDATE_RENDER = hash("update_render")
 local FORCE_UPDATE = hash("force_update")
 
 local function update_camera(self)
+    if not self.dt then
+        return
+    end
+
     if self.follow_object_id == EMPTY_HASH then
         return
     end
@@ -36,8 +40,15 @@ local function update_camera(self)
     local obj_position = go.get_position(self.follow_object_id)
 
     local yaw = (90 - math3d.euler_y(obj_rotation) + self.yaw) % 360
-    self.cur_yaw = math3d.lerp_angle(self.yaw_anim_value, self.cur_yaw or yaw, yaw)
+    -- self.cur_yaw = math3d.lerp_angle(self.yaw_anim_value, self.cur_yaw or yaw, yaw)
+    self.cur_yaw, self.cur_yaw_velocity = math3d.smooth_damp_angle(self.cur_yaw or yaw, yaw, self.cur_yaw_velocity or 0, 0.2, nil, self.dt)
     self.cur_pitch = self.pitch
+
+    -- if self.dt > 0.0169 then
+    --     print(render3d.frame_num .. " dt " .. self.dt)
+    -- end
+    -- render3d.debug_log("dt " .. string.format("%.04f", self.dt))
+    -- print(yaw, self.cur_yaw)
 
     local d = self.distance + self.move_forward
     local h = self.height
@@ -58,6 +69,25 @@ end
 
 function init(self)
     self.late_update_id = scene3d.prerender_register(late_update, self.late_update_priority)
+
+--     local cur_velocity = 0
+--     local s_y = 0
+--     local dt = 1 / 60
+-- 
+--     local x = 0
+--     local y = 0
+--     for i = 1, 500 do
+--         if i <= 450 then
+--             x = x - 2.37
+--         end
+--         y = vmath.lerp(0.09, y, x)
+-- 
+--         s_y, cur_velocity = math3d.smooth_damp_angle(s_y, x, cur_velocity, 0.2, nil, dt)
+-- 
+--         print(i, string.format("%.03f", x), string.format("%.03f", y), string.format("%.03f", x - y), "SD", string.format("%.03f", s_y), string.format("%.03f", x - s_y))
+--     end
+
+    -- os.exit(1)
 end
 
 function final(self)
