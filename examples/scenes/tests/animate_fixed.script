@@ -21,8 +21,8 @@ function update(self, dt)
 end
 
 function fixed_update(self, dt)
-    self.angle = self.angle + 2.5
-    print(render3d.frame_num .. string.format(": fixed update %.02f", self.angle))
+    self.angle = self.angle + 60 * dt
+    print(render3d.frame_num .. string.format(": fixed update, angle is %.02f", self.angle))
 
     go.set(self.object_url, "euler.y", self.angle)
 end

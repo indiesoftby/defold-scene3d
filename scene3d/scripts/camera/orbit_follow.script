@@ -12,6 +12,9 @@ go.property("late_update_priority", 1)
 
 local math3d = require("scene3d.helpers.math3d")
 local render3d = require("scene3d.render.render3d")
+local transform_interpolation = require("scene3d.scripts.transform_interpolation")
+
+local HAS_FIXED_UPDATE = render3d.engine_version(1, 3, 1)
 
 local EMPTY_HASH = hash("")
 local EULER = hash("euler")
@@ -33,21 +36,25 @@ local function update_camera(self)
         return
     end
 
-    local time = socket.gettime()
-    local interpolation_factor = math3d.clamp01((time - self.start_time) / self.delta_time)
-    print(string.format("factor %.03f, %.03f --- %.03f, %.03f", interpolation_factor, time, self.start_time, self.delta_time))
+--     local time = socket.gettime()
+--     local interpolation_factor = math3d.clamp01((time - self.start_time) / self.delta_time)
+--     print(string.format("factor %.03f, %.03f --- %.03f, %.03f", interpolation_factor, time, self.start_time, self.delta_time))
 
-    local obj_rotation = go.get_rotation(self.follow_object_id)
-    local obj_position = go.get_position(self.follow_object_id)
+    -- local obj_rotation = go.get_rotation(self.follow_object_id)
+    -- local obj_position = go.get_position(self.follow_object_id)
 
-    local yaw = (90 - math3d.euler_y(obj_rotation) + self.yaw) % 360
-    -- self.cur_yaw = math3d.lerp_angle(1 - math.exp(-10 * self.dt), self.cur_yaw or yaw, yaw)
+    transform_interpolation.interpolate(self.follow_transform)
+
+    local yaw = (90 - math3d.euler_y(self.follow_transform.rotation) + self.yaw) % 360
+    -- self.cur_yaw = math3d.lerp_angle(1 - math.exp(-4 * self.dt), self.cur_yaw or yaw, yaw)
     -- self.cur_yaw, self.cur_yaw_velocity = math3d.smooth_damp_angle(self.cur_yaw or yaw, yaw, self.cur_yaw_velocity or 0, 0.2, nil, self.dt)
     self.cur_yaw = yaw -- math3d.lerp_angle(interpolation_factor, a, b, dt)
     self.cur_pitch = self.pitch
 
+    local real_yaw = (90 - math3d.euler_y(go.get_rotation(self.follow_object_id)) + self.yaw) % 360
+
     -- DEBUG
-    print(render3d.frame_num .. string.format(": orbit_follow.script - update camera, yaw %.02f, cur_yaw %.02f, diff %.02f", yaw, self.cur_yaw, math3d.delta_angle(yaw, self.cur_yaw)))
+    print(render3d.frame_num .. string.format(": orbit_follow.script - update camera, real_yaw %.02f, yaw %.02f, cur_yaw %.02f, diff %.02f", real_yaw, yaw, self.cur_yaw, math3d.delta_angle(yaw, self.cur_yaw)))
 
     -- if self.dt > 0.0169 then
     --     print(render3d.frame_num .. " dt " .. self.dt)
@@ -57,12 +64,16 @@ local function update_camera(self)
 
     local d = self.distance + self.move_forward
     local h = self.height
-    local pos = obj_position + vmath.rotate(obj_rotation, render3d.FORWARD) * self.move_forward
+    local pos = self.follow_transform.position + vmath.rotate(self.follow_transform.rotation, render3d.FORWARD) * self.move_forward
     pos = pos + vmath.vector3(math.cos(math.rad(self.cur_yaw)) * d, h, math.sin(math.rad(self.cur_yaw)) * d)
 
-    local values = vmath.vector3(self.cur_pitch, 90 - self.cur_yaw, 0)
-    go.set(self.camera_object_id, EULER, values)
+    local eulers = vmath.vector3(self.cur_pitch, 90 - self.cur_yaw, 0)
+    go.set(self.camera_object_id, EULER, eulers)
     go.set(self.camera_object_id, POSITION, pos)
+end
+
+local function update_transform(self, dt)
+    transform_interpolation.start_frame(self.follow_transform, dt)
 end
 
 -- This update will happen after game objects have been moved by the physics engine
@@ -74,6 +85,8 @@ end
 
 function init(self)
     self.late_update_id = scene3d.prerender_register(late_update, self.late_update_priority)
+
+    self.follow_transform = transform_interpolation.init({ obj_id = self.follow_object_id })
 
 --     local cur_velocity = 0
 --     local s_y = 0
@@ -101,11 +114,14 @@ end
 
 function update(self, dt)
     self.dt = dt
+
+    if not HAS_FIXED_UPDATE then
+        update_transform(self, dt)
+    end
 end
 
 function fixed_update(self, dt)
-    self.start_time = socket.gettime()
-    self.delta_time = dt
+    update_transform(self, dt)
 end
 
 function on_message(self, message_id, message, sender)

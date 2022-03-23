@@ -84,15 +84,15 @@ end
 function final(self)
 end
 
--- function fixed_update(self, dt)
---     -- update_suspension(self, dt)
--- end
+function fixed_update(self, dt)
+    update_suspension(self, dt)
+end
 
 function update(self, dt)
     -- To support Defold <1.3.1 
-    -- if not HAS_FIXED_UPDATE then
+    if not HAS_FIXED_UPDATE then
         update_suspension(self, dt)
-    -- end
+    end
 end
 
 function on_message(self, message_id, message, sender)

@@ -9,6 +9,9 @@ end
 function M.update(self, dt)
 end
 
+function M.fixed_update(self, dt)
+end
+
 function M.on_message(self, message_id, message, sender)
 end
 

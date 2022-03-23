@@ -1,0 +1,335 @@
+name: "test"
+instances {
+  id: "main_camera"
+  prototype: "/scene3d/camera/camera3d.go"
+  position {
+    x: 1.5
+    y: 0.0
+    z: 6.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "camera3d"
+    properties {
+      id: "late_update"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "late_update_priority"
+      value: "10.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "light_directional"
+  prototype: "/scene3d/camera/light_directional.go"
+  position {
+    x: 4.01
+    y: 2.42
+    z: 0.85
+  }
+  rotation {
+    x: -0.43348113
+    y: 0.42721757
+    z: 0.24543284
+    w: 0.75454754
+  }
+  component_properties {
+    id: "light_directional"
+    properties {
+      id: "ambient_light_intensity"
+      value: "0.9"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "directional_light_intensity"
+      value: "0.35"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_3"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_3.go"
+  position {
+    x: -0.4
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "icon"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_D"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_D.go"
+  position {
+    x: 0.4
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "icon"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_3.go"
+  position {
+    x: -0.4
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "icon"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_D1"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_D.go"
+  position {
+    x: 0.4
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "icon"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tube"
+  prototype: "/scene3d/prefabs/primitives/primitive_tube_octa.go"
+  position {
+    x: 0.0
+    y: 1.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "tube_interpolated"
+  prototype: "/scene3d/prefabs/primitives/primitive_tube_octa.go"
+  position {
+    x: 3.0
+    y: 1.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+collection_instances {
+  id: "debug_ui"
+  collection: "/scene3d/debug/photo_mode/debug_ui.collection"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 1
+embedded_instances {
+  id: "text_3D"
+  children: "icon_letter_3"
+  children: "icon_letter_D"
+  data: ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "scripts"
+  data: "components {\n"
+  "  id: \"transform_interpolation_test\"\n"
+  "  component: \"/examples/scenes/tests/transform_interpolation_test.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "text_3D_interpolated"
+  children: "icon_letter_"
+  children: "icon_letter_D1"
+  data: ""
+  position {
+    x: 3.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

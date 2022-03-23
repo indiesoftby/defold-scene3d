@@ -92,5 +92,5 @@ anisotropic_filtering = 4
 max_instances = 2048
 
 [engine]
-fixed_update_frequency = 20
+fixed_update_frequency = 10
 
