@@ -33,13 +33,17 @@ local function update_camera(self)
         return
     end
 
+    local time = socket.gettime()
+    local interpolation_factor = math3d.clamp01((time - self.start_time) / self.delta_time)
+    print(string.format("factor %.03f, %.03f --- %.03f, %.03f", interpolation_factor, time, self.start_time, self.delta_time))
+
     local obj_rotation = go.get_rotation(self.follow_object_id)
     local obj_position = go.get_position(self.follow_object_id)
 
     local yaw = (90 - math3d.euler_y(obj_rotation) + self.yaw) % 360
-    -- self.cur_yaw = math3d.lerp_angle(self.yaw_anim_value, self.cur_yaw or yaw, yaw)
-    self.cur_yaw, self.cur_yaw_velocity = math3d.smooth_damp_angle(self.cur_yaw or yaw, yaw, self.cur_yaw_velocity or 0, 0.2, nil, self.dt)
-    -- self.cur_yaw = yaw
+    -- self.cur_yaw = math3d.lerp_angle(1 - math.exp(-10 * self.dt), self.cur_yaw or yaw, yaw)
+    -- self.cur_yaw, self.cur_yaw_velocity = math3d.smooth_damp_angle(self.cur_yaw or yaw, yaw, self.cur_yaw_velocity or 0, 0.2, nil, self.dt)
+    self.cur_yaw = yaw -- math3d.lerp_angle(interpolation_factor, a, b, dt)
     self.cur_pitch = self.pitch
 
     -- DEBUG
@@ -97,6 +101,11 @@ end
 
 function update(self, dt)
     self.dt = dt
+end
+
+function fixed_update(self, dt)
+    self.start_time = socket.gettime()
+    self.delta_time = dt
 end
 
 function on_message(self, message_id, message, sender)

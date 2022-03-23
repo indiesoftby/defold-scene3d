@@ -108,7 +108,7 @@ instances {
     }
     properties {
       id: "animation_autoplay"
-      value: "true"
+      value: "false"
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
@@ -189,6 +189,26 @@ embedded_instances {
   "    id: \"camera_object_id\"\n"
   "    value: \"/main_camera\"\n"
   "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"animate_fixed\"\n"
+  "  component: \"/examples/scenes/tests/animate_fixed.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"object_url\"\n"
+  "    value: \"/icon_letter_A\"\n"
+  "    type: PROPERTY_TYPE_URL\n"
   "  }\n"
   "}\n"
   ""

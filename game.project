@@ -91,3 +91,6 @@ anisotropic_filtering = 4
 [collection]
 max_instances = 2048
 
+[engine]
+fixed_update_frequency = 20
+
