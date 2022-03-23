@@ -13,6 +13,7 @@ width = 1920
 height = 1080
 high_dpi = 1
 display_profiles = /scene3d/helpers/gui.display_profilesc
+update_frequency = 60
 
 [android]
 input_method = HiddenInputField
@@ -92,5 +93,5 @@ anisotropic_filtering = 4
 max_instances = 2048
 
 [engine]
-fixed_update_frequency = 10
+fixed_update_frequency = 30
 

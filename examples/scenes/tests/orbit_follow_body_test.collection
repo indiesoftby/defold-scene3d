@@ -1,0 +1,231 @@
+name: "test"
+instances {
+  id: "main_camera"
+  prototype: "/scene3d/camera/camera3d.go"
+  position {
+    x: -0.269
+    y: 10.570332
+    z: 10.883265
+  }
+  rotation {
+    x: -0.40577975
+    y: 0.0
+    z: 0.0
+    w: 0.9139709
+  }
+  component_properties {
+    id: "camera3d"
+    properties {
+      id: "late_update"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "late_update_priority"
+      value: "10.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "light_directional"
+  prototype: "/scene3d/camera/light_directional.go"
+  position {
+    x: 4.01
+    y: 2.42
+    z: 0.85
+  }
+  rotation {
+    x: -0.43348113
+    y: 0.42721757
+    z: 0.24543284
+    w: 0.75454754
+  }
+  component_properties {
+    id: "light_directional"
+    properties {
+      id: "ambient_light_intensity"
+      value: "0.9"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "directional_light_intensity"
+      value: "0.35"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "buildings_floor_10x10"
+  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "icon_letter_A"
+  prototype: "/scene3d/prefabs/icons/letters/icon_letter_A.go"
+  position {
+    x: 0.0
+    y: 0.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "icon"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "animation_autoplay"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "animation_property"
+      value: "euler.y"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "animation_to"
+      value: "3600.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "animation_duration"
+      value: "50.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "animation_pingpong"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "debug_ui"
+  collection: "/scene3d/debug/photo_mode/debug_ui.collection"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 1
+embedded_instances {
+  id: "main"
+  data: "components {\n"
+  "  id: \"orbit_follow\"\n"
+  "  component: \"/scene3d/scripts/camera/orbit_follow.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"enabled\"\n"
+  "    value: \"true\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"follow_object_id\"\n"
+  "    value: \"/icon_letter_A\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"camera_object_id\"\n"
+  "    value: \"/main_camera\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"animate_fixed\"\n"
+  "  component: \"/examples/scenes/tests/animate_fixed.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"object_url\"\n"
+  "    value: \"/icon_letter_A\"\n"
+  "    type: PROPERTY_TYPE_URL\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

@@ -46,25 +46,20 @@ local function update_camera(self)
     transform_interpolation.interpolate(self.follow_transform)
 
     local yaw = (90 - math3d.euler_y(self.follow_transform.rotation) + self.yaw) % 360
-    -- self.cur_yaw = math3d.lerp_angle(1 - math.exp(-4 * self.dt), self.cur_yaw or yaw, yaw)
+    self.cur_yaw = math3d.lerp_angle(1 - math.exp(-4 * self.dt), self.cur_yaw or yaw, yaw)
     -- self.cur_yaw, self.cur_yaw_velocity = math3d.smooth_damp_angle(self.cur_yaw or yaw, yaw, self.cur_yaw_velocity or 0, 0.2, nil, self.dt)
-    self.cur_yaw = yaw -- math3d.lerp_angle(interpolation_factor, a, b, dt)
+    -- self.cur_yaw = yaw -- math3d.lerp_angle(interpolation_factor, a, b, dt)
     self.cur_pitch = self.pitch
 
     local real_yaw = (90 - math3d.euler_y(go.get_rotation(self.follow_object_id)) + self.yaw) % 360
 
     -- DEBUG
-    print(render3d.frame_num .. string.format(": orbit_follow.script - update camera, real_yaw %.02f, yaw %.02f, cur_yaw %.02f, diff %.02f", real_yaw, yaw, self.cur_yaw, math3d.delta_angle(yaw, self.cur_yaw)))
-
-    -- if self.dt > 0.0169 then
-    --     print(render3d.frame_num .. " dt " .. self.dt)
-    -- end
-    render3d.debug_log(string.format("dt %.05f, yaw %.02f, cur_yaw %.02f", self.dt, yaw, self.cur_yaw))
-    -- print(yaw, self.cur_yaw)
+    -- print(render3d.frame_num .. string.format(": orbit_follow.script - update camera, real_yaw %.02f, yaw %.02f, cur_yaw %.02f, diff %.02f", real_yaw, yaw, self.cur_yaw, math3d.delta_angle(yaw, self.cur_yaw)))
+    -- render3d.debug_log(string.format("dt %.05f, yaw %.02f, cur_yaw %.02f", self.dt, yaw, self.cur_yaw))
 
     local d = self.distance + self.move_forward
     local h = self.height
-    local pos = self.follow_transform.position + vmath.rotate(self.follow_transform.rotation, render3d.FORWARD) * self.move_forward
+    local pos = self.follow_transform.position -- + vmath.rotate(self.follow_transform.rotation, render3d.FORWARD) * self.move_forward
     pos = pos + vmath.vector3(math.cos(math.rad(self.cur_yaw)) * d, h, math.sin(math.rad(self.cur_yaw)) * d)
 
     local eulers = vmath.vector3(self.cur_pitch, 90 - self.cur_yaw, 0)
@@ -86,7 +81,14 @@ end
 function init(self)
     self.late_update_id = scene3d.prerender_register(late_update, self.late_update_priority)
 
-    self.follow_transform = transform_interpolation.init({ obj_id = self.follow_object_id })
+    self.follow_transform = transform_interpolation.init({
+        obj_id = self.follow_object_id,
+        continuous_mode = false,
+        apply_transform = function (t, position, rotation)
+            position = position + vmath.rotate(rotation, render3d.FORWARD) * self.move_forward
+            return position, rotation
+        end
+    })
 
 --     local cur_velocity = 0
 --     local s_y = 0

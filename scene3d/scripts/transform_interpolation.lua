@@ -8,7 +8,7 @@
 local math3d = require("scene3d.helpers.math3d")
 
 -- DEBUG
--- local render3d = require("scene3d.render.render3d")
+local render3d = require("scene3d.render.render3d")
 
 local M = {}
 
@@ -27,13 +27,25 @@ function M.start_frame(t, dt)
     t.start_time = socket.gettime() -- #1: not t.dirty and socket.gettime() or t.start_time
     t.fixed_dt = dt
 
-    -- #2:
-    -- t.start_position = go.get_position(t.obj_id)
-    -- t.start_rotation = go.get_rotation(t.obj_id)
+    -- DEBUG
+    -- if t.start_rotation then
+    --     print(render3d.frame_num .. string.format(": start_frame BEFORE euler y %.02f, cur %.02f", math3d.euler_y(t.start_rotation), math3d.euler_y(t.rotation)))
+    -- end
 
-    -- #3:
-    t.start_position = t.position or go.get_position(t.obj_id)
-    t.start_rotation = t.rotation or go.get_rotation(t.obj_id)
+    -- #2:
+    if t.continuous_mode and t.position and t.rotation then
+        t.start_position = t.position
+        t.start_rotation = t.rotation
+    else
+        t.start_position = go.get_position(t.obj_id)
+        t.start_rotation = go.get_rotation(t.obj_id)
+        if t.apply_transform then
+            t.start_position, t.start_rotation = t:apply_transform(t.start_position, t.start_rotation)
+        end
+    end
+
+    -- DEBUG
+    -- print(render3d.frame_num .. string.format(": start_frame euler y %.02f", math3d.euler_y(t.start_rotation)))
 
     t.dirty = true
 end
@@ -43,7 +55,13 @@ function M.interpolate(t)
     if t.dirty then
         t.last_position = go.get_position(t.obj_id)
         t.last_rotation = go.get_rotation(t.obj_id)
+        if t.apply_transform then
+            t.last_position, t.last_rotation = t:apply_transform(t.last_position, t.last_rotation)
+        end
         t.dirty = false
+
+        -- DEBUG
+        -- print(render3d.frame_num .. string.format(": dirty, last euler y %.02f", math3d.euler_y(t.last_rotation)))
     end
 
     local time = socket.gettime()

@@ -2,51 +2,36 @@ go.property("object_url", msg.url())
 
 local render3d = require("scene3d.render.render3d")
 
+local HAS_FIXED_UPDATE = render3d.engine_version(1, 3, 1)
+
 function init(self)
     self.angle = 0
 end
 
 function final(self)
-    -- Add finalization code here
-    -- Learn more: https://defold.com/manuals/script/
-    -- Remove this function if not needed
 end
 
-function update(self, dt)
-    -- Add update code here
-    -- Learn more: https://defold.com/manuals/script/
-    -- Remove this function if not needed
-
-    -- print(render3d.frame_num .. string.format(": update"))
-end
-
-function fixed_update(self, dt)
+local function update_animation(self, dt)
     self.angle = self.angle + 60 * dt
-    print(render3d.frame_num .. string.format(": fixed update, angle is %.02f", self.angle))
+
+    -- DEBUG
+    -- print(render3d.frame_num .. string.format(": fixed update, angle is %.02f", self.angle))
 
     go.set(self.object_url, "euler.y", self.angle)
 end
 
+function update(self, dt)
+    if not HAS_FIXED_UPDATE then
+        update_animation(self, dt)
+    end
+end
+
+function fixed_update(self, dt)
+    update_animation(self, dt)
+end
+
 function on_message(self, message_id, message, sender)
-    -- Add message-handling code here
-    -- Learn more: https://defold.com/manuals/message-passing/
-    -- Remove this function if not needed
 end
 
 function on_input(self, action_id, action)
-    -- Add input-handling code here. The game object this script is attached to
-    -- must have acquired input focus:
-    --
-    --    msg.post(".", "acquire_input_focus")
-    --
-    -- All mapped input bindings will be received. Mouse and touch input will
-    -- be received regardless of where on the screen it happened.
-    -- Learn more: https://defold.com/manuals/input/
-    -- Remove this function if not needed
-end
-
-function on_reload(self)
-    -- Add reload-handling code here
-    -- Learn more: https://defold.com/manuals/hot-reload/
-    -- Remove this function if not needed
 end
