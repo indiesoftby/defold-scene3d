@@ -3,15 +3,15 @@ instances {
   id: "main_camera"
   prototype: "/scene3d/camera/camera3d.go"
   position {
-    x: -0.269
-    y: 10.570332
-    z: 10.883265
+    x: 0.0
+    y: 4.0
+    z: 9.527
   }
   rotation {
-    x: -0.40577975
+    x: -0.17364818
     y: 0.0
     z: 0.0
-    w: 0.9139709
+    w: 0.9848077
   }
   component_properties {
     id: "camera3d"
@@ -66,8 +66,8 @@ instances {
   }
 }
 instances {
-  id: "buildings_floor_10x10"
-  prototype: "/scene3d/prefabs/buildings/buildings_floor_10x10.go"
+  id: "buildings_chunked_floor"
+  prototype: "/scene3d/prefabs/buildings/buildings_chunked_floor.go"
   position {
     x: 0.0
     y: 0.0
@@ -78,59 +78,6 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "icon_letter_A"
-  prototype: "/scene3d/prefabs/icons/letters/icon_letter_A.go"
-  position {
-    x: 0.0
-    y: 0.5
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "icon"
-    properties {
-      id: "collision_type"
-      value: "none"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "animation_autoplay"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "animation_property"
-      value: "euler.y"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "animation_to"
-      value: "3600.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "animation_duration"
-      value: "50.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "animation_pingpong"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
   }
   scale3 {
     x: 1.0
@@ -181,19 +128,170 @@ embedded_instances {
   "    type: PROPERTY_TYPE_BOOLEAN\n"
   "  }\n"
   "  properties {\n"
-  "    id: \"follow_object_id\"\n"
-  "    value: \"/icon_letter_A\"\n"
-  "    type: PROPERTY_TYPE_HASH\n"
-  "  }\n"
-  "  properties {\n"
   "    id: \"camera_object_id\"\n"
   "    value: \"/main_camera\"\n"
   "    type: PROPERTY_TYPE_HASH\n"
   "  }\n"
+  "  properties {\n"
+  "    id: \"follow_object_id\"\n"
+  "    value: \"/interpolated_object\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"late_update_priority\"\n"
+  "    value: \"2.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
   "}\n"
   "components {\n"
-  "  id: \"animate_fixed\"\n"
-  "  component: \"/examples/scenes/tests/animate_fixed.script\"\n"
+  "  id: \"orbit_follow_body_test\"\n"
+  "  component: \"/examples/scenes/tests/orbit_follow_body_test.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "test_object"
+  data: "embedded_components {\n"
+  "  id: \"collision\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_DYNAMIC\\n"
+  "mass: 1.0\\n"
+  "friction: 0.5\\n"
+  "restitution: 0.25\\n"
+  "group: \\\"default\\\"\\n"
+  "mask: \\\"default\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 0.5\\n"
+  "  data: 0.5\\n"
+  "  data: 0.5\\n"
+  "}\\n"
+  "linear_damping: 0.5\\n"
+  "angular_damping: 0.5\\n"
+  "locked_rotation: false\\n"
+  "bullet: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"mesh\"\n"
+  "  type: \"mesh\"\n"
+  "  data: \"material: \\\"/scene3d/materials/primitive_atomic_tangerine.material\\\"\\n"
+  "vertices: \\\"/scene3d/assets/meshes/primitive_cube.buffer\\\"\\n"
+  "textures: \\\"/scene3d/assets/textures/grid_10x10.png\\\"\\n"
+  "primitive_type: PRIMITIVE_TRIANGLES\\n"
+  "position_stream: \\\"position\\\"\\n"
+  "normal_stream: \\\"normal\\\"\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 5.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "offset"
+  children: "interpolated_object"
+  data: ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "interpolated_object"
+  data: "components {\n"
+  "  id: \"transform_interpolation\"\n"
+  "  component: \"/scene3d/scripts/transform_interpolation.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -206,9 +304,41 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "  properties {\n"
-  "    id: \"object_url\"\n"
-  "    value: \"/icon_letter_A\"\n"
-  "    type: PROPERTY_TYPE_URL\n"
+  "    id: \"enabled\"\n"
+  "    value: \"true\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"object_id\"\n"
+  "    value: \"/test_object\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"continuous_mode\"\n"
+  "    value: \"true\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"mesh\"\n"
+  "  type: \"mesh\"\n"
+  "  data: \"material: \\\"/scene3d/materials/primitive_atomic_tangerine.material\\\"\\n"
+  "vertices: \\\"/scene3d/assets/meshes/primitive_cube.buffer\\\"\\n"
+  "textures: \\\"/scene3d/assets/textures/grid_10x10.png\\\"\\n"
+  "primitive_type: PRIMITIVE_TRIANGLES\\n"
+  "position_stream: \\\"position\\\"\\n"
+  "normal_stream: \\\"normal\\\"\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
   "  }\n"
   "}\n"
   ""

@@ -1,3 +1,4 @@
+go.property("enabled", true)
 go.property("object_id", hash(""))
 go.property("continuous_mode", false)
 go.property("late_update", false)
@@ -8,19 +9,42 @@ local transform_interpolation = require("scene3d.scripts.transform_interpolation
 
 local HAS_FIXED_UPDATE = render3d.engine_version(1, 3, 1)
 
+local function lazy_init(self)
+    if self.start_time then
+        -- i.e. already initialized
+        return
+    end
+
+    transform_interpolation.init(self)
+end
+
 local function interpolate(self)
+    if not self.enabled then
+        return
+    end
+
+    lazy_init(self)
+
     transform_interpolation.interpolate(self)
 
     go.set_position(self.position)
     go.set_rotation(self.rotation)
 end
 
+local function start_frame(self, dt)
+    if not self.enabled then
+        return
+    end
+
+    lazy_init(self)
+
+    transform_interpolation.start_frame(self, dt)
+end
+
 function init(self)
     if self.late_update then
         self.late_update_id = scene3d.prerender_register(interpolate, self.late_update_priority)
     end
-
-    transform_interpolation.init(self)
 end
 
 function final(self)
@@ -30,8 +54,12 @@ function final(self)
 end
 
 function update(self, dt)
+    -- if self.enabled then
+    --     transform_interpolation.set_time(self)
+    -- end
+
     if not HAS_FIXED_UPDATE then
-        transform_interpolation.start_frame(self, dt)
+        start_frame(self, dt)
     end
 
     if not self.late_update_id then
@@ -40,5 +68,5 @@ function update(self, dt)
 end
 
 function fixed_update(self, dt)
-    transform_interpolation.start_frame(self, dt)
+    start_frame(self, dt)
 end

@@ -124,7 +124,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"test\"\n"
   "  type: \"collectionproxy\"\n"
-  "  data: \"collection: \\\"/examples/scenes/tests/transform_interpolation_test2.collection\\\"\\n"
+  "  data: \"collection: \\\"/examples/scenes/tests/orbit_follow_body_test.collection\\\"\\n"
   "exclude: false\\n"
   "\"\n"
   "  position {\n"

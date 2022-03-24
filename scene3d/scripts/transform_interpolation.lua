@@ -21,9 +21,14 @@ function M.init(t)
     return t
 end
 
+-- function M.set_time(t)
+--     t.set_time = socket.gettime()
+-- end
+
 -- Call it in fixed_update()
 function M.start_frame(t, dt)
-    t.start_time = socket.gettime() -- #1: not t.dirty and socket.gettime() or t.start_time
+    -- t.start_time = socket.gettime() -- #1: not t.dirty and socket.gettime() or t.start_time
+    t.start_time = not t.dirty and socket.gettime() or t.start_time
     t.fixed_dt = dt
 
     -- DEBUG

@@ -1,12 +1,14 @@
 go.property("enabled", true)
-go.property("follow_object_id", hash(""))
 go.property("camera_object_id", hash(""))
+go.property("follow_object_id", hash(""))
+go.property("follow_transform_interpolation", false)
+go.property("interpolation_continuous_mode", false)
 go.property("yaw", 0)
 go.property("yaw_anim_value", 0.09)
 go.property("pitch", -6)
 go.property("distance", 8.15)
 go.property("height", 1.9)
-go.property("move_forward", 3)
+go.property("move_forward", 0)
 
 go.property("late_update_priority", 1)
 
@@ -22,6 +24,42 @@ local POSITION = hash("position")
 local UPDATE_RENDER = hash("update_render")
 local FORCE_UPDATE = hash("force_update")
 
+local function lazy_init_transform(self)
+    if not self.follow_transform_interpolation then
+        self.follow_transform = nil
+        return
+    end
+
+    if self.follow_transform then
+        return
+    end
+
+    self.follow_transform = transform_interpolation.init({
+        object_id = self.follow_object_id,
+        continuous_mode = false,
+        apply_transform = function (t, position, rotation)
+            position = position + vmath.rotate(rotation, render3d.FORWARD) * self.move_forward
+            return position, rotation
+        end
+    })
+end
+
+local function update_transform(self, dt)
+    if not self.follow_transform then
+        return
+    end
+
+    transform_interpolation.start_frame(self.follow_transform, dt)
+end
+
+local function interpolate_transform(self)
+    if not self.follow_transform then
+        return
+    end
+
+    transform_interpolation.interpolate(self.follow_transform)
+end
+
 local function update_camera(self)
     if not self.dt then
         return
@@ -36,16 +74,15 @@ local function update_camera(self)
         return
     end
 
---     local time = socket.gettime()
---     local interpolation_factor = math3d.clamp01((time - self.start_time) / self.delta_time)
---     print(string.format("factor %.03f, %.03f --- %.03f, %.03f", interpolation_factor, time, self.start_time, self.delta_time))
+    lazy_init_transform(self)
+    interpolate_transform(self)
 
-    -- local obj_rotation = go.get_rotation(self.follow_object_id)
-    -- local obj_position = go.get_position(self.follow_object_id)
+    local follow_rotation = self.follow_transform and self.follow_transform.rotation or go.get_rotation(self.follow_object_id)
+    local follow_position = self.follow_transform and self.follow_transform.position or go.get_position(self.follow_object_id)
 
-    transform_interpolation.interpolate(self.follow_transform)
+    -- follow_position = follow_position + vmath.vector3(3, 0, 0)
 
-    local yaw = (90 - math3d.euler_y(self.follow_transform.rotation) + self.yaw) % 360
+    local yaw = (90 - math3d.euler_y(follow_rotation) + self.yaw) % 360
     self.cur_yaw = math3d.lerp_angle(1 - math.exp(-4 * self.dt), self.cur_yaw or yaw, yaw)
     -- self.cur_yaw, self.cur_yaw_velocity = math3d.smooth_damp_angle(self.cur_yaw or yaw, yaw, self.cur_yaw_velocity or 0, 0.2, nil, self.dt)
     -- self.cur_yaw = yaw -- math3d.lerp_angle(interpolation_factor, a, b, dt)
@@ -59,7 +96,7 @@ local function update_camera(self)
 
     local d = self.distance + self.move_forward
     local h = self.height
-    local pos = self.follow_transform.position -- + vmath.rotate(self.follow_transform.rotation, render3d.FORWARD) * self.move_forward
+    local pos = follow_position -- + vmath.rotate(self.follow_transform.rotation, render3d.FORWARD) * self.move_forward
     pos = pos + vmath.vector3(math.cos(math.rad(self.cur_yaw)) * d, h, math.sin(math.rad(self.cur_yaw)) * d)
 
     local eulers = vmath.vector3(self.cur_pitch, 90 - self.cur_yaw, 0)
@@ -67,28 +104,23 @@ local function update_camera(self)
     go.set(self.camera_object_id, POSITION, pos)
 end
 
-local function update_transform(self, dt)
-    transform_interpolation.start_frame(self.follow_transform, dt)
-end
-
 -- This update will happen after game objects have been moved by the physics engine
 local function late_update(self)
-    if self.enabled then
-        update_camera(self)
+    if not self.enabled then
+        return
     end
+
+    update_camera(self)
 end
 
 function init(self)
     self.late_update_id = scene3d.prerender_register(late_update, self.late_update_priority)
 
-    self.follow_transform = transform_interpolation.init({
-        object_id = self.follow_object_id,
-        continuous_mode = false,
-        apply_transform = function (t, position, rotation)
-            position = position + vmath.rotate(rotation, render3d.FORWARD) * self.move_forward
-            return position, rotation
-        end
-    })
+    if not self.enabled then
+        return
+    end
+
+    lazy_init_transform(self)
 
 --     local cur_velocity = 0
 --     local s_y = 0
@@ -117,7 +149,17 @@ end
 function update(self, dt)
     self.dt = dt
 
-    self.follow_transform.object_id = self.follow_object_id
+    if not self.enabled then
+        return
+    end
+
+    lazy_init_transform(self)
+
+    if self.follow_transform then
+        self.follow_transform.object_id = self.follow_object_id
+
+        -- transform_interpolation.set_time(self.follow_transform)
+    end
 
     if not HAS_FIXED_UPDATE then
         update_transform(self, dt)
@@ -125,6 +167,11 @@ function update(self, dt)
 end
 
 function fixed_update(self, dt)
+    if not self.enabled then
+        return
+    end
+
+    lazy_init_transform(self)
     update_transform(self, dt)
 end
 
