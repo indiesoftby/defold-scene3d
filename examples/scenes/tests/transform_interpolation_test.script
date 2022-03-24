@@ -15,14 +15,14 @@ function init(self)
 
     self.anim1 = 0
     self.anim1_transform = transform_interpolation.init({
-        obj_id = self.text_obj,
+        object_id = self.text_obj,
         continuous_mode = true
     })
     self.anim1_offset = go.get_position(self.text_obj_interpolated)
 
     self.anim2 = 90
     self.anim2_transform = transform_interpolation.init({
-        obj_id = self.tube_obj,
+        object_id = self.tube_obj,
         continuous_mode = true
     })
     self.anim2_radius = vmath.length(go.get_position(self.tube_obj))

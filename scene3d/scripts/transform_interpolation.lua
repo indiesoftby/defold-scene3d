@@ -13,8 +13,7 @@ local render3d = require("scene3d.render.render3d")
 local M = {}
 
 function M.init(t)
-    assert(type(t) == "table")
-    assert(type(t.obj_id) ~= "nil")
+    assert(type(t.object_id) ~= "nil")
 
     local dt = t.fixed_dt or 1 / math.max(1, tonumber(sys.get_config("engine.fixed_update_frequency", 60)))
     M.start_frame(t, dt)
@@ -37,8 +36,8 @@ function M.start_frame(t, dt)
         t.start_position = t.position
         t.start_rotation = t.rotation
     else
-        t.start_position = go.get_position(t.obj_id)
-        t.start_rotation = go.get_rotation(t.obj_id)
+        t.start_position = go.get_position(t.object_id)
+        t.start_rotation = go.get_rotation(t.object_id)
         if t.apply_transform then
             t.start_position, t.start_rotation = t:apply_transform(t.start_position, t.start_rotation)
         end
@@ -53,8 +52,8 @@ end
 -- Call it in update() or late_update()
 function M.interpolate(t)
     if t.dirty then
-        t.last_position = go.get_position(t.obj_id)
-        t.last_rotation = go.get_rotation(t.obj_id)
+        t.last_position = go.get_position(t.object_id)
+        t.last_rotation = go.get_rotation(t.object_id)
         if t.apply_transform then
             t.last_position, t.last_rotation = t:apply_transform(t.last_position, t.last_rotation)
         end

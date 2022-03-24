@@ -122,94 +122,10 @@ instances {
   }
 }
 instances {
-  id: "icon_letter_"
-  prototype: "/scene3d/prefabs/icons/letters/icon_letter_3.go"
-  position {
-    x: -0.4
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "icon"
-    properties {
-      id: "collision_type"
-      value: "none"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "icon_letter_D1"
-  prototype: "/scene3d/prefabs/icons/letters/icon_letter_D.go"
-  position {
-    x: 0.4
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "icon"
-    properties {
-      id: "collision_type"
-      value: "none"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tube"
   prototype: "/scene3d/prefabs/primitives/primitive_tube_octa.go"
   position {
     x: 0.0
-    y: 1.5
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "primitive"
-    properties {
-      id: "collision_type"
-      value: "none"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 0.5
-    y: 0.5
-    z: 0.5
-  }
-}
-instances {
-  id: "tube_interpolated"
-  prototype: "/scene3d/prefabs/primitives/primitive_tube_octa.go"
-  position {
-    x: 3.0
     y: 1.5
     z: 0.0
   }
@@ -289,6 +205,34 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "tube2"
+  prototype: "/scene3d/prefabs/primitives/primitive_tube_octa.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
 collection_instances {
   id: "debug_ui"
   collection: "/scene3d/debug/photo_mode/debug_ui.collection"
@@ -336,7 +280,7 @@ embedded_instances {
   id: "scripts"
   data: "components {\n"
   "  id: \"transform_interpolation_test\"\n"
-  "  component: \"/examples/scenes/tests/transform_interpolation_test.script\"\n"
+  "  component: \"/examples/scenes/tests/transform_interpolation_test2.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -368,50 +312,29 @@ embedded_instances {
   }
 }
 embedded_instances {
+  id: "test_offset"
+  children: "text_3D_interpolated"
+  children: "tube_interpolated"
+  data: ""
+  position {
+    x: 3.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
   id: "text_3D_interpolated"
-  children: "icon_letter_"
-  children: "icon_letter_D1"
-  data: ""
-  position {
-    x: 3.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "text_offset"
-  children: "text_3D_interpolated1"
-  data: ""
-  position {
-    x: 3.0
-    y: -1.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "text_3D_interpolated1"
   children: "icon_letter_1"
   children: "icon_letter_D2"
   data: "components {\n"
@@ -443,6 +366,52 @@ embedded_instances {
   position {
     x: 0.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "tube_interpolated"
+  children: "tube2"
+  data: "components {\n"
+  "  id: \"transform_interpolation\"\n"
+  "  component: \"/scene3d/scripts/transform_interpolation.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"object_id\"\n"
+  "    value: \"/tube\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"continuous_mode\"\n"
+  "    value: \"true\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 1.5
     z: 0.0
   }
   rotation {

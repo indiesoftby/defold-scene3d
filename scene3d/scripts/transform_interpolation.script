@@ -1,0 +1,44 @@
+go.property("object_id", hash(""))
+go.property("continuous_mode", false)
+go.property("late_update", false)
+go.property("late_update_priority", 1)
+
+local render3d = require("scene3d.render.render3d")
+local transform_interpolation = require("scene3d.scripts.transform_interpolation")
+
+local HAS_FIXED_UPDATE = render3d.engine_version(1, 3, 1)
+
+local function interpolate(self)
+    transform_interpolation.interpolate(self)
+
+    go.set_position(self.position)
+    go.set_rotation(self.rotation)
+end
+
+function init(self)
+    if self.late_update then
+        self.late_update_id = scene3d.prerender_register(interpolate, self.late_update_priority)
+    end
+
+    transform_interpolation.init(self)
+end
+
+function final(self)
+    if self.late_update_id then
+        scene3d.prerender_unregister(self.late_update_id)
+    end
+end
+
+function update(self, dt)
+    if not HAS_FIXED_UPDATE then
+        transform_interpolation.start_frame(self, dt)
+    end
+
+    if not self.late_update_id then
+        interpolate(self)
+    end
+end
+
+function fixed_update(self, dt)
+    transform_interpolation.start_frame(self, dt)
+end

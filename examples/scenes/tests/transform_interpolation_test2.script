@@ -1,0 +1,30 @@
+go.property("text_obj", msg.url("/text_3D"))
+go.property("tube_obj", msg.url("/tube"))
+
+function init(self)
+    self.anim1 = 0
+
+    self.anim2 = 90
+    self.anim2_radius = vmath.length(go.get_position(self.tube_obj))
+end
+
+function final(self)
+end
+
+function update(self, dt)
+end
+
+function fixed_update(self, dt)
+    self.anim1 = self.anim1 + 90 * dt
+    go.set(self.text_obj, "euler.y", self.anim1)
+
+    self.anim2 = self.anim2 + 45 * dt
+    go.set(self.tube_obj, "position", self.anim2_radius * vmath.vector3(math.cos(math.rad(self.anim2)), math.sin(math.rad(self.anim2)), 0))
+    go.set(self.tube_obj, "euler.x", self.anim2 * 5)
+end
+
+function on_message(self, message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+end

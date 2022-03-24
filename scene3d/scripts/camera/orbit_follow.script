@@ -82,7 +82,7 @@ function init(self)
     self.late_update_id = scene3d.prerender_register(late_update, self.late_update_priority)
 
     self.follow_transform = transform_interpolation.init({
-        obj_id = self.follow_object_id,
+        object_id = self.follow_object_id,
         continuous_mode = false,
         apply_transform = function (t, position, rotation)
             position = position + vmath.rotate(rotation, render3d.FORWARD) * self.move_forward
@@ -116,6 +116,8 @@ end
 
 function update(self, dt)
     self.dt = dt
+
+    self.follow_transform.object_id = self.follow_object_id
 
     if not HAS_FIXED_UPDATE then
         update_transform(self, dt)
