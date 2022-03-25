@@ -4,13 +4,7 @@ local M = {}
 
 function M.window_callback(self, event, data)
     if event == window.WINDOW_EVENT_FOCUS_LOST then
-        if html5 and self.loaded_proxy then
-            self.pause_proxy = true
-        end
     elseif event == window.WINDOW_EVENT_FOCUS_GAINED then
-        if html5 and self.loaded_proxy then
-            self.unpause_proxy = true
-        end
     elseif event == window.WINDOW_EVENT_ICONFIED then
     elseif event == window.WINDOW_EVENT_DEICONIFIED then
     elseif event == window.WINDOW_EVENT_RESIZED then
