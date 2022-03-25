@@ -37,10 +37,10 @@ local function lazy_init_transform(self)
     self.follow_transform = transform_interpolation.init({
         object_id = self.follow_object_id,
         continuous_mode = false,
-        apply_transform = function (t, position, rotation)
-            position = position + vmath.rotate(rotation, render3d.FORWARD) * self.move_forward
-            return position, rotation
-        end
+        -- modify_transform = function (t, position, rotation)
+        --     position = position + vmath.rotate(rotation, render3d.FORWARD) * self.move_forward
+        --     return position, rotation
+        -- end
     })
 end
 

@@ -1,6 +1,6 @@
 go.property("enabled", true)
 go.property("object_id", hash(""))
-go.property("continuous_mode", false)
+go.property("continuous_mode", true)
 go.property("late_update", false)
 go.property("late_update_priority", 1)
 
@@ -8,6 +8,7 @@ local render3d = require("scene3d.render.render3d")
 local transform_interpolation = require("scene3d.scripts.transform_interpolation")
 
 local HAS_FIXED_UPDATE = render3d.engine_version(1, 3, 1)
+local FIXED_STEP_PHYSICS = HAS_FIXED_UPDATE and (sys.get_config("physics.use_fixed_timestep") == "1")
 
 local function lazy_init(self)
     if self.start_time then
@@ -62,11 +63,13 @@ function update(self, dt)
         interpolate(self)
     end
 
-    if not HAS_FIXED_UPDATE then
+    if not HAS_FIXED_UPDATE or not FIXED_STEP_PHYSICS then
         start_frame(self, dt)
     end
 end
 
 function fixed_update(self, dt)
-    start_frame(self, dt)
+    if FIXED_STEP_PHYSICS then
+        start_frame(self, dt)
+    end
 end

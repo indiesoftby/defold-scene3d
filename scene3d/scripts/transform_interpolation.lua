@@ -63,13 +63,8 @@ function M.init(t)
     return t
 end
 
--- function M.set_time(t)
---     t.set_time = socket.gettime()
--- end
-
--- Call it in fixed_update()
+-- Call it in fixed_update() or in the end of update()
 function M.start_frame(t, dt)
-    -- t.start_time = socket.gettime() -- #1: not t.dirty and socket.gettime() or t.start_time
     t.start_time = not t.dirty and socket.gettime() or t.start_time
     t.fixed_dt = dt
 
@@ -78,15 +73,16 @@ function M.start_frame(t, dt)
     --     print(render3d.frame_num .. string.format(": start_frame BEFORE euler y %.02f, cur %.02f", math3d.euler_y(t.start_rotation), math3d.euler_y(t.rotation)))
     -- end
 
-    -- #2:
     if t.continuous_mode and t.position and t.rotation then
         t.start_position = t.position
         t.start_rotation = t.rotation
     else
-        t.start_position = go.get_position(t.object_id)
-        t.start_rotation = go.get_rotation(t.object_id)
-        if t.apply_transform then
-            t.start_position, t.start_rotation = t:apply_transform(t.start_position, t.start_rotation)
+        if not t.dirty then
+            t.start_position = go.get_position(t.object_id)
+            t.start_rotation = go.get_rotation(t.object_id)
+            if t.modify_transform then
+                t.start_position, t.start_rotation = t:modify_transform(t.start_position, t.start_rotation)
+            end
         end
     end
 
@@ -96,13 +92,13 @@ function M.start_frame(t, dt)
     t.dirty = true
 end
 
--- Call it in update() or late_update()
+-- Call it in update()
 function M.interpolate(t)
     if t.dirty then
         t.last_position = go.get_position(t.object_id)
         t.last_rotation = go.get_rotation(t.object_id)
-        if t.apply_transform then
-            t.last_position, t.last_rotation = t:apply_transform(t.last_position, t.last_rotation)
+        if t.modify_transform then
+            t.last_position, t.last_rotation = t:modify_transform(t.last_position, t.last_rotation)
         end
         t.dirty = false
 

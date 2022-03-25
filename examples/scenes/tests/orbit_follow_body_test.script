@@ -7,6 +7,8 @@ go.property("key_right", hash("key_d"))
 local render3d = require("scene3d.render.render3d")
 
 local HAS_FIXED_UPDATE = render3d.engine_version(1, 3, 1)
+local FIXED_STEP_PHYSICS = HAS_FIXED_UPDATE and (sys.get_config("physics.use_fixed_timestep") == "1")
+
 local APPLY_FORCE = hash("apply_force")
 
 --- Rotate a collision object be applying opposing and offset forces
@@ -26,12 +28,13 @@ function init(self)
     end
 
     msg.post("/test_object#mesh", "disable")
+    msg.post("/test_tube#mesh", "disable")
 end
 
 function final(self)
 end
 
-local function do_fixed_update(self, dt)
+local function physics_update(self, dt)
     local sz = 0
     local sx = 0
 
@@ -60,13 +63,15 @@ local function do_fixed_update(self, dt)
 end
 
 function update(self, dt)
-    if not HAS_FIXED_UPDATE then
-        do_fixed_update(self, dt)
+    if not HAS_FIXED_UPDATE or not FIXED_STEP_PHYSICS then
+        physics_update(self, dt)
     end
 end
 
 function fixed_update(self, dt)
-    do_fixed_update(self, dt)
+    if FIXED_STEP_PHYSICS then
+        physics_update(self, dt)
+    end
 end
 
 function on_message(self, message_id, message, sender)
