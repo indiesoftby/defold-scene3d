@@ -66,12 +66,15 @@ end
 -- Call it in fixed_update() or in the end of update()
 function M.start_frame(t, dt)
     t.start_time = not t.dirty and socket.gettime() or t.start_time
-    t.fixed_dt = dt
+    t.fixed_dt = not t.dirty and dt or (t.fixed_dt + dt)
+
+    -- t.start_time = socket.gettime()
+    -- t.fixed_dt = dt
 
     -- DEBUG
-    -- if t.start_rotation then
-    --     print(render3d.frame_num .. string.format(": start_frame BEFORE euler y %.02f, cur %.02f", math3d.euler_y(t.start_rotation), math3d.euler_y(t.rotation)))
-    -- end
+    if t.start_rotation then
+        print(render3d.frame_num .. string.format(": ti - start_frame BEFORE euler y %.02f, cur %.02f", math3d.euler_y(t.start_rotation), math3d.euler_y(t.rotation)))
+    end
 
     if t.continuous_mode and t.position and t.rotation then
         t.start_position = t.position
@@ -87,9 +90,21 @@ function M.start_frame(t, dt)
     end
 
     -- DEBUG
-    -- print(render3d.frame_num .. string.format(": start_frame euler y %.02f", math3d.euler_y(t.start_rotation)))
+    print(render3d.frame_num .. string.format(": ti - start_frame euler y %.02f", math3d.euler_y(t.start_rotation)))
 
-    t.dirty = true
+--     if t.dirty then
+--         t.last_position = go.get_position(t.object_id)
+--         t.last_rotation = go.get_rotation(t.object_id)
+--         if t.modify_transform then
+--             t.last_position, t.last_rotation = t:modify_transform(t.last_position, t.last_rotation)
+--         end
+--         t.dirty = false
+-- 
+--         -- DEBUG
+--         print(render3d.frame_num .. string.format(": ti - dirty (!!!), last euler y %.02f", math3d.euler_y(t.last_rotation)))
+--     else
+        t.dirty = true
+    -- end
 end
 
 -- Call it in update()
@@ -103,16 +118,16 @@ function M.interpolate(t)
         t.dirty = false
 
         -- DEBUG
-        -- print(render3d.frame_num .. string.format(": dirty, last euler y %.02f", math3d.euler_y(t.last_rotation)))
+        print(render3d.frame_num .. string.format(": ti - dirty, last euler y %.02f", math3d.euler_y(t.last_rotation)))
     end
 
     local time = socket.gettime()
     t.update_time = time
 
-    local interpolation_factor = math3d.clamp01((time - t.start_time) / t.fixed_dt)
+    local interpolation_factor = math3d.clamp01((time - t.start_time) / (t.fixed_dt))
 
     -- DEBUG
-    -- print(render3d.frame_num .. string.format(": transform update, factor %.03f [%.03f -> %.03f], fixed dt %.03f", interpolation_factor, t.start_time, time, t.fixed_dt))
+    print(render3d.frame_num .. string.format(": ti - interpolate, factor %.03f [%.03f -> %.03f = %.03f], fixed dt %.03f", interpolation_factor, t.start_time, time, time - t.start_time, t.fixed_dt))
 
     t.position = vmath.lerp(interpolation_factor, t.start_position, t.last_position)
     t.rotation = vmath.slerp(interpolation_factor, t.start_rotation, t.last_rotation)

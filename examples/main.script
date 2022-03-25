@@ -3,10 +3,10 @@ local pointer = require("pointer_lock.pointer")
 local render3d = require("scene3d.render.render3d")
 local main = require("examples.main")
 
-go.property("scene4", hash("playground"))
+go.property("scene1", hash("playground"))
 go.property("scene2", hash("basic_3d"))
 go.property("scene3", hash("shadows"))
-go.property("scene1", hash("test"))
+go.property("scene4", hash("test"))
 go.property("scene5", hash(""))
 
 go.property("acquire_input_focus", true)

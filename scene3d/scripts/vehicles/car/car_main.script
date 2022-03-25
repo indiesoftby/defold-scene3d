@@ -137,6 +137,15 @@ function update(self, dt)
     local c = self.car_data
 
     print(render3d.frame_num .. ": car_main.script - update, " .. string.format("%.05f", dt))
+end
+
+function fixed_update(self, dt)
+    if not self.car_data then
+        return
+    end
+    local c = self.car_data
+
+    print(render3d.frame_num .. ": car_main.script - fixed_update, " .. string.format("%.05f", dt))
 
     --
     -- VISUAL POSITION, ETC.
@@ -156,14 +165,14 @@ function update(self, dt)
     c.car_rotation = car_rotation
     c.car_euler = go.get(self.physics_url, "euler")
 
-    go.set_rotation(c.car_rotation, self.visuals_url)
-    go.set_position(c.car_visual_position, self.visuals_url)
+    -- go.set_rotation(c.car_rotation, self.visuals_url)
+    -- go.set_position(c.car_visual_position, self.visuals_url)
 
     --
     -- CONTROLS
     --
-    local sz = math3d.clamp(self.input_gas_pedal_value, -1, 1)
-    local sx = math3d.clamp(self.input_steering_wheel_value, -1, 1)
+    local sz = 1 -- math3d.clamp(self.input_gas_pedal_value, -1, 1)
+    local sx = -1 -- math3d.clamp(self.input_steering_wheel_value, -1, 1)
 
     --
     -- CAR PHYSICS
@@ -259,7 +268,7 @@ function update(self, dt)
     --
     -- FRUSTUM CULL
     --
-    frustum_mesh.update(self, c.car_position)
+    -- frustum_mesh.update(self, c.car_position)
 end
 
 function on_message(self, message_id, message, sender)
