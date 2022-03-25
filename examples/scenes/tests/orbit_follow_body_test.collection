@@ -58,6 +58,11 @@ instances {
       value: "0.35"
       type: PROPERTY_TYPE_NUMBER
     }
+    properties {
+      id: "fog_color"
+      value: "0.25, 0.25, 0.25"
+      type: PROPERTY_TYPE_VECTOR3
+    }
   }
   scale3 {
     x: 1.0
@@ -252,27 +257,6 @@ embedded_instances {
   position {
     x: 0.0
     y: 5.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "offset"
-  children: "interpolated_object"
-  data: ""
-  position {
-    x: 0.0
-    y: 0.0
     z: 0.0
   }
   rotation {

@@ -58,12 +58,12 @@ function update(self, dt)
     --     transform_interpolation.set_time(self)
     -- end
 
-    if not HAS_FIXED_UPDATE then
-        start_frame(self, dt)
-    end
-
     if not self.late_update_id then
         interpolate(self)
+    end
+
+    if not HAS_FIXED_UPDATE then
+        start_frame(self, dt)
     end
 end
 
