@@ -222,6 +222,33 @@ static int Frustum_Set(lua_State* L)
     return 0;
 }
 
+static int Frustum_Is_Box_Visible(lua_State* L)
+{
+    dmVMath::Vector3 bounds[2];
+    if (lua_isnumber(L, 1))
+    {
+        bounds[0].setX(luaL_checknumber(L, 1));
+        bounds[0].setY(luaL_checknumber(L, 2));
+        bounds[0].setZ(luaL_checknumber(L, 3));
+        bounds[1].setX(luaL_checknumber(L, 4));
+        bounds[1].setY(luaL_checknumber(L, 5));
+        bounds[1].setZ(luaL_checknumber(L, 6));
+    }
+    else
+    {
+        dmVMath::Vector3* v1 = dmScript::CheckVector3(L, 1);
+        bounds[0]            = dmVMath::Vector3(*v1);
+
+        dmVMath::Vector3* v2 = dmScript::CheckVector3(L, 2);
+        bounds[1]            = dmVMath::Vector3(*v2);
+    }
+
+    const bool visible = g_Frustum.IsBoxVisible(bounds[0], bounds[1]);
+
+    lua_pushboolean(L, visible);
+    return 1;
+}
+
 static int Frustum_Mesh_Acquire(lua_State* L)
 {
     std::vector<Frustum_Mesh>::size_type idx;
@@ -286,6 +313,46 @@ static int Frustum_Mesh_Visibility_Changed(lua_State* L)
     dmVMath::Vector3 bounds[2];
     bounds[0] = dmVMath::Vector3(position.getX() - max_dimension, position.getY() - max_dimension, position.getZ() - max_dimension);
     bounds[1] = dmVMath::Vector3(position.getX() + max_dimension, position.getY() + max_dimension, position.getZ() + max_dimension);
+
+    const bool visible = g_Frustum.IsBoxVisible(bounds[0], bounds[1]);
+
+    if (visible != mesh.m_Visible)
+    {
+        mesh.m_Visible = visible;
+        lua_pushboolean(L, true);
+        dmScript::PushHash(L, visible ? MSG_ENABLE : MSG_DISABLE);
+        return 2;
+    }
+    else
+    {
+        lua_pushboolean(L, false);
+        return 1;
+    }
+}
+
+static int Frustum_Mesh_Visibility_Changed_Box(lua_State* L)
+{
+    const int idx      = luaL_checkint(L, 1);
+    Frustum_Mesh& mesh = g_FrustumMeshes[idx];
+
+    dmVMath::Vector3 bounds[2];
+    if (lua_isnumber(L, 2))
+    {
+        bounds[0].setX(luaL_checknumber(L, 2));
+        bounds[0].setY(luaL_checknumber(L, 3));
+        bounds[0].setZ(luaL_checknumber(L, 4));
+        bounds[1].setX(luaL_checknumber(L, 5));
+        bounds[1].setY(luaL_checknumber(L, 6));
+        bounds[1].setZ(luaL_checknumber(L, 7));
+    }
+    else
+    {
+        dmVMath::Vector3* v1 = dmScript::CheckVector3(L, 2);
+        bounds[0]            = dmVMath::Vector3(*v1);
+
+        dmVMath::Vector3* v2 = dmScript::CheckVector3(L, 3);
+        bounds[1]            = dmVMath::Vector3(*v2);
+    }
 
     const bool visible = g_Frustum.IsBoxVisible(bounds[0], bounds[1]);
 
@@ -539,9 +606,11 @@ static const luaL_reg Module_methods[] = {
     //
     { "quat_look_rotation", Quat_LookRotation },
     { "frustum_set", Frustum_Set },
+    { "frustum_is_box_visible", Frustum_Is_Box_Visible },
     { "frustum_mesh_acquire", Frustum_Mesh_Acquire },
     { "frustum_mesh_release", Frustum_Mesh_Release },
     { "frustum_mesh_vis_changed", Frustum_Mesh_Visibility_Changed },
+    { "frustum_mesh_vis_changed_box", Frustum_Mesh_Visibility_Changed_Box },
     //
     { "chunk_id_hash", ChunkIdHash },
     //
