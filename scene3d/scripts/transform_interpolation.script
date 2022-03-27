@@ -11,7 +11,7 @@ local HAS_FIXED_UPDATE = render3d.engine_version(1, 3, 1)
 local FIXED_STEP_PHYSICS = HAS_FIXED_UPDATE and (sys.get_config("physics.use_fixed_timestep") == "1")
 
 local function lazy_init(self)
-    if self.start_time then
+    if self.time then
         -- i.e. already initialized
         return
     end
@@ -19,27 +19,31 @@ local function lazy_init(self)
     transform_interpolation.init(self)
 end
 
-local function interpolate(self)
+local function interpolate(self, dt)
     if not self.enabled then
         return
     end
 
     lazy_init(self)
 
-    transform_interpolation.interpolate(self)
+    transform_interpolation.interpolate(self, dt)
 
-    go.set_position(self.position)
-    go.set_rotation(self.rotation)
+    if self.position then
+        go.set_position(self.position)
+    end
+    if self.rotation then
+        go.set_rotation(self.rotation)
+    end
 end
 
-local function start_frame(self, dt)
+local function start_frame(self, fixed_dt)
     if not self.enabled then
         return
     end
 
     lazy_init(self)
 
-    transform_interpolation.start_frame(self, dt)
+    transform_interpolation.start_frame(self, fixed_dt)
 end
 
 function init(self)
@@ -59,11 +63,11 @@ function update(self, dt)
     --     transform_interpolation.set_time(self)
     -- end
 
-    print(render3d.frame_num .. ": transform_interpolation.script - update, " .. string.format("%.05f", dt))
+    -- print(render3d.frame_num .. ": transform_interpolation.script - update, " .. string.format("%.05f", dt))
 
-    if not self.late_update_id then
-        interpolate(self)
-    end
+    -- if not self.late_update_id then
+        interpolate(self, dt)
+    -- end
 
     if not HAS_FIXED_UPDATE or not FIXED_STEP_PHYSICS then
         start_frame(self, dt)
@@ -71,7 +75,7 @@ function update(self, dt)
 end
 
 function fixed_update(self, dt)
-    print(render3d.frame_num .. ": transform_interpolation.script - fixed_update, " .. string.format("%.05f", dt))
+    -- print(render3d.frame_num .. ": transform_interpolation.script - fixed_update, " .. string.format("%.05f", dt))
 
     if FIXED_STEP_PHYSICS then
         start_frame(self, dt)

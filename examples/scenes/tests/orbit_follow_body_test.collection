@@ -355,7 +355,7 @@ embedded_instances {
   "restitution: 0.25\\n"
   "group: \\\"default\\\"\\n"
   "mask: \\\"default\\\"\\n"
-  "linear_damping: 0.0\\n"
+  "linear_damping: 0.5\\n"
   "angular_damping: 0.0\\n"
   "locked_rotation: false\\n"
   "bullet: false\\n"

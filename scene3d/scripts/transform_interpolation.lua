@@ -57,24 +57,19 @@ local M = {}
 function M.init(t)
     assert(type(t.object_id) ~= "nil")
 
-    local dt = t.fixed_dt or 1 / math.max(1, tonumber(sys.get_config("engine.fixed_update_frequency", 60)))
-    M.start_frame(t, dt)
+    t.time = 0
+    t.fixed_time = 0
+    t.fixed_dt = t.fixed_dt or 1 / math.max(1, tonumber(sys.get_config("engine.fixed_update_frequency", 60)))
+    t.continuous_mode = t.continuous_mode or true
 
     return t
 end
 
--- Call it in fixed_update() or in the end of update()
-function M.start_frame(t, dt)
-    t.start_time = not t.dirty and socket.gettime() or t.start_time
-    t.fixed_dt = not t.dirty and dt or (t.fixed_dt + dt)
+function M.start_frame(t, fixed_dt)
+    t.fixed_time = t.fixed_time + fixed_dt
+    t.fixed_dt = fixed_dt
 
-    -- t.start_time = socket.gettime()
-    -- t.fixed_dt = dt
-
-    -- DEBUG
-    if t.start_rotation then
-        print(render3d.frame_num .. string.format(": ti - start_frame BEFORE euler y %.02f, cur %.02f", math3d.euler_y(t.start_rotation), math3d.euler_y(t.rotation)))
-    end
+    -- print(render3d.frame_num .. string.format(": fixed update, time %.03f", t.fixed_time))
 
     if t.continuous_mode and t.position and t.rotation then
         t.start_position = t.position
@@ -89,26 +84,13 @@ function M.start_frame(t, dt)
         end
     end
 
-    -- DEBUG
-    print(render3d.frame_num .. string.format(": ti - start_frame euler y %.02f", math3d.euler_y(t.start_rotation)))
-
---     if t.dirty then
---         t.last_position = go.get_position(t.object_id)
---         t.last_rotation = go.get_rotation(t.object_id)
---         if t.modify_transform then
---             t.last_position, t.last_rotation = t:modify_transform(t.last_position, t.last_rotation)
---         end
---         t.dirty = false
--- 
---         -- DEBUG
---         print(render3d.frame_num .. string.format(": ti - dirty (!!!), last euler y %.02f", math3d.euler_y(t.last_rotation)))
---     else
-        t.dirty = true
-    -- end
+    t.dirty = true
 end
 
--- Call it in update()
-function M.interpolate(t)
+function M.interpolate(t, dt)
+    t.time = t.time + dt
+    t.dt = dt
+
     if t.dirty then
         t.last_position = go.get_position(t.object_id)
         t.last_rotation = go.get_rotation(t.object_id)
@@ -116,18 +98,17 @@ function M.interpolate(t)
             t.last_position, t.last_rotation = t:modify_transform(t.last_position, t.last_rotation)
         end
         t.dirty = false
-
-        -- DEBUG
-        print(render3d.frame_num .. string.format(": ti - dirty, last euler y %.02f", math3d.euler_y(t.last_rotation)))
     end
 
-    local time = socket.gettime()
-    t.update_time = time
+    local interpolation_factor = math3d.clamp01((t.time - t.fixed_time) / t.fixed_dt)
 
-    local interpolation_factor = math3d.clamp01((time - t.start_time) / (t.fixed_dt))
+    -- print(render3d.frame_num .. string.format(": update, time %.03f; factor %.03f (non-clamped %.03f) [%.03f -> %.03f = %.03f], fixed dt %.03f", 
+    --     t.time, interpolation_factor, (t.time - t.fixed_time) / t.fixed_dt, 
+    --     t.fixed_time, t.time, t.time - t.fixed_time, t.fixed_dt))
 
-    -- DEBUG
-    print(render3d.frame_num .. string.format(": ti - interpolate, factor %.03f [%.03f -> %.03f = %.03f], fixed dt %.03f", interpolation_factor, t.start_time, time, time - t.start_time, t.fixed_dt))
+    if not t.start_position then
+        return
+    end
 
     t.position = vmath.lerp(interpolation_factor, t.start_position, t.last_position)
     t.rotation = vmath.slerp(interpolation_factor, t.start_rotation, t.last_rotation)
