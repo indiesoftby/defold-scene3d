@@ -1,0 +1,55 @@
+-- https://docs.unity3d.com/Manual/class-AudioSource.html
+-- https://docs.unity3d.com/ScriptReference/AudioSource.html
+-- https://developer.playcanvas.com/en/user-manual/packs/components/sound/
+-- https://docs.godotengine.org/en/stable/tutorials/audio/audio_streams.html
+
+go.property("sound_id", hash("sound"))
+go.property("audio_listener", msg.url("/camera3d"))
+go.property("mute", false)
+go.property("play_on_awake", false)
+go.property("volume", 1)
+go.property("min_distance", 1)
+go.property("max_distance", 100)
+go.property("rolloff_mode", hash("logarithmic"))
+
+function init(self)
+    -- Add initialization code here
+    -- Learn more: https://defold.com/manuals/script/
+    -- Remove this function if not needed
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Learn more: https://defold.com/manuals/script/
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- Add update code here
+    -- Learn more: https://defold.com/manuals/script/
+    -- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+    -- Add message-handling code here
+    -- Learn more: https://defold.com/manuals/message-passing/
+    -- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here. The game object this script is attached to
+    -- must have acquired input focus:
+    --
+    --    msg.post(".", "acquire_input_focus")
+    --
+    -- All mapped input bindings will be received. Mouse and touch input will
+    -- be received regardless of where on the screen it happened.
+    -- Learn more: https://defold.com/manuals/input/
+    -- Remove this function if not needed
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Learn more: https://defold.com/manuals/hot-reload/
+    -- Remove this function if not needed
+end
