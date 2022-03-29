@@ -3,19 +3,24 @@
 -- https://developer.playcanvas.com/en/user-manual/packs/components/sound/
 -- https://docs.godotengine.org/en/stable/tutorials/audio/audio_streams.html
 
-go.property("sound_id", hash("sound"))
-go.property("audio_listener", msg.url("/camera3d"))
+go.property("sound_clip1_id", hash("sound"))
+go.property("sound_clip2_id", hash(""))
+go.property("sound_clip3_id", hash(""))
 go.property("mute", false)
-go.property("play_on_awake", false)
-go.property("volume", 1)
-go.property("min_distance", 1)
-go.property("max_distance", 100)
-go.property("rolloff_mode", hash("logarithmic"))
+go.property("auto_play", false)
+go.property("random_clip", false)
+go.property("random_pitch", 0)
+go.property("positional_sound", false)
+go.property("positional_audio_listener", msg.url("/camera3d"))
+go.property("positional_min_distance", 1)
+go.property("positional_max_distance", 100)
+go.property("positional_rolloff_mode", hash("linear"))
+go.property("positional_rolloff_factor", 1)
 
 function init(self)
-    -- Add initialization code here
-    -- Learn more: https://defold.com/manuals/script/
-    -- Remove this function if not needed
+    if self.auto_play then
+        sound.play(msg.url(nil, nil, self.sound_clip1_id))
+    end
 end
 
 function final(self)
