@@ -6,16 +6,19 @@
 go.property("sound_clip1_id", hash("sound"))
 go.property("sound_clip2_id", hash(""))
 go.property("sound_clip3_id", hash(""))
+go.property("volume", false)
 go.property("mute", false)
 go.property("auto_play", false)
-go.property("random_clip", false)
+go.property("random_sound_clip", false)
 go.property("random_pitch", 0)
-go.property("positional_sound", false)
+go.property("positional_audio", false)
 go.property("positional_audio_listener", msg.url("/camera3d"))
-go.property("positional_min_distance", 1)
+go.property("positional_ref_distance", 1)
 go.property("positional_max_distance", 100)
 go.property("positional_rolloff_mode", hash("linear"))
 go.property("positional_rolloff_factor", 1)
+go.property("debug_info", false)
+go.property("debug_mesh_id", hash("debug_mesh"))
 
 function init(self)
     if self.auto_play then
@@ -24,37 +27,13 @@ function init(self)
 end
 
 function final(self)
-    -- Add finalization code here
-    -- Learn more: https://defold.com/manuals/script/
-    -- Remove this function if not needed
 end
 
 function update(self, dt)
-    -- Add update code here
-    -- Learn more: https://defold.com/manuals/script/
-    -- Remove this function if not needed
 end
 
 function on_message(self, message_id, message, sender)
-    -- Add message-handling code here
-    -- Learn more: https://defold.com/manuals/message-passing/
-    -- Remove this function if not needed
 end
 
 function on_input(self, action_id, action)
-    -- Add input-handling code here. The game object this script is attached to
-    -- must have acquired input focus:
-    --
-    --    msg.post(".", "acquire_input_focus")
-    --
-    -- All mapped input bindings will be received. Mouse and touch input will
-    -- be received regardless of where on the screen it happened.
-    -- Learn more: https://defold.com/manuals/input/
-    -- Remove this function if not needed
-end
-
-function on_reload(self)
-    -- Add reload-handling code here
-    -- Learn more: https://defold.com/manuals/hot-reload/
-    -- Remove this function if not needed
 end
