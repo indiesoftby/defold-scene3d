@@ -107,7 +107,7 @@ function init(self)
     end
 
     if self.debug_mesh_id ~= EMPTY_HASH then
-        msg.post(self.debug_mesh_id, DISABLE)
+        msg.post(msg.url(nil, nil, self.debug_mesh_id), DISABLE)
     end
 end
 
