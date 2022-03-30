@@ -1,7 +1,8 @@
 local render3d = require("scene3d.render.render3d")
+local system_util = require("scene3d.helpers.system_util")
 
 -- Defold 1.3.1 or newer: render.draw(predicate, [options]). 
-local HAS_DRAW_OPTS = render3d.engine_version(1, 3, 1)
+local HAS_DRAW_OPTS = system_util.engine_version(1, 3, 1)
 
 function init(self)
     -- GUI predicates
