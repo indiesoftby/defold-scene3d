@@ -1,6 +1,7 @@
 local flow = require("ludobits.m.flow")
 local pointer = require("pointer_lock.pointer")
 local render3d = require("scene3d.render.render3d")
+local system_util = require("scene3d.helpers.system_util")
 local main = require("examples.main")
 
 go.property("scene1", hash("playground"))
@@ -16,11 +17,11 @@ function init(self)
         msg.post(".", hash("acquire_input_focus"))
     end
 
-    main.setup_error_handling()
+    system_util.setup_error_handling()
     window.set_listener(main.window_callback)
 
     -- Resize game window on desktop platforms
-    main.resize_window()
+    system_util.resize_window()
 
     -- Set Pointer Lock's virtual cursor invisible by default
     pointer.cursor_visible = false
