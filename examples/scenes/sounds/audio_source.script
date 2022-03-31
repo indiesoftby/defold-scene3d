@@ -6,7 +6,7 @@
 go.property("sound_clip1_id", hash("sound"))
 go.property("sound_clip2_id", hash(""))
 go.property("sound_clip3_id", hash(""))
-go.property("volume", false)
+go.property("volume", 1)
 go.property("mute", false)
 go.property("auto_play", false)
 go.property("random_sound_clip", false)
@@ -20,6 +20,8 @@ go.property("positional_rolloff_factor", 1)
 go.property("debug_info", false)
 go.property("debug_mesh_id", hash("debug_mesh"))
 
+local audio_source = require("examples.scenes.sounds.audio_source")
+
 function init(self)
     if self.auto_play then
         sound.play(msg.url(nil, nil, self.sound_clip1_id))
@@ -30,6 +32,11 @@ function final(self)
 end
 
 function update(self, dt)
+    -- local listener = this._manager.listener
+    -- local lpos = go.get_position()
+    -- local factor = audio_source.falloff(lpos, this._position, this.refDistance, this.maxDistance, this.rollOffFactor, this.distanceModel)
+    -- local v = this.volume
+    -- this.source.volume = v * factor * this._manager.volume
 end
 
 function on_message(self, message_id, message, sender)
