@@ -26,7 +26,7 @@ local function interpolate(self, dt)
 
     lazy_init(self)
 
-    transform_interpolation.interpolate(self, dt)
+    transform_interpolation.interpolate(self, dt or self.dt)
 
     if self.position then
         go.set_position(self.position)
@@ -65,9 +65,10 @@ function update(self, dt)
 
     -- print(render3d.frame_num .. ": transform_interpolation.script - update, " .. string.format("%.05f", dt))
 
-    -- if not self.late_update_id then
+    self.dt = dt
+    if not self.late_update_id then
         interpolate(self, dt)
-    -- end
+    end
 
     if not HAS_FIXED_UPDATE or not FIXED_STEP_PHYSICS then
         start_frame(self, dt)
