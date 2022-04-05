@@ -14,6 +14,7 @@ high_dpi = 1
 samples = 0
 fullscreen = 0
 update_frequency = 0
+swap_interval = 1
 vsync = 1
 display_profiles = /scene3d/helpers/gui.display_profilesc
 dynamic_orientation = 0
@@ -27,6 +28,7 @@ clear_color_alpha = 1.0
 
 [physics]
 type = 3D
+use_fixed_timestep = 0
 gravity_y = -9.8
 debug = 0
 debug_alpha = 0.9
@@ -43,6 +45,7 @@ ray_cast_limit_2d = 64
 ray_cast_limit_3d = 1000
 trigger_overlap_capacity = 100
 velocity_threshold = 1
+max_fixed_timesteps = 2
 
 [bootstrap]
 main_collection = /examples/main.collectionc
@@ -144,6 +147,7 @@ heap_size = 64
 htmlfile = /builtins/manifests/web/engine_template.html
 cssfile = /builtins/manifests/web/dark_theme.css
 archive_location_prefix = archive
+wasm_streaming = 0
 show_fullscreen_button = 1
 show_made_with_defold = 1
 show_console_banner = 1
@@ -187,6 +191,7 @@ max_tile_count = 2048
 
 [engine]
 run_while_iconified = 0
+fixed_update_frequency = 60
 
 [druid]
 no_auto_input = 1
