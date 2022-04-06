@@ -21,8 +21,10 @@ M.fov = 0
 M.near = 0
 M.far = 0
 M.view_position = vmath.vector3()
-M.view_front = vmath.vector3()
 M.view_world_up = vmath.vector3()
+M.view_front = vmath.vector3()
+M.view_right = vmath.vector3()
+M.view_up = vmath.vector3()
 
 M.viewports = {}
 
@@ -53,8 +55,10 @@ function M.reset()
     }
 
     M.view_position = vmath.vector3(0, 0, 0)
-    M.view_front = vmath.vector3(0, 0, -1)
-    M.view_world_up = vmath.vector3(0, 1, 0)
+    M.view_world_up = M.UP
+    M.view_front = vmath.vector3(M.FORWARD)
+    M.view_right = vmath.vector3(M.RIGHT)
+    M.view_up = vmath.vector3(M.UP)
 
     M.light_ambient_color = vmath.vector3(1, 1, 1)
     M.light_ambient_intensity = 0.25
@@ -86,12 +90,20 @@ function M.view_from_yaw_pitch(yaw, pitch, viewport)
     M.view_direction(direction, viewport)
 end
 
+function M.view_from_rotation(quat, viewport)
+    viewport = viewport or M
+
+    viewport.view_world_up = M.UP
+    viewport.view_front = vmath.rotate(quat, M.FORWARD)
+    viewport.view_right = vmath.rotate(quat, M.RIGHT)
+    viewport.view_up = vmath.rotate(quat, M.UP)
+end
+
 function M.view_direction(direction, viewport)
     viewport = viewport or M
 
-    viewport.view_front = direction
     viewport.view_world_up = M.UP
-
+    viewport.view_front = direction
     -- Re-calculate the Right and Up vector, plus normalize the vectors,
     -- because their length gets closer to 0 the more you look up or down
     viewport.view_right = vmath.normalize(vmath.cross(viewport.view_front, viewport.view_world_up)) 
@@ -106,7 +118,7 @@ end
 
 function M.camera_view(viewport)
     if not viewport then
-        return vmath.matrix4_look_at(M.view_position, M.view_position + M.view_front, M.view_world_up)
+        return vmath.matrix4_look_at(M.view_position, M.view_position + M.view_front, M.view_up)
     else
         return vmath.matrix4_look_at(viewport.view_position, viewport.view_position + viewport.view_front, viewport.view_world_up)
     end

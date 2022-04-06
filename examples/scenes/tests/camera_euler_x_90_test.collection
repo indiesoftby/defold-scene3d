@@ -1,0 +1,50 @@
+name: "test"
+instances {
+  id: "camera3d"
+  prototype: "/scene3d/camera/camera3d.go"
+  position {
+    x: 0.0
+    y: 9.0
+    z: 0.0
+  }
+  rotation {
+    x: -0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "primitive_pyramid_octa"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid_octa.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "none"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
