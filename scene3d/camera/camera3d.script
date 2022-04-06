@@ -29,7 +29,8 @@ local function update_render(self)
     local R = render3d
 
     R.view_position = go.get_position()
-    R.view_direction(vmath.rotate(go.get_rotation(), R.FORWARD))
+    -- R.view_direction(vmath.rotate(go.get_rotation(), R.FORWARD))
+    R.view_from_rotation(go.get_rotation())
 
     R.clear_color = self.clear_color
     R.fov = self.field_of_view
