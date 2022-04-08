@@ -136,7 +136,7 @@ function update(self, dt)
     end
     local c = self.car_data
 
-    print(render3d.frame_num .. ": car_main.script - update, " .. string.format("%.05f", dt))
+    -- print(render3d.frame_num .. ": car_main.script - update, " .. string.format("%.05f", dt))
 end
 
 function fixed_update(self, dt)
@@ -145,7 +145,7 @@ function fixed_update(self, dt)
     end
     local c = self.car_data
 
-    print(render3d.frame_num .. ": car_main.script - fixed_update, " .. string.format("%.05f", dt))
+    -- print(render3d.frame_num .. ": car_main.script - fixed_update, " .. string.format("%.05f", dt))
 
     --
     -- VISUAL POSITION, ETC.
@@ -171,8 +171,8 @@ function fixed_update(self, dt)
     --
     -- CONTROLS
     --
-    local sz = 1 -- math3d.clamp(self.input_gas_pedal_value, -1, 1)
-    local sx = -1 -- math3d.clamp(self.input_steering_wheel_value, -1, 1)
+    local sz = math3d.clamp(self.input_gas_pedal_value, -1, 1)
+    local sx = math3d.clamp(self.input_steering_wheel_value, -1, 1)
 
     --
     -- CAR PHYSICS
