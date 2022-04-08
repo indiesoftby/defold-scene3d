@@ -12,12 +12,16 @@ The built-in example scene is available [✨**to play online**✨](https://indie
 Follow further developments:
 - 💬 [The topic on the Defold forum](https://forum.defold.com/t/scene3d-collection-of-assets-for-3d-gamedev/70352).
 
+## Showcase
+
+[![Merge Getaway](https://github.com/indiesoftby/defold-scene3d/raw/showcase/merge-getaway.gif)](https://aglitchman.github.io/defold-ld50-game/)
+
 ## Key features
 
 * [x] Car physics.
 * [x] Character controller.
 * [x] Controls: keyboard, mouse look with a pointer lock.
-* [x] Frustum culling (only for 3D meshes).
+* [x] Frustum culling for 3D meshes.
 * [x] Helper 3D math functions ([docs](#math3dlua)).
 
 ### Included Assets (i.e. Prefabs)
@@ -103,7 +107,7 @@ Use it in your own project by adding this project as a [Defold library dependenc
 
 #### Required Dependencies
 
-* [Pointer Lock](https://github.com/indiesoftby/defold-pointer-lock) (only if a project uses `mouse_look.script` or the `debug_camera` prefab).
+* [Pointer Lock](https://github.com/indiesoftby/defold-pointer-lock) (only if a project uses `mouse_look.script` or the `debug_ui.collection` prefab).
 
 #### Optional Dependencies
 
