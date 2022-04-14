@@ -21,6 +21,7 @@ M.fov = 0
 M.near = 0
 M.far = 0
 M.view_position = vmath.vector3()
+M.view_rotation = vmath.quat() -- Note: it can be nil, if camera doesn't use function `view_from_rotation`.
 M.view_world_up = vmath.vector3()
 M.view_front = vmath.vector3()
 M.view_right = vmath.vector3()
@@ -94,6 +95,7 @@ function M.view_from_rotation(quat, viewport)
     viewport = viewport or M
 
     viewport.view_world_up = M.UP
+    viewport.view_rotation = quat
     viewport.view_front = vmath.rotate(quat, M.FORWARD)
     viewport.view_right = vmath.rotate(quat, M.RIGHT)
     viewport.view_up = vmath.rotate(quat, M.UP)
@@ -103,6 +105,7 @@ function M.view_direction(direction, viewport)
     viewport = viewport or M
 
     viewport.view_world_up = M.UP
+    viewport.view_rotation = nil -- Check the note above.
     viewport.view_front = direction
     -- Re-calculate the Right and Up vector, plus normalize the vectors,
     -- because their length gets closer to 0 the more you look up or down
