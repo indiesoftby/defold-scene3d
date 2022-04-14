@@ -1,0 +1,61 @@
+-- Sometimes we'd like to make labels or other things that always face the camera. 
+-- Add this script as a component to your gameobject to make this happen.
+
+go.property("enabled", true)
+go.property("look_at_object_id", hash(""))
+go.property("use_rotation", true)
+go.property("use_world_transform", false)
+
+go.property("late_update", false)
+go.property("late_update_priority", 1)
+
+local render3d = require("scene3d.render.render3d")
+local math3d = require("scene3d.helpers.math3d")
+
+local EMPTY_HASH = hash("")
+
+local function update_rotation(self)
+    if self.use_rotation then
+        local rotation = render3d.view_rotation
+        if self.look_at_object_id ~= EMPTY_HASH then
+            rotation = self.use_world_transform and go.get_world_rotation(self.look_at_object_id) or go.get_rotation(self.look_at_object_id)
+        end
+
+        if rotation then
+            go.set_rotation(rotation)
+            return
+        end
+    end
+
+    local position = self.use_world_transform and go.get_world_position() or go.get_position()
+    local look_at_pos = render3d.view_position
+    if self.look_at_object_id ~= EMPTY_HASH then
+        look_at_pos = self.use_world_transform and go.get_world_position(self.look_at_object_id) or go.get_position(self.look_at_object_id)
+    end
+
+    local rotation = math3d.quat_look_rotation(position - look_at_pos, render3d.UP)
+    go.set_rotation(rotation)
+end
+
+-- This update will happen after game objects have been moved by the physics engine
+local function late_update(self)
+    update_rotation(self)
+end
+
+function init(self)
+    if self.late_update then
+        self.late_update_id = scene3d.prerender_register(late_update, self.late_update_priority)
+    end
+end
+
+function final(self)
+    if self.late_update_id then
+        scene3d.prerender_unregister(self.late_update_id)
+    end
+end
+
+function update(self, dt)
+    if not self.late_update_id then
+        update_rotation(self)
+    end
+end
