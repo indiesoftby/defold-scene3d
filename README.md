@@ -151,6 +151,7 @@ The table briefly describes the included helper math functions. The source code 
 | `math3d.lerp(t, a, b, [dt])` | Linearly interpolates between `a` and `b` by `t`. The parameter `t` is clamped to the range `[0, 1]`. | `Mathf.Lerp` |
 | `math3d.lerp_angle(t, a, b, [dt])` | Same as `vmath.lerp` but makes sure the values interpolate correctly when they wrap around 360 degrees. | `Mathf.LerpAngle` |
 | `math3d.limited_lerp(t, a, b, max_step)` | Same as `vmath.lerp` but `max_step` limits the increment of value. | - |
+| `math3d.move_towards(a, b, max_delta)` | Moves the `a` value towards `b`. | `Mathf.MoveTowards` |
 | `math3d.ping_pong(t, length)` | Pingpongs the value t, so that it is never larger than length and never smaller than 0. | `Mathf.PingPong` |
 | `math3d.repeat_(t, length)` | Loops the value t, so that it is never larger than length and never smaller than 0. | `Mathf.Repeat` |
 | `math3d.sign(x)` | Returns the sign of x. | `Mathf.Sign` |
