@@ -1,0 +1,169 @@
+name: "default"
+instances {
+  id: "primitive_cylinder"
+  prototype: "/scene3d/prefabs/primitives/primitive_cylinder.go"
+  position {
+    x: 0.0
+    y: 0.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cylinder1"
+  prototype: "/scene3d/prefabs/primitives/primitive_cylinder.go"
+  position {
+    x: 0.0
+    y: 0.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cylinder2"
+  prototype: "/scene3d/prefabs/primitives/primitive_cylinder.go"
+  position {
+    x: 0.0
+    y: 1.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_sphere1"
+  prototype: "/scene3d/prefabs/primitives/primitive_sphere.go"
+  position {
+    x: 0.0
+    y: 1.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+scale_along_z: 0
