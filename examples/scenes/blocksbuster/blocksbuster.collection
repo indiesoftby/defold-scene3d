@@ -94,7 +94,7 @@ instances {
 }
 instances {
   id: "buster"
-  prototype: "/scene3d/prefabs/characters/buster.go"
+  prototype: "/examples/scenes/blocksbuster/buster.go"
   position {
     x: 0.0
     y: 0.05

@@ -1,6 +1,6 @@
 components {
   id: "buster"
-  component: "/scene3d/scripts/characters/buster.script"
+  component: "/examples/scenes/blocksbuster/scripts/buster.script"
   position {
     x: 0.0
     y: 0.0
