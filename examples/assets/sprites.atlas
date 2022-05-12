@@ -1,0 +1,7 @@
+images {
+  image: "/builtins/assets/images/logo/logo_256.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+margin: 4
+extrude_borders: 0
+inner_padding: 0

@@ -191,9 +191,9 @@ function M.lerp_angle(t, a, b, dt)
 end
 
 --- Calculates the lerp parameter between of two values.
+-- @param t Value between start and end.
 -- @param a Start value.
 -- @param b End value.
--- @param t Value between start and end.
 -- @return A percentage of value between start and end.
 function M.inverse_lerp(t, a, b)
     if a ~= b then
@@ -201,6 +201,18 @@ function M.inverse_lerp(t, a, b)
     else
         return 0.0
     end
+end
+
+--- Moves the `a` value towards `b`.
+-- @param a Current value.
+-- @param b Target value.
+-- @param max_delta A maximum change that should be applied to the value.
+-- @return An interpolated value.
+function M.move_towards(a, b, max_delta)
+    if math.abs(b - a) <= max_delta then
+        return b
+    end
+    return a + M.sign(b - a) * max_delta
 end
 
 --- Pingpongs the value t, so that it is never larger than length and never smaller than 0.

@@ -606,7 +606,6 @@ embedded_instances {
   "restitution: 0.0\\n"
   "group: \\\"star_collector\\\"\\n"
   "mask: \\\"star\\\"\\n"
-  "mask: \\\"physics_test\\\"\\n"
   "embedded_collision_shape {\\n"
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"
@@ -664,10 +663,10 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "physics_test"
+  id: "billboard_sprite"
   data: "components {\n"
-  "  id: \"physics_test\"\n"
-  "  component: \"/examples/scenes/playground/scripts/physics_test.script\"\n"
+  "  id: \"billboard\"\n"
+  "  component: \"/scene3d/scripts/sprites/billboard.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -679,42 +678,34 @@ embedded_instances {
   "    z: 0.0\n"
   "    w: 1.0\n"
   "  }\n"
+  "  properties {\n"
+  "    id: \"look_at_object_id\"\n"
+  "    value: \"/main_camera\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"use_rotation\"\n"
+  "    value: \"false\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"late_update\"\n"
+  "    value: \"true\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"late_update_priority\"\n"
+  "    value: \"20.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"trigger\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"\\\"\\n"
-  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
-  "mass: 0.0\\n"
-  "friction: 0.0\\n"
-  "restitution: 0.0\\n"
-  "group: \\\"physics_test\\\"\\n"
-  "mask: \\\"star_collector\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.3\\n"
-  "      z: -0.1\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "      w: 1.0\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "  }\\n"
-  "  data: 0.5\\n"
-  "  data: 0.5\\n"
-  "  data: 0.5\\n"
-  "}\\n"
-  "linear_damping: 0.0\\n"
-  "angular_damping: 0.0\\n"
-  "locked_rotation: false\\n"
-  "bullet: false\\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/examples/assets/sprites.atlas\\\"\\n"
+  "default_animation: \\\"logo_256\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
   "  position {\n"
   "    x: 0.0\n"
@@ -730,9 +721,9 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    x: -8.0
+    y: 5.0
+    z: 6.5
   }
   rotation {
     x: 0.0
@@ -741,8 +732,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.005
+    y: 0.005
+    z: 0.005
   }
 }

@@ -3,6 +3,68 @@
   desc: C++ helper functions
   members:
 
+  - name: frustum_set
+    type: function
+    parameters:
+    - name: proj_view_m4
+      type: matrix4
+
+  - name: frustum_is_box_visible
+    type: function
+    parameters:
+    - name: min_v3
+      type: vector3
+    - name: max_v3
+      type: vector3
+    returns:
+    - name: result
+      type: boolean
+
+  - name: frustum_mesh_acquire
+    type: function
+    returns:
+    - name: id
+      type: integer
+
+  - name: frustum_mesh_release
+    type: function
+    parameters:
+    - name: id
+      type: integer
+
+  - name: frustum_mesh_vis_changed
+    type: function
+    parameters:
+    - name: id
+      type: integer
+    - name: max_dimension
+      type: number
+    - name: use_world_pos
+      type: boolean
+    - name: custom_position
+      type: vector3
+      optional: true
+    returns:
+    - name: changed
+      type: boolean
+    - name: message
+      type: hash
+
+  - name: frustum_mesh_vis_changed_box
+    type: function
+    parameters:
+    - name: id
+      type: integer
+    - name: min_v3
+      type: vector3
+    - name: max_v3
+      type: vector3
+    returns:
+    - name: changed
+      type: boolean
+    - name: message
+      type: hash
+
   - name: is_vector3
     type: function
     parameters:

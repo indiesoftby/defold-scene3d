@@ -12,12 +12,16 @@ The built-in example scene is available [✨**to play online**✨](https://indie
 Follow further developments:
 - 💬 [The topic on the Defold forum](https://forum.defold.com/t/scene3d-collection-of-assets-for-3d-gamedev/70352).
 
+## Showcase
+
+[![Merge Getaway](https://github.com/indiesoftby/defold-scene3d/raw/showcase/merge-getaway.gif)](https://aglitchman.github.io/defold-ld50-game/)
+
 ## Key features
 
 * [x] Car physics.
 * [x] Character controller.
 * [x] Controls: keyboard, mouse look with a pointer lock.
-* [x] Frustum culling (only for 3D meshes).
+* [x] Frustum culling for 3D meshes.
 * [x] Helper 3D math functions ([docs](#math3dlua)).
 
 ### Included Assets (i.e. Prefabs)
@@ -103,7 +107,7 @@ Use it in your own project by adding this project as a [Defold library dependenc
 
 #### Required Dependencies
 
-* [Pointer Lock](https://github.com/indiesoftby/defold-pointer-lock) (only if a project uses `mouse_look.script` or the `debug_camera` prefab).
+* [Pointer Lock](https://github.com/indiesoftby/defold-pointer-lock) (only if a project uses `mouse_look.script` or the `debug_ui.collection` prefab).
 
 #### Optional Dependencies
 
@@ -147,6 +151,7 @@ The table briefly describes the included helper math functions. The source code 
 | `math3d.lerp(t, a, b, [dt])` | Linearly interpolates between `a` and `b` by `t`. The parameter `t` is clamped to the range `[0, 1]`. | `Mathf.Lerp` |
 | `math3d.lerp_angle(t, a, b, [dt])` | Same as `vmath.lerp` but makes sure the values interpolate correctly when they wrap around 360 degrees. | `Mathf.LerpAngle` |
 | `math3d.limited_lerp(t, a, b, max_step)` | Same as `vmath.lerp` but `max_step` limits the increment of value. | - |
+| `math3d.move_towards(a, b, max_delta)` | Moves the `a` value towards `b`. | `Mathf.MoveTowards` |
 | `math3d.ping_pong(t, length)` | Pingpongs the value t, so that it is never larger than length and never smaller than 0. | `Mathf.PingPong` |
 | `math3d.repeat_(t, length)` | Loops the value t, so that it is never larger than length and never smaller than 0. | `Mathf.Repeat` |
 | `math3d.sign(x)` | Returns the sign of x. | `Mathf.Sign` |
