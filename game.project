@@ -42,6 +42,9 @@ max_contacts = 10000
 ray_cast_limit_3d = 1000
 trigger_overlap_capacity = 100
 world_count = 5
+use_fixed_timestep = 1
+max_collision_object_count = 2000
+max_fixed_timesteps = 1
 
 [html5]
 scale_mode = fit
@@ -84,9 +87,6 @@ output_spirv = 1
 
 [druid]
 no_auto_input = 1
-
-[scene3d]
-anisotropic_filtering = 4
 
 [collection]
 max_instances = 2048

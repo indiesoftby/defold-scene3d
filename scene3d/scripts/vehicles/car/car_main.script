@@ -130,7 +130,7 @@ function final(self)
     frustum_mesh.final(self)
 end
 
-function update(self, dt)
+function fixed_update(self, dt)
     if not self.car_data then
         return
     end

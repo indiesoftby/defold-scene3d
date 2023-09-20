@@ -21,7 +21,7 @@ Follow further developments:
 * [x] Car physics.
 * [x] Character controller.
 * [x] Controls: keyboard, mouse look with a pointer lock.
-* [x] Frustum culling for 3D meshes.
+* [x] Frustum culling for 3D meshes. **Note: now it's better to use Defold's built-in frustum culling.**
 * [x] Helper 3D math functions ([docs](#math3dlua)).
 
 ### Included Assets (i.e. Prefabs)
@@ -103,7 +103,7 @@ Scene3D uses the metric system, i.e. metres as its default unit for measuring di
 
 ### Installation
 
-Use it in your own project by adding this project as a [Defold library dependency](http://www.defold.com/manuals/libraries/). Open your `game.project` file and in the dependencies field under project [add the link to **the ZIP file** of a specific release](https://github.com/indiesoftby/defold-scene3d/releases).
+Use it in your own project by adding this project as a [Defold library dependency](http://www.defold.com/manuals/libraries/). Open your `game.project` file and in the dependencies field under project [add the link to **the ZIP file**](https://github.com/indiesoftby/defold-scene3d/archive/refs/heads/main.zip).
 
 #### Required Dependencies
 
@@ -121,15 +121,6 @@ Scene3D can use the following dependencies if you include them in your project:
 * [x] `playground`: a playable level with a first-person character controller and a car. Loaded first.
 * [x] `basic_3d`: use it as a template to start developing a new 3D project/scene.
 * [x] `shadows`: a scene to test shadows.
-
-### The `game.project` Settings
-
-At this moment, Defold supports only Bilinear (Linear Mipmap Nearest) or Trilinear (Linear Mipmap Linear) filtering to apply to textures. Scene3D can enable anisotropic filtering for all textures in the builds for the HTML5 platform:
-
-```ini
-[scene3d]
-anisotropic_filtering = 8
-```
 
 ### `math3d.lua`
 
@@ -156,6 +147,10 @@ The table briefly describes the included helper math functions. The source code 
 | `math3d.repeat_(t, length)` | Loops the value t, so that it is never larger than length and never smaller than 0. | `Mathf.Repeat` |
 | `math3d.sign(x)` | Returns the sign of x. | `Mathf.Sign` |
 | `math3d.smooth_step(x, min, max)` | Interpolates between min and max with smoothing at the limits. | `Mathf.SmoothStep` |
+| `math3d.smooth_damp(a, b, cur_velocity, smooth_time, max_speed, dt)` | Gradually changes a value towards a desired goal over time. | `Mathf.SmoothDamp` |
+| `math3d.smooth_damp_angle(a, b, cur_velocity, smooth_time, max_speed, dt)` | Gradually changes an angle given in degrees towards a desired goal angle over time. | `Mathf.SmoothDampAngle` |
+| **Camera** |
+| `render3d.screen_to_world(x, y, z, [world_coord])` | Transforms a point from screen space into world space. | `Camera.ScreenToWorldPoint` |
 | **Noise** |
 | `scene3d.simplex_noise2(x, y)` | Generates 2D Perlin noise. Output range is [0, 1]. | `Mathf.PerlinNoise` |
 
@@ -175,17 +170,11 @@ The table briefly describes the included helper math functions. The source code 
 The following issues are critical for the further development of Scene3D. Please put 👍👍👍 on them!
 
 * [Control sort order of rendered primitives](https://github.com/defold/defold/issues/3625) + [Allow sorting front-to-back](https://github.com/defold/defold/issues/5168).
-* [Material option to enable anisotropic texture filtering](https://github.com/defold/defold/issues/6155).
 * [Optimize file size of Buffer](https://github.com/defold/defold/issues/6272) + [Add option for indexed vertices for buffers to be used with the mesh component](https://github.com/defold/defold/issues/5477).
 * [More matrix types as shader constants](https://github.com/defold/defold/issues/3789).
-* [Custom vertex format](https://github.com/defold/defold/issues/3403).
-* [Frustum and Occlusion culling](https://github.com/defold/defold/issues/3406) + [Add bounding box representation for gameobjects](https://github.com/defold/defold/issues/6292).
-* [Create buffer resources at runtime](https://github.com/defold/defold/issues/5648).
 
 #### Editor Issues
 
-* [Copied collision 3d box doesn't show properly in the editor](https://github.com/defold/defold/issues/5049).
-* [Editor rounds values when moving objects](https://github.com/defold/defold/issues/6414).
 * [Render axis Z and horizonal grid in perspective camera mode](https://github.com/defold/defold/issues/6420).
 * [Incremental adjustment of properties values](https://github.com/defold/defold/issues/6417).
 * [Material constants are not easy to edit](https://github.com/defold/defold/issues/6413).

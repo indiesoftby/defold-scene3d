@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Java ♨️
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
-          distribution: "adopt"
-          java-version: "11"
+          distribution: "temurin"
+          java-version: "17"
 
       - name: Build 🔧
         env:
@@ -26,11 +26,13 @@ jobs:
 
           mkdir -p build/bundle
 
+          # Download the latest bob.jar
           BOB_SHA1=${DEFOLD_BOB_SHA1:-$(curl -s 'https://d.defold.com/stable/info.json' | jq -r .sha1)}
-          wget --progress=dot:mega -O build/bob.jar "https://d.defold.com/archive/${BOB_SHA1}/bob/bob.jar"
-          java -jar build/bob.jar --version
+          BOB_LOCAL_SHA1=$((java -jar build/bundle/bob.jar --version | cut -d' ' -f6) || true)
+          if [ "${BOB_LOCAL_SHA1}" != "${BOB_SHA1}" ]; then wget --progress=dot:mega -O build/bundle/bob.jar "https://d.defold.com/archive/${BOB_SHA1}/bob/bob.jar"; fi
+          java -jar build/bundle/bob.jar --version
 
-          java -jar build/bob.jar --email a@b.com --auth 123 --texture-compression true --bundle-output build/bundle/js-web --platform js-web --archive --variant release resolve build bundle
+          java -jar build/bundle/bob.jar --email a@b.com --auth 123 --texture-compression true --bundle-output build/bundle/js-web --platform js-web --archive --variant release resolve build bundle
           (cd build/bundle && cp -r js-web/* public)
 
       - name: Deploy to Pages 🚀

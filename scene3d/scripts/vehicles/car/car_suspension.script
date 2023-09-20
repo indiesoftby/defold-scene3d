@@ -41,7 +41,7 @@ end
 function final(self)
 end
 
-function update(self, dt)
+function fixed_update(self, dt)
     if not self.car_main_script then
         return
     end

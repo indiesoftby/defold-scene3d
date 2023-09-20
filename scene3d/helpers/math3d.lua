@@ -232,4 +232,38 @@ function M.smooth_step(x, min, max)
     return -2 * v1 * v1 * v1 + 3 * v2 * v2
 end
 
+--- Gradually changes a value towards a desired goal over time.
+-- Based on Game Programming Gems 4, pp. 98-101.
+function M.smooth_damp(a, b, cur_velocity, smooth_time, max_speed, dt)
+    smooth_time = math.max(0.0001, smooth_time)
+    local omega = 2 / smooth_time
+
+    local x = omega * dt
+    local exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x)
+    local change = a - b
+    local initial_b = b
+
+    if max_speed then
+        local max_change = max_speed * smooth_time
+        change = M.clamp(change, -max_change, max_change)
+    end
+    b = a - change
+
+    local temp = (cur_velocity + omega * change) * dt
+    cur_velocity = (cur_velocity - omega * temp) * exp
+    local result = b + (change + temp) * exp
+
+    if (initial_b - a > 0) == (result > initial_b) then
+        result = initial_b
+        cur_velocity = (result - initial_b) / dt
+    end
+
+    return result, cur_velocity
+end
+
+--- Gradually changes an angle (in degrees) towards a desired goal angle over time.
+function M.smooth_damp_angle(a, b, cur_velocity, smooth_time, max_speed, dt)
+    b = a + M.delta_angle(a, b)
+    return M.smooth_damp(a, b, cur_velocity, smooth_time, max_speed, dt)
+end
 return M
