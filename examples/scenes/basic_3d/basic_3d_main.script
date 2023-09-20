@@ -19,5 +19,26 @@ end
 function on_message(self, message_id, message, sender)
 end
 
+local RAYCAST_GROUPS = { hash("default") }
+local CLOSEST = { all = false }
+
 function on_input(self, action_id, action)
+    if action_id == nil or action_id == hash("touch") then
+        local from = render3d.screen_to_world(action.screen_x, action.screen_y, 1)
+        local to = render3d.screen_to_world(action.screen_x, action.screen_y, 50)
+        -- UNCOMMENT TO DEBUG
+        -- if action.pressed then
+        --     go.set("/raycast_target", "position", from)
+        --     go.animate("/raycast_target", "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_LINEAR, 3)
+        -- else
+            local results = physics.raycast(from, to, RAYCAST_GROUPS, CLOSEST)
+            if results ~= nil then
+                for _, result in ipairs(results) do
+                    go.cancel_animations("/raycast_target", "position")
+                    go.animate("/raycast_target", "position", go.PLAYBACK_ONCE_FORWARD, result.position, go.EASING_OUTQUAD, 0.1)
+                    break
+                end
+            end
+        -- end
+    end
 end

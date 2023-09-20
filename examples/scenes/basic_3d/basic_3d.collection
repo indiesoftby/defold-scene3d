@@ -265,6 +265,8 @@ embedded_instances {
   "    z: 0.0\n"
   "    w: 1.0\n"
   "  }\n"
+  "  property_decls {\n"
+  "  }\n"
   "}\n"
   ""
   position {
@@ -282,5 +284,47 @@ embedded_instances {
     x: 1.0
     y: 1.0
     z: 1.0
+  }
+}
+embedded_instances {
+  id: "raycast_target"
+  data: "embedded_components {\n"
+  "  id: \"mesh\"\n"
+  "  type: \"mesh\"\n"
+  "  data: \"material: \\\"/scene3d/materials/primitive_max_yellow_red.material\\\"\\n"
+  "vertices: \\\"/scene3d/assets/meshes/primitive_sphere.buffer\\\"\\n"
+  "textures: \\\"/scene3d/assets/textures/grid_10x10.png\\\"\\n"
+  "primitive_type: PRIMITIVE_TRIANGLES\\n"
+  "position_stream: \\\"position\\\"\\n"
+  "normal_stream: \\\"normal\\\"\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
   }
 }
