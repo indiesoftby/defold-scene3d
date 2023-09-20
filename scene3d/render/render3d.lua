@@ -139,4 +139,61 @@ function M.debug_log(t)
     M.debug_text = M.debug_text .. tostring(t) .. "   "
 end
 
+local half_size = vmath.vector4(0, 0, 0, 1)
+local device_coord = vmath.vector3()
+
+-- Evaluates perspective projection matrix half size at the near plane
+local function calc_perspective_half_size(fov, aspect, znear, fov_is_horizontal)
+    if fov_is_horizontal then
+        half_size.x = znear * math.tan(fov * math.pi / 360)
+        half_size.y = half_size.x / aspect
+    else
+        half_size.y = znear * math.tan(fov * math.pi / 360)
+        half_size.x = half_size.y * aspect
+    end
+end
+
+--- https://github.com/playcanvas/engine/blob/b65809f94c2de87f7ed8a0afa3953307250bc49c/src/scene/camera.js#L404
+--- Convert a point from 2D canvas pixel space to 3D world space.
+-- @param {number} x - X coordinate on screen.
+-- @param {number} y - Y coordinate on screen.
+-- @param {number} z - The distance from the camera in world space to create the new point.
+-- @param {vector3} [world_coord] - 3D vector to receive world coordinate result.
+function M.screen_to_world(x, y, z, world_coord)
+    world_coord = world_coord or vmath.vector3()
+
+    -- Calculate the screen click as a point on the far plane of the normalized device coordinate 'box' (z=1)
+    local cw = M.window_width
+    local ch = M.window_height
+    local range = M.far - M.near
+    device_coord.x = x / cw * 2 - 1
+    device_coord.y = y / ch * 2 - 1
+    device_coord.z = z / range * 2 - 1
+
+    -- calculate half width and height at the near clip plane
+    calc_perspective_half_size(M.fov, M.aspect_ratio, M.near, M.horizontal_fov)
+
+    -- scale by normalized screen coordinates
+    half_size.x = half_size.x * device_coord.x
+    half_size.y = half_size.y * device_coord.y
+
+    -- transform to world space
+    local inv_view = vmath.inv(M.camera_view()) -- or go.get_world_transform()
+    half_size.z = -M.near
+    local point = inv_view * half_size
+
+    -- point along camera->_point ray at distance z from the camera
+    local camera_pos = M.view_position
+    world_coord.x = point.x - camera_pos.x
+    world_coord.y = point.y - camera_pos.y
+    world_coord.z = point.z - camera_pos.z
+
+    local v = vmath.normalize(world_coord)
+    world_coord.x = v.x * z + camera_pos.x
+    world_coord.y = v.y * z + camera_pos.y
+    world_coord.z = v.z * z + camera_pos.z
+
+    return world_coord
+end
+
 return M
