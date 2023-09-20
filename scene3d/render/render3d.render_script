@@ -1,9 +1,6 @@
 local render3d = require("scene3d.render.render3d")
 local system_util = require("scene3d.helpers.system_util")
 
--- Defold 1.3.1 or newer: render.draw(predicate, [options]). 
-local HAS_DRAW_OPTS = system_util.engine_version(1, 3, 1)
-
 function init(self)
     -- GUI predicates
     self.gui_pred = render.predicate({"gui"})
@@ -27,13 +24,10 @@ function update(self)
     local window_height = math.max(1, render.get_window_height())
 
     local constants = render.constant_buffer()
-    local DRAW_OPTS = constants
-    if HAS_DRAW_OPTS then
-        DRAW_OPTS = {
-            frustum = nil,
-            constants = constants
-        }
-    end
+    local draw_opts = {
+        frustum = nil,
+        constants = constants
+    }
 
     local color = render3d.light_ambient_color
     local intensity = render3d.light_ambient_intensity
@@ -65,20 +59,18 @@ function update(self)
         render.set_projection(mat_proj)
         local mat_frustum = mat_proj * mat_view
         scene3d.frustum_set(mat_frustum)
-        if HAS_DRAW_OPTS then
-            DRAW_OPTS.frustum = mat_frustum
-        end
+        draw_opts.frustum = mat_frustum
         render.set_depth_mask(true)
         render.enable_state(render.STATE_DEPTH_TEST)
         render.disable_state(render.STATE_STENCIL_TEST)
         render.disable_state(render.STATE_BLEND)
         render.enable_state(render.STATE_CULL_FACE)
         render.set_blend_func(render.BLEND_ONE, render.BLEND_ONE_MINUS_SRC_ALPHA)
-        render.draw(self.model_pred, DRAW_OPTS)
+        render.draw(self.model_pred, draw_opts)
         -- The sky is rendered last as a workaround for the lack of front-to-back sorting.
         -- https://github.com/defold/defold/issues/5168
         render.set_blend_func(render.BLEND_ONE, render.BLEND_ONE_MINUS_SRC_ALPHA)
-        render.draw(self.sky_pred, DRAW_OPTS)
+        render.draw(self.sky_pred, draw_opts)
 
         -- Non-opaque, i.e. alpha-blended sprites
         render.enable_state(render.STATE_BLEND)
@@ -86,8 +78,8 @@ function update(self)
         render.disable_state(render.STATE_CULL_FACE)
         render.set_blend_func(render.BLEND_ONE, render.BLEND_ONE_MINUS_SRC_ALPHA)
         render.set_depth_mask(false)
-        render.draw(self.tile_pred, DRAW_OPTS)
-        render.draw(self.particle_pred, DRAW_OPTS)
+        render.draw(self.tile_pred, draw_opts)
+        render.draw(self.particle_pred, draw_opts)
         render.draw_debug3d()
     end
 
