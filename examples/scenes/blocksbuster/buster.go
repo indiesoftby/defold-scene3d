@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "mesh1"
   type: "mesh"
-  data: "material: \"/scene3d/materials/primitive_max_yellow_red.material\"\n"
+  data: "material: \"/scene3d/materials/primitive_salmon.material\"\n"
   "vertices: \"/scene3d/assets/meshes/primitive_tube.buffer\"\n"
   "textures: \"/scene3d/assets/textures/grid_10x10.png\"\n"
   "primitive_type: PRIMITIVE_TRIANGLES\n"
@@ -85,7 +85,7 @@ embedded_components {
 embedded_components {
   id: "mesh2"
   type: "mesh"
-  data: "material: \"/scene3d/materials/primitive_max_yellow_red.material\"\n"
+  data: "material: \"/scene3d/materials/primitive_pacific_blue.material\"\n"
   "vertices: \"/scene3d/assets/meshes/primitive_cylinder.buffer\"\n"
   "textures: \"/scene3d/assets/textures/grid_10x10.png\"\n"
   "primitive_type: PRIMITIVE_TRIANGLES\n"
@@ -111,12 +111,6 @@ embedded_components {
   "  x: 128.0\n"
   "  y: 32.0\n"
   "  z: 0.0\n"
-  "  w: 0.0\n"
-  "}\n"
-  "scale {\n"
-  "  x: 0.005\n"
-  "  y: 0.005\n"
-  "  z: 0.005\n"
   "  w: 0.0\n"
   "}\n"
   "color {\n"
@@ -156,5 +150,10 @@ embedded_components {
     y: 0.0
     z: 0.0
     w: 0.70710677
+  }
+  scale {
+    x: 0.005
+    y: 0.005
+    z: 0.005
   }
 }
