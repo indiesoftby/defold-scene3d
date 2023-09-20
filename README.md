@@ -122,15 +122,6 @@ Scene3D can use the following dependencies if you include them in your project:
 * [x] `basic_3d`: use it as a template to start developing a new 3D project/scene.
 * [x] `shadows`: a scene to test shadows.
 
-### The `game.project` Settings
-
-At this moment, Defold supports only Bilinear (Linear Mipmap Nearest) or Trilinear (Linear Mipmap Linear) filtering to apply to textures. Scene3D can enable anisotropic filtering for all textures in the builds for the HTML5 platform:
-
-```ini
-[scene3d]
-anisotropic_filtering = 8
-```
-
 ### `math3d.lua`
 
 The table briefly describes the included helper math functions. The source code of [`math3d.lua`](scene3d/helpers/math3d.lua) has more detailed explanation.
