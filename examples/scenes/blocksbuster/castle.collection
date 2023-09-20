@@ -1,0 +1,5329 @@
+name: "default"
+instances {
+  id: "primitive_pyramid3"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: 1.5
+    y: 2.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube16"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.25
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube72"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.75
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube8"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube50"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube79"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube86"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube26"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube24"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube27"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube95"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube94"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube13"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 1.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube48"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube45"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube49"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube40"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube31"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube88"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_pyramid4"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: 0.5
+    y: 1.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube1"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 1.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube18"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.25
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube93"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube69"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube54"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube52"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube2"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 1.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube7"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube44"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube112"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 1.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube73"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube91"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.75
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube61"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube63"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube74"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube25"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube98"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.75
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube29"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube53"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube76"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_pyramid1"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: 1.5
+    y: 2.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube19"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.25
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube111"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 1.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube43"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube92"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube22"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.25
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube101"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.75
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube109"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 1.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube82"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube103"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.75
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube62"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube10"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 1.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube11"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube37"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.25
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube104"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube23"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube81"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube83"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.75
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube12"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube87"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.75
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube51"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube106"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 1.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube57"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube55"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube113"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 1.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube75"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube85"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube30"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube107"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 1.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube108"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 1.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube58"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube90"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.75
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube65"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.75
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube34"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.25
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube64"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.75
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube105"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube66"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube68"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube9"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 1.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube56"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube97"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.75
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube77"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube114"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 1.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube100"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube78"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube84"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.75
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube5"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 1.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube89"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.75
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube15"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube59"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube99"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube4"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 1.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube42"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube47"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.25
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube14"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 1.75
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube38"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.25
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube46"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_pyramid6"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: 0.5
+    y: 1.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube32"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube67"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube80"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube70"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_pyramid5"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: -0.5
+    y: 1.75
+    z: -0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube3"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.75
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_sphere"
+  prototype: "/scene3d/prefabs/primitives/primitive_sphere.go"
+  position {
+    x: 0.0
+    y: 1.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#circle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube20"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.25
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube110"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 1.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube102"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube28"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_pyramid"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: -1.5
+    y: 2.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube60"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.25
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube17"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.25
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_pyramid7"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: -0.5
+    y: 1.75
+    z: 0.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube96"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.75
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube33"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.25
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube21"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.0
+    y: 0.25
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube35"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -0.5
+    y: 0.25
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube39"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 1.5
+    y: 0.25
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube6"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.5
+    y: 0.25
+    z: -1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube41"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: -1.0
+    y: 0.25
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube71"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.5
+    y: 0.75
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_cube36"
+  prototype: "/scene3d/prefabs/primitives/primitive_cube.go"
+  position {
+    x: 0.0
+    y: 0.25
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "primitive_pyramid2"
+  prototype: "/scene3d/prefabs/primitives/primitive_pyramid.go"
+  position {
+    x: -1.5
+    y: 2.25
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "primitive"
+    properties {
+      id: "collision_type"
+      value: "static"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "blob_shadow_factory_url"
+      value: "/blob_shadows#rectangle"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "blob_shadow_scale"
+      value: "1.1, 1.1, 1.1"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+    properties {
+      id: "blob_shadow_offset"
+      value: "0.0, 0.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+scale_along_z: 0

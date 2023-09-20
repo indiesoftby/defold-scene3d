@@ -1,0 +1,57 @@
+function init(self)
+    self.busted_blocks_id = {}
+    physics.set_group("#collision_trigger", "default")
+end
+
+function final(self)
+end
+
+function update(self, dt)
+    for block_id, _ in pairs(self.busted_blocks_id) do
+        local block_position = go.get_world_position(block_id)
+        local distance = go.get_world_position() - block_position
+        local collision_dynamic_url = msg.url(nil, block_id, "collision_dynamic")
+        if vmath.length(distance) < 2 then
+            local block_force = distance * 5
+            block_force.y = 0
+            local velocity = vmath.length(go.get(collision_dynamic_url, "angular_velocity"))
+            local rotation_position = vmath.vector3(0, 0, 0)
+            if velocity < 3 then 
+                rotation_position = vmath.vector3(0, 1, 0)
+            end
+            msg.post(block_id, "apply_force", { force = block_force, position = block_position + rotation_position })
+        end
+        if vmath.length(distance) < 0.7 then
+            physics.set_group(collision_dynamic_url, "none")
+        else
+            physics.set_group(collision_dynamic_url, "default")
+        end
+    end   
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger_response") then
+        if message.other_id ~= hash("/buildings_floor_10x10") then
+            local collision_dynamic_url = msg.url(nil, message.other_id, "collision_dynamic")
+            local collision_static_url = msg.url(nil, message.other_id, "collision_static")
+            if not self.busted_blocks_id[message.other_id] then
+                self.busted_blocks_id[message.other_id] = 0
+            end
+            if message.enter then
+                self.busted_blocks_id[message.other_id] = self.busted_blocks_id[message.other_id] + 1
+                msg.post(collision_dynamic_url, "enable")
+                msg.post(collision_static_url, "disable")
+            else
+                self.busted_blocks_id[message.other_id] = self.busted_blocks_id[message.other_id] - 1
+            end
+            if self.busted_blocks_id[message.other_id] == 0 then
+                if physics.get_group(collision_dynamic_url) == hash("none") then
+                    go.animate(message.other_id, "scale", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_INSINE, 0.2, 0, function()
+                        go.delete(message.other_id)
+                    end)
+                end
+                self.busted_blocks_id[message.other_id] = nil
+            end
+        end
+    end 
+end
