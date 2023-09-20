@@ -121,6 +121,7 @@ Scene3D can use the following dependencies if you include them in your project:
 * [x] `playground`: a playable level with a first-person character controller and a car. Loaded first.
 * [x] `basic_3d`: use it as a template to start developing a new 3D project/scene.
 * [x] `shadows`: a scene to test shadows.
+* [x] `blocksbuster`: a re-creation of popular hyper-casual game mechanics.
 
 ### `math3d.lua`
 
