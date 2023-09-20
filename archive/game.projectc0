@@ -14,6 +14,7 @@ high_dpi = 1
 samples = 0
 fullscreen = 0
 update_frequency = 0
+swap_interval = 1
 vsync = 1
 display_profiles = /scene3d/helpers/gui.display_profilesc
 dynamic_orientation = 0
@@ -27,6 +28,8 @@ clear_color_alpha = 1.0
 
 [physics]
 type = 3D
+max_collision_object_count = 2000
+use_fixed_timestep = 1
 gravity_y = -9.8
 debug = 0
 debug_alpha = 0.9
@@ -43,6 +46,7 @@ ray_cast_limit_2d = 64
 ray_cast_limit_3d = 1000
 trigger_overlap_capacity = 100
 velocity_threshold = 1
+max_fixed_timesteps = 1
 
 [bootstrap]
 main_collection = /examples/main.collectionc
@@ -87,6 +91,7 @@ subpixels = 1
 
 [model]
 max_count = 10000
+split_meshes = 0
 
 [mesh]
 max_count = 10000
@@ -113,43 +118,51 @@ max_count = 128
 launch_screen = /builtins/manifests/ios/LaunchScreen.storyboardc
 pre_renderered_icons = 0
 bundle_identifier = example.unnamed
+bundle_name = 
 infoplist = /builtins/manifests/ios/Info.plist
 default_language = en
 localizations = en
 
 [android]
 version_code = 1
-minimum_sdk_version = 16
-target_sdk_version = 30
+minimum_sdk_version = 19
+target_sdk_version = 33
 package = com.example.todo
+gcm_sender_id = 
 manifest = /builtins/manifests/android/AndroidManifest.xml
 iap_provider = GooglePlay
 input_method = HiddenInputField
 immersive_mode = 0
 display_cutout = 1
 debuggable = 0
+proguard = 
 
 [osx]
+app_icon = 
 infoplist = /builtins/manifests/osx/Info.plist
 bundle_identifier = example.unnamed
+bundle_name = 
 bundle_version = 1
 default_language = en
 localizations = en
 
 [windows]
+app_icon = 
 
 [html5]
 custom_heap_size = 0
 heap_size = 64
 htmlfile = /builtins/manifests/web/engine_template.html
 cssfile = /builtins/manifests/web/dark_theme.css
+splash_image = /cover_web.png
 archive_location_prefix = archive
+archive_location_suffix = 
+engine_arguments = --verify-graphics-calls=false
+wasm_streaming = 0
 show_fullscreen_button = 1
 show_made_with_defold = 1
 show_console_banner = 1
 scale_mode = fit
-engine_arguments = --verify-graphics-calls=false
-splash_image = /cover_web.png
 
 [particle_fx]
 max_count = 64
@@ -161,6 +174,7 @@ auto_finish_transactions = 1
 
 [network]
 http_timeout = 0
+ssl_certificates = 
 http_thread_count = 4
 http_cache_enabled = 1
 
@@ -176,6 +190,7 @@ subpixels = 1
 
 [profiler]
 track_cpu = 0
+sleep_between_server_updates = 0
 
 [liveupdate]
 settings = /liveupdate.settings
@@ -187,10 +202,8 @@ max_tile_count = 2048
 
 [engine]
 run_while_iconified = 0
+fixed_update_frequency = 60
 
 [druid]
 no_auto_input = 1
-
-[scene3d]
-anisotropic_filtering = 4
 

@@ -140,50 +140,6 @@
 		background-image: url("cover_web.png");
 	}
 	</style> 
-  <script type="text/javascript">
-            // Scene3D. Copyright 2022 Indiesoft LLC, and other contributors.
-            // https://github.com/indiesoftby/defold-scene3d/blob/main/LICENSE.md 
-
-            // 
-            // This enables anisotropic filtering on mipmapped textures
-            [window.WebGLRenderingContext, window.WebGL2RenderingContext].forEach(function (context) {
-                if (!context) return;
-
-                var maxAniso = parseInt("4") || 4;
-                var extAnisotropic = false;
-                var texParameteriOld = context.prototype.texParameteri;
-                context.prototype.texParameteri = function (target, pname, param) {
-                    if (
-                        target == this.TEXTURE_2D &&
-                        pname == this.TEXTURE_MIN_FILTER &&
-                        param == this.LINEAR_MIPMAP_LINEAR
-                    ) {
-                        if (!extAnisotropic) {
-                            var ext =
-                                this.getExtension("EXT_texture_filter_anisotropic") ||
-                                this.getExtension("MOZ_EXT_texture_filter_anisotropic") ||
-                                this.getExtension("WEBKIT_EXT_texture_filter_anisotropic");
-                            var max = ext ? this.getParameter(ext.MAX_TEXTURE_MAX_ANISOTROPY_EXT) : 0;
-                            extAnisotropic = {
-                                ext: ext,
-                                max: Math.min(maxAniso, max),
-                            };
-                        }
-
-                        if (extAnisotropic.ext) {
-                            this.texParameterf(
-                                this.TEXTURE_2D,
-                                extAnisotropic.ext.TEXTURE_MAX_ANISOTROPY_EXT,
-                                extAnisotropic.max
-                            );
-                        }
-                    }
-
-                    texParameteriOld.call(this, target, pname, param);
-                };
-            });
-            // 
-        </script>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@aglitchman">
   <meta property="og:type" content="website">
@@ -220,6 +176,11 @@
         </style>
  </head> 
  <body> 
+  <div id="running-from-file-warning" style="display: none; margin: 3em;"> 
+   <h1>Running from local file ⚠️</h1> 
+   <p>It seems like you have opened this file by double-clicking on it. In order to test your build in a browser <b>you need to load this file from a web server</b>. You can either upload this file and the rest of the files from a Defold HTML5 bundle to a web hosting service OR host them using a local web server on your home network.</p> 
+   <p><a href="https://defold.com/manuals/html5/#testing-html5-build" target="_blank">Learn more about running a local web server in the Defold HTML5 manual</a>.</p> 
+  </div> 
   <div id="app-container" class="canvas-app-container" merge="keep"> 
    <div id="canvas-container" class="canvas-app-canvas-container"> 
     <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="1920" height="1080"></canvas> 
@@ -266,6 +227,8 @@
 		}
 		return scriptDirectory + path;
 	};
+
+	
 
 	var is_iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 	var buttonHeight = 0;
@@ -351,7 +314,15 @@
             })();
         </script> 
   <script id="engine-start" type="text/javascript">
-		EngineLoader.load("canvas", "scene3d_examples");
+		var runningFromFileWarning = document.getElementById("running-from-file-warning");
+		if (window.location.href.startsWith("file://")) {
+			runningFromFileWarning.style.display = "block";
+		}
+		else {
+			EngineLoader.stream_wasm = "false" === "true";
+			EngineLoader.load("canvas", "scene3d_examples");
+			runningFromFileWarning.parentNode.removeChild(runningFromFileWarning);
+		}
 	</script>   
  </body>
 </html>
