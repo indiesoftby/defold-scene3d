@@ -130,6 +130,25 @@ function final(self)
     frustum_mesh.final(self)
 end
 
+function update(self, dt)
+    if not self.car_data then
+        return
+    end
+    local c = self.car_data
+
+    --
+    -- DEBUG
+    --
+    if self.debug_info then
+        render3d.debug_log("Car speed " .. string.format("%.0f KMH", math.abs(c.car_speed) * 3.6))
+    end
+
+    --
+    -- FRUSTUM CULL
+    --
+    frustum_mesh.update(self, c.car_position)
+end
+
 function fixed_update(self, dt)
     if not self.car_data then
         return
@@ -249,15 +268,6 @@ function fixed_update(self, dt)
         msg.post("@render:", "draw_line", { start_point = c.car_position, end_point = c.car_position + debug_accel_direction, color = vmath.vector4(1, 0, 0, 1) } )
         msg.post("@render:", "draw_line", { start_point = c.car_position + debug_front, end_point = c.car_position + debug_front + debug_turn_dir, color = vmath.vector4(0, 1, 0, 1) } )
     end
-
-    if self.debug_info then
-        render3d.debug_log("Car speed " .. string.format("%.0f KMH", math.abs(c.car_speed) * 3.6))
-    end
-
-    --
-    -- FRUSTUM CULL
-    --
-    frustum_mesh.update(self, c.car_position)
 end
 
 function on_message(self, message_id, message, sender)
