@@ -86,10 +86,9 @@ local function init_car(self)
     self.car_data = {
         car_mass = go.get(self.chassis_url, "mass"),
         car_position = vmath.vector3(0),
-        car_rotation = vmath.vector4(),
+        car_rotation = vmath.quat(),
         car_euler = vmath.vector3(),
         car_previous_position = vmath.vector3(0),
-        car_visual_position = vmath.vector3(0),
         car_velocity = vmath.vector3(0),
         car_direction = vmath.vector3(0),
         car_speed = 0,
@@ -137,6 +136,14 @@ function update(self, dt)
     local c = self.car_data
 
     --
+    -- UPDATE VISUAL TRANSFORM
+    --
+    if c.car_rotation then
+        go.set_rotation(c.car_rotation, self.visuals_url)
+        go.set_position(c.car_position, self.visuals_url)
+    end
+
+    --
     -- DEBUG
     --
     if self.debug_info then
@@ -161,7 +168,6 @@ function fixed_update(self, dt)
     local prev_position = c.car_position
     local car_position = go.get_position(self.physics_url)
     c.car_position = car_position
-    c.car_visual_position = car_position -- vmath.lerp(dt * 30, c.car_visual_position, car_position)
     if vmath.length(car_position - prev_position) < 0.02 then
         prev_position = c.car_previous_position
     else
@@ -172,9 +178,6 @@ function fixed_update(self, dt)
     local car_rotation = go.get_rotation(self.physics_url)
     c.car_rotation = car_rotation
     c.car_euler = go.get(self.physics_url, "euler")
-
-    go.set_rotation(c.car_rotation, self.visuals_url)
-    go.set_position(c.car_visual_position, self.visuals_url)
 
     --
     -- CONTROLS
