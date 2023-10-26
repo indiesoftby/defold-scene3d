@@ -100,6 +100,7 @@ max_count = 10000
 max_count = 64
 max_particlefx_count = 64
 max_particle_count = 1024
+max_animation_count = 1024
 
 [collection]
 max_instances = 2048
