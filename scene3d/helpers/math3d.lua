@@ -234,6 +234,24 @@ end
 
 --- Gradually changes a value towards a desired goal over time.
 -- Based on Game Programming Gems 4, pp. 98-101.
+-- @param a Current value.
+-- @param b Target value.
+-- @param cur_velocity The current velocity.
+-- @param smooth_time Approximately the time it will take to reach the target. A smaller value will result in a faster arrival at the target.
+-- @param max_speed Optionally clamp the maximum speed.
+-- @param dt Delta time.
+-- @return An interpolated value.
+-- @usage
+-- local obj_position = go.get("/object_to_follow", "position")
+-- local camera_pos = go.get("/camera_object", "position")
+-- local cur_velocity = self.camera_velocity -- The type is `vmath.vector3(0)`. Store this variable somewhere, for example in `self`.
+-- local smooth_time = 0.3
+-- local max_speed = nil
+-- -- dt is defined in `update()`
+-- camera_pos.x, cur_velocity.x = math3d.smooth_damp(camera_pos.x, obj_position.x, cur_velocity.x, smooth_time, max_speed, dt)
+-- camera_pos.y, cur_velocity.x = math3d.smooth_damp(camera_pos.x, obj_position.x, cur_velocity.x, smooth_time, max_speed, dt)
+-- camera_pos.z, cur_velocity.z = math3d.smooth_damp(camera_pos.z, obj_position.z, cur_velocity.z, smooth_time, max_speed, dt)
+-- go.set("/camera_object", "position", camera_pos)
 function M.smooth_damp(a, b, cur_velocity, smooth_time, max_speed, dt)
     smooth_time = math.max(0.0001, smooth_time)
     local omega = 2 / smooth_time
