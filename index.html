@@ -78,6 +78,9 @@
 		background-color: #1a72eb;
 		text-align: center;
 		line-height: 20px;
+		transition: transform 1s ease;
+		transform-origin: left;
+		transform: scaleX(1.0);
 	}
 	
 	.button {
@@ -176,11 +179,6 @@
         </style>
  </head> 
  <body> 
-  <div id="running-from-file-warning" style="display: none; margin: 3em;"> 
-   <h1>Running from local file ⚠️</h1> 
-   <p>It seems like you have opened this file by double-clicking on it. In order to test your build in a browser <b>you need to load this file from a web server</b>. You can either upload this file and the rest of the files from a Defold HTML5 bundle to a web hosting service OR host them using a local web server on your home network.</p> 
-   <p><a href="https://defold.com/manuals/html5/#testing-html5-build" target="_blank">Learn more about running a local web server in the Defold HTML5 manual</a>.</p> 
-  </div> 
   <div id="app-container" class="canvas-app-container" merge="keep"> 
    <div id="canvas-container" class="canvas-app-canvas-container"> 
     <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="1920" height="1080"></canvas> 
@@ -200,90 +198,17 @@
   </div> 
   <!-- --> 
   <script id="engine-loader" type="text/javascript" src="dmloader.js"></script> 
-  <!-- --> 
-  <script id="engine-setup" type="text/javascript">
-	var extra_params = {
-		archive_location_filter: function( path ) {
-			return ("archive" + path + "");
-		},
-		engine_arguments: ["--verify-graphics-calls=false",],
-		custom_heap_size: 67108864,
-		full_screen_container: "#canvas-container",
-		disable_context_menu: true
-	}
-
-	Module['INITIAL_MEMORY'] = extra_params.custom_heap_size;
-
-	Module['onRuntimeInitialized'] = function() {
-		Module.runApp("canvas", extra_params);
-	};
-
-	Module["locateFile"] = function(path, scriptDirectory)
-	{
-		// dmengine*.wasm is hardcoded in the built JS loader for WASM,
-		// we need to replace it here with the correct project name.
-		if (path == "dmengine.wasm" || path == "dmengine_release.wasm" || path == "dmengine_headless.wasm") {
-			path = "scene3d_examples.wasm";
-		}
-		return scriptDirectory + path;
-	};
-
-	
-
-	var is_iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-	var buttonHeight = 0;
-	var prevInnerWidth = -1;
-	var prevInnerHeight = -1;
-	buttonHeight = 42;
-	buttonHeight = 42;
-	function resize_game_canvas() {
-		// Hack for iOS when exit from Fullscreen mode
-		if (is_iOS) {
-			window.scrollTo(0, 0);
-		}
-
-		var app_container = document.getElementById('app-container');
-		var game_canvas = document.getElementById('canvas');
-		var innerWidth = window.innerWidth;
-		var innerHeight = window.innerHeight - buttonHeight;
-		if (prevInnerWidth == innerWidth && prevInnerHeight == innerHeight)
-		{
-			return;
-		}
-		prevInnerWidth = innerWidth;
-		prevInnerHeight = innerHeight;
-		var width = 1920;
-		var height = 1080;
-		var targetRatio = width / height;
-		var actualRatio = innerWidth / innerHeight;
-	
-	
-	
-		//Fit
-		if (actualRatio > targetRatio) {
-			width = innerHeight * targetRatio;
-			height = innerHeight;
-			app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
-			app_container.style.marginTop = "0px";
+  <script id="engine-start" type="text/javascript">
+		var runningFromFileWarning = document.getElementById("running-from-file-warning");
+		if (window.location.href.startsWith("file://")) {
+			runningFromFileWarning.style.display = "block";
 		}
 		else {
-			width = innerWidth;
-			height = innerWidth / targetRatio;
-			app_container.style.marginLeft = "0px";
-			app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
+			EngineLoader.load("canvas", "scene3d_examples");
+			runningFromFileWarning.parentNode.removeChild(runningFromFileWarning);
 		}
-	
-	
-		app_container.style.width = width + "px";
-		app_container.style.height = height + buttonHeight + "px";
-		game_canvas.width = width;
-		game_canvas.height = height;
-	}
-	resize_game_canvas();
-	window.addEventListener('resize', resize_game_canvas, false);
-	window.addEventListener('orientationchange', resize_game_canvas, false);
-	window.addEventListener('focus', resize_game_canvas, false);
-	
+	</script>   
+  <script id="engine-setup" type="text/javascript">
             (function () {
                 var statusText;
                 var setStatus = function (status) {
@@ -312,17 +237,6 @@
                     setStatus("ERROR: Can't download files.");
                 };
             })();
-        </script> 
-  <script id="engine-start" type="text/javascript">
-		var runningFromFileWarning = document.getElementById("running-from-file-warning");
-		if (window.location.href.startsWith("file://")) {
-			runningFromFileWarning.style.display = "block";
-		}
-		else {
-			EngineLoader.stream_wasm = "false" === "true";
-			EngineLoader.load("canvas", "scene3d_examples");
-			runningFromFileWarning.parentNode.removeChild(runningFromFileWarning);
-		}
-	</script>   
+        </script>
  </body>
 </html>
