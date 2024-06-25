@@ -660,8 +660,8 @@ static dmExtension::Result OnPostRender(dmExtension::Params* params)
 
 static dmExtension::Result AppInitializeExt(dmExtension::AppParams* params)
 {
-    dmExtension::RegisterCallback(dmExtension::CALLBACK_PRE_RENDER, OnPreRender);
-    dmExtension::RegisterCallback(dmExtension::CALLBACK_POST_RENDER, OnPostRender);
+    dmExtension::RegisterCallback(dmExtension::CALLBACK_PRE_RENDER, (FExtensionCallback)OnPreRender);
+    dmExtension::RegisterCallback(dmExtension::CALLBACK_POST_RENDER, (FExtensionCallback)OnPostRender);
 
     return dmExtension::RESULT_OK;
 }
