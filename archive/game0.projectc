@@ -206,6 +206,7 @@ max_tile_count = 2048
 [engine]
 run_while_iconified = 0
 fixed_update_frequency = 60
+max_time_step = 0.5
 
 [druid]
 no_auto_input = 1

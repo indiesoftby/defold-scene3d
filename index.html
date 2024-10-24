@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="en">
- <head> 
-  <meta charset="utf-8"> 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=no"> 
-  <meta name="apple-mobile-web-app-capable" content="yes"> 
-  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags --> 
-  <title>scene3d_examples dev</title> 
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=no">
+  <meta name="apple-mobile-web-app-capable" content="yes"> <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>scene3d_examples dev</title>
   <style type="text/css">
 	/* Disable user selection to avoid strange bug in Chrome on Windows:
 	* Selecting a text outside the canvas, then clicking+draging would
@@ -53,7 +52,7 @@
 		-moz-outline-style: none;
 	}
 
-	div {
+	body, div {
 		-webkit-tap-highlight-color: rgba(0,0,0,0);
 		-webkit-touch-callout: none;
 		-webkit-user-select: none;
@@ -142,7 +141,7 @@
 		background-position: center center;
 		background-image: url("cover_web.png");
 	}
-	</style> 
+	</style>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@aglitchman">
   <meta property="og:type" content="website">
@@ -177,27 +176,24 @@
                 background-size: 60%;
             }
         </style>
- </head> 
- <body> 
-  <div id="app-container" class="canvas-app-container" merge="keep"> 
-   <div id="canvas-container" class="canvas-app-canvas-container"> 
-    <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="1920" height="1080"></canvas> 
-   </div> 
-   <div class="buttons-background"> 
+ </head>
+ <body>
+  <div id="app-container" class="canvas-app-container" merge="keep">
+   <div id="canvas-container" class="canvas-app-canvas-container">
+    <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="1920" height="1080"></canvas>
+   </div>
+   <div class="buttons-background">
     <div class="button" onclick="Module.toggleFullscreen();">
      Fullscreen
-    </div> 
+    </div>
     <div id="loading">
      Loading... 0%
-    </div> 
-    <div class="link"> 
-     <a href="https://defold.com" target="_blank">Defold</a> + 
-     <a href="https://github.com/indiesoftby/defold-scene3d" target="_blank">Scene3D</a> 
-    </div> 
-   </div> 
-  </div> 
-  <!-- --> 
-  <script id="engine-loader" type="text/javascript" src="dmloader.js"></script> 
+    </div>
+    <div class="link"><a href="https://defold.com" target="_blank">Defold</a> + <a href="https://github.com/indiesoftby/defold-scene3d" target="_blank">Scene3D</a>
+    </div>
+   </div>
+  </div> <!-- -->
+  <script id="engine-loader" type="text/javascript" src="dmloader.js"></script>
   <script id="engine-start" type="text/javascript">
 		var runningFromFileWarning = document.getElementById("running-from-file-warning");
 		if (window.location.href.startsWith("file://")) {
@@ -207,7 +203,7 @@
 			EngineLoader.load("canvas", "scene3d_examples");
 			runningFromFileWarning.parentNode.removeChild(runningFromFileWarning);
 		}
-	</script>   
+	</script>
   <script id="engine-setup" type="text/javascript">
             (function () {
                 var statusText;
