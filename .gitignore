@@ -11,3 +11,4 @@ builtins
 /.vscode
 /manifest.public.der
 /manifest.private.der
+/.editor_settings
