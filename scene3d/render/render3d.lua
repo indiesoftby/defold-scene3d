@@ -155,10 +155,10 @@ end
 
 --- https://github.com/playcanvas/engine/blob/b65809f94c2de87f7ed8a0afa3953307250bc49c/src/scene/camera.js#L404
 --- Convert a point from 2D canvas pixel space to 3D world space.
--- @param {number} x - X coordinate on screen.
--- @param {number} y - Y coordinate on screen.
--- @param {number} z - The distance from the camera in world space to create the new point.
--- @param {vector3} [world_coord] - 3D vector to receive world coordinate result.
+-- @param x number X coordinate on screen.
+-- @param y number Y coordinate on screen.
+-- @param z number The distance from the camera in world space to create the new point.
+-- @param world_coord vector3|nil Optional 3D vector to receive world coordinate result.
 function M.screen_to_world(x, y, z, world_coord)
     world_coord = world_coord or vmath.vector3()
 
@@ -194,6 +194,30 @@ function M.screen_to_world(x, y, z, world_coord)
     world_coord.z = v.z * z + camera_pos.z
 
     return world_coord
+end
+
+local world_pos_v4 = vmath.vector4(1)
+
+--- Convert a point from 3D world space to 2D canvas pixel space.
+-- @param world_position vector3 The world space coordinate to transform.
+-- @returns vector4 The screen space coordinate.
+function M.world_to_screen(world_position)
+    local proj = M.camera_perspective()
+    local view = M.camera_view()
+
+    local view_proj = proj * view
+    world_pos_v4.x = world_position.x
+    world_pos_v4.y = world_position.y
+    world_pos_v4.z = world_position.z
+
+    local screen_coord = view_proj * world_pos_v4
+
+    local ww = M.window_width
+    local wh = M.window_height
+    screen_coord.x = (screen_coord.x / screen_coord.w + 1) * 0.5 * ww
+    screen_coord.y = (screen_coord.y / screen_coord.w + 1) * 0.5 * wh
+
+    return screen_coord
 end
 
 return M
