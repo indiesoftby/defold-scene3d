@@ -2,6 +2,7 @@
 title = scene3d_examples
 version = dev
 write_log = 0
+minimum_log_level = 1
 compress_archive = 1
 publisher = unnamed
 developer = Indiesoft LLC
@@ -61,6 +62,8 @@ max_font_batches = 128
 max_debug_vertices = 100000
 texture_profiles = /examples/compressed.texture_profiles
 verify_graphics_calls = 1
+opengl_version_hint = 33
+opengl_core_profile_hint = true
 memory_size = 512
 
 [shader]
@@ -73,6 +76,7 @@ max_sound_buffers = 100
 max_sound_sources = 16
 max_sound_instances = 256
 max_component_count = 100
+sample_frame_count = 0
 use_thread = 1
 
 [resource]
@@ -129,7 +133,7 @@ localizations = en
 [android]
 version_code = 1
 minimum_sdk_version = 19
-target_sdk_version = 34
+target_sdk_version = 35
 package = com.example.todo
 gcm_sender_id = 
 manifest = /builtins/manifests/android/AndroidManifest.xml
@@ -168,6 +172,7 @@ show_fullscreen_button = 1
 show_made_with_defold = 1
 show_console_banner = 1
 scale_mode = fit
+transparent_graphics_context = 0
 
 [particle_fx]
 max_count = 64
