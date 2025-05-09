@@ -1,5 +1,20 @@
 [![Scene3D Cover](cover.jpg)](https://github.com/indiesoftby/defold-scene3d)
 
+> [!IMPORTANT]  
+> Friends, we would like to share our plans for Scene3D development. Until now the whole project has existed as a monorepo for ease of development, but it’s time to move on. We're in the process of splitting the project into several independent modules, which will make it more flexible and easy to use.
+> 
+> The first to be released will be the independent extensions extracted from Scene3D and tweaked a bit:
+>  - the [simplex noise extension](https://github.com/indiesoftby/defold-simplex-noise) (already!)
+>  - a math helper library
+>  - a frustum cull library
+>  - a collection of meshes for prototyping
+>  - a car physics example
+>  - a camera control module (without the camera)
+> 
+> The next big step will be to refactor Scene3D and extract/create a module for mobile-grade casual 3D games graphics that combines camera (using the built-in camera component from Defold), render script and materials. This module will have the usual forward rendering, but with shadows, outlines and maybe some full-screen effects. The experience of developing games on Defold has shown that camera+render+materials are so closely linked that it is impossible to split them into smaller modules.
+> 
+> And finally, Scene3D repo itself will no longer be just an extension, but will become a structured example of a 3D game, demonstrating all the capabilities.
+
 # Scene3D - make 3D games with Defold
 
 Scene3D is a collection of assets to help you developing 3D games with the Defold game engine. Use included prefabs to quickly prototype structures, levels, and to test game mechanics. Try out ideas quickly!
@@ -88,8 +103,6 @@ Included shaders don't apply [gamma correction](https://learnopengl.com/Advanced
 
 ## Current Status
 
-⚠️ **Work in progress** ⚠️
-
 * ✔️ It's suitable for production, but be aware that API, scripts, project structure aren't in a finished state and may be changed.
 * ✔️ If you are making the game with Scene3D, follow the optimization section below before releasing your game.
 
@@ -159,13 +172,6 @@ The table briefly describes the included helper math functions. The source code 
 
 * Frustum culling uses camera matrices from the previous frame.
 
-### Optimization
-
-***TODO***
-
-*... Add information about the over-use of scripts and how to optimize them.*
-*... Add info about shaders optimization, downsizing meshes buffers.*
-
 ### Vote For The Issues
 
 The following issues are critical for the further development of Scene3D. Please put 👍👍👍 on them!
@@ -177,7 +183,6 @@ The following issues are critical for the further development of Scene3D. Please
 #### Editor Issues
 
 * [Render axis Z and horizonal grid in perspective camera mode](https://github.com/defold/defold/issues/6420).
-* [Incremental adjustment of properties values](https://github.com/defold/defold/issues/6417).
 * [Material constants are not easy to edit](https://github.com/defold/defold/issues/6413).
 
 ## Contributing to Scene3D
