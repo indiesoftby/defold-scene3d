@@ -63,7 +63,7 @@ max_debug_vertices = 100000
 texture_profiles = /examples/compressed.texture_profiles
 verify_graphics_calls = 1
 opengl_version_hint = 33
-opengl_core_profile_hint = true
+opengl_core_profile_hint = 1
 memory_size = 512
 
 [shader]
@@ -78,6 +78,10 @@ max_sound_instances = 256
 max_component_count = 100
 sample_frame_count = 0
 use_thread = 1
+stream_enabled = 0
+stream_chunk_size = 16384
+stream_preload_size = 16384
+stream_cache_size = 2097152
 
 [resource]
 http_cache = 0
