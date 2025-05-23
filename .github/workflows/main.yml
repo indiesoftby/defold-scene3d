@@ -33,7 +33,7 @@ jobs:
           java -jar build/bundle/bob.jar --version
 
           java -jar build/bundle/bob.jar --email a@b.com --auth 123 --texture-compression true --bundle-output build/bundle/js-web --platform js-web --archive --variant release resolve build bundle
-          (cd build/bundle && cp -r js-web/* public)
+          (cd build/bundle && cp -r js-web/scene3d_examples public)
 
       - name: Deploy to Pages 🚀
         if: ${{ github.ref == 'refs/heads/main' }}
