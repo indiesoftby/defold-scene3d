@@ -22,10 +22,10 @@ title = scene3d_examples
 version = dev
 developer = Indiesoft LLC
 dependencies#0 = https://github.com/britzl/ludobits/archive/7.1.0.zip
-dependencies#1 = https://github.com/britzl/defold-screenshot/archive/1.11.0.zip
-dependencies#2 = https://github.com/britzl/defold-clipboard/archive/1.3.0.zip
+dependencies#1 = https://github.com/britzl/defold-screenshot/archive/refs/tags/1.12.0.zip
+dependencies#2 = https://github.com/britzl/defold-clipboard/archive/refs/tags/1.24.0.zip
 dependencies#3 = https://github.com/indiesoftby/defold-pointer-lock/archive/2.0.0.zip
-dependencies#4 = https://github.com/subsoap/defos/archive/refs/tags/v2.8.0.zip
+dependencies#4 = https://github.com/subsoap/defos/archive/refs/tags/v2.8.3.zip
 
 [render]
 clear_color_alpha = 1.0
